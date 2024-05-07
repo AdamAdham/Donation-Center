@@ -1,0 +1,202 @@
+<!-- TEMPLATE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<title>Teaching Posts</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div id="container">
+    <h1>Teaching Posts</h1>
+    <div id="list-container">
+        <div id="filter-container">
+            <h3 class="line-below">Filters</h3>
+            <div class="filter-column-container line-below">
+                <div class="filter-column">Subject:</div>
+                <select id="filter-select-subject" onchange="filter('subject')">
+                    <option value="">All</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="History">History</option>
+                </select>
+            </div>
+
+            <div class="filter-column-container line-below" onchange="filter('governorate')">
+                <div class="filter-column">Governorate:</div>
+                <select id="filter-select-governorate">
+                    <option value="">All</option>
+                    <option value="Cairo">Cairo</option>
+                    <option value="Alexandria">Alexandria</option>
+                    <option value="Giza">Giza</option>
+                    <option value="Refugee">Aswan</option>
+                </select>
+            </div>
+        
+            <div class="filter-column-container line-below" onchange="filter('area')">
+                <div class="filter-column">Area:</div>
+                <select id="filter-select-area">
+                    <option value="">All</option>
+                    <option value="New Cairo">New Cairo</option>
+                    <option value="Haram">Haram</option>
+                    <option value="Heliopolis">Heliopolis</option>
+                    <option value="Sheikh Zayed">Sheikh Zayed</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button class="neutral-button" onclick="resetFilters()">Reset Filters</button>
+            </div>
+        </div>
+
+        <div id="table-search-container">
+            
+            <div class="search-bar">
+                <input type="text" class="input" id="search-input" placeholder="Search Subject.." onkeyup="search('subject')"/>
+                <div class='search-icon'>
+                <img src="../images/search-icon.png"></img>
+                </div>
+            </div>
+            <!-- <input type="text" id="search-input" placeholder="Search Subject..." onkeyup="search('subject')"> -->
+            <div id="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Governorate</th>
+                            <th>Area</th>
+                            <th>Organization</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var filters = {}
+    var searches = {}
+    var originalRows  = {
+        row0:{
+                subject:"Mathematics",
+                governorate:"Cairo",
+                area:"New Cairo",
+                organization: "Mashroo3 Kheir"
+            },
+        row1:{
+                subject:"Chemistry",
+                governorate:"Giza",
+                area:"Haram",
+                organization: "Pyramid Scheme"
+            },
+        row2:{
+                subject:"Computer Science",
+                governorate:"Cairo",
+                area:"Heliopolis",
+                organization: "HSC"
+        }
+    }
+
+    columnNames = ["subject","governorate", "area"]
+
+    function display(){
+        const tableBody = document.getElementById("table-body")
+        var text = ""
+        index=0;
+        for(rowName in originalRows){
+            const row = originalRows[rowName]
+            flag = true
+            for(filterCol in filters){
+                if(row[filterCol]!==filters[filterCol]){                
+                    flag = false
+                }
+            }
+            for(searchCol in searches){
+                if(!(row[searchCol].toLowerCase().includes(searches[searchCol]))){
+                   flag = false
+                }
+            }
+            if(!flag){
+                continue
+            }
+            text += `<tr id="${rowName}" class="row" onclick="passToNextPage('${rowName}')">` // Assuming single digits
+            
+            for(col in row){
+                text+=`<td name=${col}>${row[col]}</td>` 
+            }
+            index++
+            text+="</tr>"
+        }
+        tableBody.innerHTML = text
+    }
+
+    display()
+
+    function filter(columnName) {
+        const filterSelect = document.getElementById('filter-select-'+columnName)
+        var temp = {}
+        const selectValue = filterSelect.value
+        if(selectValue==""){
+            delete filters[columnName]
+        }else{
+            filters = {...filters, [columnName]:selectValue};
+        }
+        display()
+    }
+
+    function resetFilters(){
+        filters = {}
+        for(columnName of columnNames){
+            const filterSelect = document.getElementById('filter-select-'+columnName)
+            filterSelect.value = ""
+        }
+        display()
+    }
+
+    function search(columnName){
+        // onkeypress introduces a delay that the value is behind by one key press
+        const inputValue = document.getElementById('search-input').value.toLowerCase()
+        if(inputValue==""){
+            delete searches[columnName]
+        }else{
+            searches = {...searches, [columnName]:inputValue}
+        }
+        display()
+    }
+
+    function filterSearchAll(){
+        search("subject")
+        filter("area")
+        filter("governorate")
+        filter("subject")
+    }
+
+
+
+function passToNextPage(rowName) {
+    obj = originalRows[rowName]
+    window.location = "teachingPost.html?" + encodeURIComponent(JSON.stringify(obj));
+}
+
+
+</script>
+</body>
+</html>

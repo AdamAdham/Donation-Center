@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<link rel="stylesheet" type="text/css" href="./home.css" >
+<title>Donation Post</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="./images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                    <div class="nav-button-container">
+                        <button class="focus-button" onclick="register()">Register</button>
+                        <button class="focus-button" onclick="signin()">Sign In</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+<div id="container">
+    <h1>Charity Connect</h1>
+    <div class="description">At Charity Connect, we believe in the power of compassion and generosity to make a meaningful difference in the world. Our platform serves as a bridge between those who want to help and those who need it most, creating a seamless and impactful experience for donors, organizations, and beneficiaries alike.</div>
+</div>
+<div class="button-container">
+    <button class="focus-button" onclick="register()">Register</button>
+    <button class="focus-button" onclick="signin()">Sign In</button>
+</div>
+</body>
+
+<script>
+    function signin(){
+        window.location.href = "signin.html"
+    }
+    function register(){
+        window.location.href = "register.html"
+    }
+</script>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clothes Request</title>
+<link rel="stylesheet" type="text/css" href="../input.css" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<script type="module" src="../dropDown.js"></script>
+</head>
+<body>
+  <nav>
+    <div id="nav-bar">
+        <div id="left">
+            <img class="logo" src="../images/logo.svg" alt="logo">
+        </div>
+        <div id="right">
+            <ul>
+              <!-- CHANGE -->
+                <li><a href="donorDashboard.html">Dashboard</a></li> 
+                <li><a href="dk.html">DK</a></li> <!--TODO-->
+                <li><a href="account.html">Account</a></li>
+                <!-- END CHANGE -->
+            </ul>
+        </div>
+    </div>
+  </nav>
+<div id="input-container">
+  <div id="container">
+    <div id="details-container">
+      <!-- CHANGE -->
+        <h2 class="line-below white">Transportation Information</h2>
+        <!-- END CHANGE -->
+              <!-- Check boxes (can be multiple values) -->
+              <div class="radio-container">
+                <!-- CHANGE -->
+                <!-- replace ColName6 to your column name -->
+                <!-- replace value3/4/5 to your values -->
+                <h3>Vehicle Type:</h3>
+                <ul>
+                  <li>
+                    <input type="checkbox" id="Truck-option" name="type">
+                    <label for="Truck-option">Truck</label>
+                    <div class="check"></div>
+                  </li>
+                  
+                  <li>
+                    <input type="checkbox" id="Car-option" name="type">
+                    <label for="Car-option">Car</label>
+                    
+                    <div class="check"></div>
+                  </li>
+    
+                  <li>
+                    <input type="checkbox" id="Motorcycle" name="type">
+                    <label for="Motorcycle">Motorcycle</label>
+                    
+                    <div class="check"></div>
+                  </li>
+                </ul>
+                <!-- END CHANGE -->
+              </div>
+              <!-- End Check box -->
+              
+              <!-- Drop Down -->
+              <!-- CHANGE -->
+            <div class="flex-container column-value"><h3>Choose Date:</h3><input type="date" id="date" name="date"></div>
+            <div class="flex-container column-value"><h3>Choose Time:</h3><input type="time" id="time" name="time"></div>
+              <!-- End Drop Down -->
+              
+
+
+            <div class="button-container">
+                <button class="positive-button submit" onclick="requestDonation(event)">Submit</button>   
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+<script>
+
+  function requestDonation(){
+    // Check if all text field are entered
+    var inputs = document.querySelectorAll('input[type="text"]');
+    var allFilled = true;
+
+    inputs.forEach(function(input) {
+        if (input.value === '') {
+            allFilled = false;
+        }
+    });
+
+    if(!allFilled){
+      alert("Please enter all required fields")
+      return
+    }
+
+    var date = document.getElementById("date")
+    var time = document.getElementById("time")
+
+    if(date && date.value==""){
+      alert("Fill out date field")
+      return
+    }
+    if(time && time.value==""){
+      alert("Fill out time field")
+      return
+    }
+
+    // Check if all radio buttons and checkboxes are selected
+    var checkboxes = []
+    // CHANGE
+    // Change ColName5/6 to column names of the ones you a checkbox or radio button for
+    checkboxes.push(document.querySelectorAll('input[name="type"]'))
+    // END CHANGE
+    var atLeastOneChecked = false;
+    for(checkboxElement of checkboxes){
+      checkboxElement.forEach(function(checkbox) {
+          if (checkbox.checked) {
+              atLeastOneChecked = true;
+          }
+      });
+
+      if (!atLeastOneChecked) {
+          // At least one checkbox is checked
+          // Perform your action here
+          console.log(checkboxElement[0]);
+          alert(`Fill out ${checkboxElement[0].name} field`);
+          return;
+      }
+      atLeastOneChecked = false;
+    }
+    
+
+    alert("Your details have been submitted");
+    // CHANGE
+    // change to desired page
+    window.location.href = "donorDashboard.html";
+}
+</script>
+</html>

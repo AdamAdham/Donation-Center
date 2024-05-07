@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<title>Donor Details</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <li><a href="teachingPosts.html">Teaching Posts</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+<div id="container">
+    <div id="details-container">
+        <h2 class="line-below white">Donor Details</h2>
+        <div>
+            <p class="column-name">Subject: <span id="subject"></span></p>
+            <p class="column-name">Governorate: <span id="governorate"></span></p>
+            <p class="column-name">Area: <span id="area"></span></p>
+            <p class="column-name">Organization: <span id="organization"></span></p>
+            <p class="column-name">Number of Students: <span id="number-of-students">26</span></p>
+            <p class="column-name">Address: <span id="address">110 Merghany</span></p>
+        </div>
+        <div class="button-container">
+            <button class="positive-button" onclick="fulfill()">Fulfill Request</button>   
+        </div>
+    </div>
+</div>
+
+<script>
+    function fulfill() {
+        alert('Request Fulfilled');
+        window.location.href = 'teachingPosts.html';
+    }
+
+    // Extract the organization details from the URL
+    var details = JSON.parse(decodeURIComponent(window.location.search.substr(1)));
+    // Populate the organization details on the page
+    document.getElementById("subject").innerText = details.subject;
+    document.getElementById("governorate").innerText = details.governorate;
+    document.getElementById("area").innerText = details.area;
+    document.getElementById("organization").innerText = details.organization;
+</script>
+
+</body>
+</html>

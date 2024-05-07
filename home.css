@@ -1,0 +1,25 @@
+h1{
+    font-size: 90px;
+    margin-top: 150px;
+    margin-bottom: 0;
+}
+.description{
+    color: #393939;
+    text-align: center;
+    width: 700px;
+    margin: 20px auto 0 auto;
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.button-container button{
+    padding: 15px 25px;
+    font-size: 18px;
+    border-radius: 10px;
+    margin-top: 50px;
+}

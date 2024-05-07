@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clothes Request</title>
+<link rel="stylesheet" type="text/css" href="./input.css" />
+<link rel="stylesheet" type="text/css" href="./style.css" />
+<script type="module" src="./dropDown.js"></script>
+</head>
+<body>
+  <nav>
+    <div id="nav-bar">
+        <div id="left">
+            <img class="logo" src="../images/logo.svg" alt="logo">
+        </div>
+        <div id="right">
+            <ul>
+              <!-- CHANGE -->
+                <li><a href="home.html">Home</a></li>
+                <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                <div class="nav-button-container">
+                    <button class="focus-button" onclick="register()">Register</button>
+                </div>
+                <!-- END CHANGE -->
+            </ul>
+        </div>
+    </div>
+  </nav>
+<div id="input-container">
+  <div id="container">
+    <div id="details-container">
+      <!-- CHANGE -->
+        <h2 class="line-below white">Sign In</h2>
+        <!-- END CHANGE -->
+        <!-- <form action="" onsubmit="requestDonation()"> -->
+            <div>
+              <div class="input-field">
+                  <input type="text" id="email" required spellcheck="false">
+                  <!-- CHANGE -->
+                  <label>Email</label>
+                  <!-- END CHANGE -->
+              </div>
+    
+              <div class="input-field">
+                <input type="password" id="password" required spellcheck="false">
+                <!-- CHANGE -->
+                <label>Password</label>
+                <!-- END CHANGE -->
+              </div>
+
+            <div id="switch-container">Not a member? <a href="register.html">Register</a></div>
+            <div class="button-container">
+                <button class="positive-button submit" onclick="signIn(event)">Sign In</button>   
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+<script>
+  function signIn(){
+    var email = document.getElementById("email")
+    var password = document.getElementById("password")
+    if(password.value=="pass"){
+      if(email.value=="donor@example.com"){
+        window.location.href = "donor/donorDashboard.html"
+        return
+      }
+      else if(email.value=="organization@example.com"){
+        window.location.href = "organization/organizationDashboard.html"
+        return
+      }else if(email.value=="admin@example.com"){
+        window.location.href = "admin/adminDashboard.html"
+        return
+      }
+    }
+    alert("Email or Password are incorrect")
+    return
+}
+</script>
+</html>
