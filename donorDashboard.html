@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<title>Donor Dashboard</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                    <li><a href="account.html">Account</a></li>  
+                    <div class="notification-image flex-center" onclick="window.location.href = 'notifications.html'"><img src="../images/notification.png" alt="">  </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="dashboard-container">
+        <h1>Donor Dashboard</h1>
+        <div class="dashboard-inner-container">
+            <button class="dashboard-button" onclick="window.location.href='ViewAllDonationRequests.html'">All Requested Donations</button>
+            <button class="dashboard-button" onclick="window.location.href='requestCategories.html'">Request Categories</button>
+            <button class="dashboard-button" onclick="window.location.href='organizations.html'">Organizations</button>
+        </div>
+
+        <!-- <div class="dashboard-inner-container">
+            <button class="dashboard-button" onclick="window.location.href='newMedicalList.html'">Medical Supplies Requests</button>
+            <button class="dashboard-button"  onclick="window.location.href='newFoodList.html'">Food Requests</button>
+            <button class="dashboard-button"  onclick="window.location.href='teachingPosts.html'">Teaching Requests</button>
+        </div>
+
+        <div class="dashboard-inner-container">
+            <button class="dashboard-button" onclick="window.location.href='vlssdr.html'">School Supplies Requests</button>
+            <button class="dashboard-button" onclick="window.location.href='vlotdr.html'">Toy Requests</button>
+            <button class="dashboard-button" onclick="window.location.href='medicalCases.html'">Medical Requests</button>
+        </div> -->
+
+    </div>
+</body>
+</html>

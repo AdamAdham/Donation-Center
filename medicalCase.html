@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<link rel="stylesheet" type="text/css" href="../map.css" />
+<script type="module" src="../map.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<title>Medical Case</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                    <!-- END CHANGE ORGS -->
+                    <!-- CHANGE -->
+                    <li><a href="requestedDonations.html">Donation Categories</a></li>
+                    <!-- END CHANGE -->
+                    <li><a href="account.html">Account</a></li>
+                    <div class="notification-image flex-center" onclick="window.location.href = 'notifications.html'"><img src="../images/notification.png" alt="">  </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+<div id="container">
+    <div id="details-container">
+        <h2 class="line-below white">Medical Case</h2>
+        <div>
+            <!-- CHANGE -->
+            <!-- PUT here details -->
+            <!-- leave the class -->
+            <!-- change id and colName1 -->
+            <p class="column-name">Speciality: <span id="speciality"></span></p>
+            <p class="column-name">OrganizationName: <span id="organizationName"></span></p>
+            <p class="column-name">Governorate: <span id="governorate"></span></p>
+            <p class="column-name">Area: <span id="area"></span></p>
+            <p class="column-name">columnName5: <span id="columnName5">value1</span></p>
+            <h3>Patient Information:</h3>
+            <p class="column-name">Name: <span id="nane">Lo Celso</span></p>
+            <p class="column-name">Age: <span id="age">17</span></p>
+            <p class="column-name">Gender: <span id="gender">M</span></p>
+            <p class="column-name">Weight: <span id="weight">76 Kg</span></p>                         
+            <p class="column-name">Case Description: <span id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="column-name">Location: <div id="map"></div></p>
+            <!-- END CHANGE -->
+        </div>
+        <div class="button-container">
+            <button class="positive-button" onclick="fulfill()">Fulfill Request</button>   
+        </div>
+    </div>
+</div>
+
+<script>
+    function fulfill() {
+        alert('Request Fulfilled');
+        window.location.href = 'teachingPosts.html';
+    }
+
+    // Extract the organization details from the URL
+    var details = JSON.parse(decodeURIComponent(window.location.search.substr(1)));
+    // Populate the organization details on the page
+
+    // CHANGE
+    // Any details from previous pages are put here
+    // change each columnName with the actual column name
+    // can add more if needed
+    document.getElementById("speciality").innerText = details.speciality;
+    document.getElementById("organizationName").innerText = details.organizationName;
+    document.getElementById("governorate").innerText = details.governorate;
+    document.getElementById("area").innerText = details.area;
+</script>
+
+</body>
+</html>

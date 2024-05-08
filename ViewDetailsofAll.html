@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<title>Request Details</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                    <li><a href="account.html">Account</a></li>
+                    <div class="notification-image flex-center" onclick="window.location.href = 'notifications.html'"><img src="../images/notification.png" alt="">  </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+<div id="container">
+    <div id="details-container">
+        <h2 class="line-below white">Request Details</h2>
+        <div>
+            <!-- CHANGE -->
+            <!-- PUT here details -->
+            <!-- leave the class -->
+            <!-- change id and colName1 -->
+            <p class="column-name">Organisation: <span id="Organisation"></span></p>
+            <p class="column-name">TypeofItem: <span id="TypeofItem"></span></p>
+            <p class="column-name">Itemdetails: <span id="Itemdetails"></span></p>
+            <p class="column-name">RequestID: <span id="RequestID"></span></p>
+
+            <!-- END CHANGE -->
+        </div>
+        <div class="button-container">
+            <button class="positive-button" onclick="fulfill()">Fulfill Request</button>   
+        </div>
+    </div>
+</div>
+
+<script>
+    function fulfill() {
+        alert('Request Fulfilled');
+        window.location.href = 'ViewAllDonationRequests.html';
+    }
+    // function fulfill() {
+    //     var quantityInput = document.getElementById("quantityInput1");
+    //     var amountRequestedElement = document.getElementById("amountRequested");
+    //     var amountRequested = parseInt(amountRequestedElement.innerText);
+    //     var quantityToDonate = parseInt(quantityInput.value);
+    //     handleDonation(amountRequestedElement, amountRequested, quantityToDonate);
+    // }
+    // function handleDonation(amountRequestedElement, amountRequested, quantityToDonate) {
+    //     if (!quantityToDonate || quantityToDonate <= 0) {
+    //         alert("Please enter a valid quantity to donate.");
+    //         return; 
+    //     }
+
+    //     var newAmountRequested = amountRequested - quantityToDonate;
+    //     if (newAmountRequested >= 0) {
+    //         amountRequestedElement.innerText = newAmountRequested;
+    //         alert("Are you sure you want to donate " + quantityToDonate + " items?");
+    //     } else {
+    //         alert("Amount to donate exceeds amount requested.");
+    //     }
+    // }
+
+    // Extract the organization details from the URL
+    var details = JSON.parse(decodeURIComponent(window.location.search.substr(1)));
+    // Populate the organization details on the page
+
+    // CHANGE
+    // Any details from previous pages are put here
+    // change each columnName with the actual column name
+    // can add more if needed
+    document.getElementById("Organisation").innerText = details.Organisation;
+    document.getElementById("TypeofItem").innerText = details.TypeofItem;
+    document.getElementById("Itemdetails").innerText = details.Itemdetails;
+    document.getElementById("RequestID").innerText = details.RequestID;
+
+
+</script>
+
+</body>
+</html>

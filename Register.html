@@ -1,0 +1,76 @@
+
+<!-- Donor registeration form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../input.css" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<title>Donor Registration</title>
+</head>
+<body>
+<form id="registrationForm" onsubmit="return validateRegistration()">
+    <div id="input-container">
+        <div id="container">
+          <div id="details-container">
+            <!-- CHANGE -->
+              <h2 class="line-below white">Registration Form</h2>
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required><br><br>
+    
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required><br><br>
+    
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select><br><br>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="contactNumber">Contact Number:</label>
+    <input type="text" id="contactNumber" name="contactNumber" required><br><br>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" required></textarea><br><br>
+    
+    <label for="area">Area:</label>
+    <input type="text" id="area" name="area" required><br><br>
+    
+    <label for="governorate">Governorate:</label>
+    <input type="text" id="governorate" name="governorate" required><br><br>
+    
+    <input type="submit" value="Register">
+</form>
+
+<script>
+function validateRegistration() {
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
+    var gender = document.getElementById("gender").value;
+    var email = document.getElementById("email").value;
+    var contactNumber = document.getElementById("contactNumber").value;
+    var password = document.getElementById("password").value;
+    var address = document.getElementById("address").value;
+    var area = document.getElementById("area").value;
+    var governorate = document.getElementById("governorate").value;
+
+    if (firstName == "" || lastName === "" || email === "" || contactNumber === "" || password === "" || address === "" || area === "" || governorate === "") {
+        alert("Fill in the missing infomation to complete the register");
+        return false; 
+    }
+    window.location.href ="ChooseTypeofDonor.html";
+    alert("Registration completed successfully!");
+}
+</script>
+</body>

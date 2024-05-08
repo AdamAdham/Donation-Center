@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<title>View Details of Toy Requests</title> <!--Here is the name of webpage that appears in tab bar-->
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                    <li><a href="account.html">Account</a></li>
+                    <div class="notification-image flex-center" onclick="window.location.href = 'notifications.html'"><img src="../images/notification.png" alt="">  </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="container">
+        <div id="details-container">
+            <h2 class="line-below white">Toy Details</h2>
+            <div>
+                <p class="column-name">Type: <span id="columnName1">Barbie Doll</span></p>
+                <p class="column-name">Age: <span id="columnName2">3+</span></p>
+                <p class="column-name">Gender: <span id="columnName3">Female</span></p>
+                <p class="column-name">Category: <span id="columnName4">Dolls</span></p>
+                <p class="column-name">Picture:<span id="columnName6"></span></p>
+                <img src="ts2.jpg" alt="Barbie Doll" style="width: 100px; height: auto;">
+                <p class="column-name">Amount Requested: <span id="amountRequested">50</span></p>
+                <p class="column-name">Amount to Donate: <input type="number" id="quantityInput1"> <span id="columnName3"></span></p>
+            </div>
+            <div class="button-container">
+                <button class="positive-button" onclick="fulfill()">Donate</button>   
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    function fulfill() {
+        var quantityInput = document.getElementById("quantityInput1");
+        var amountRequestedElement = document.getElementById("amountRequested");
+        var amountRequested = parseInt(amountRequestedElement.innerText);
+        var quantityToDonate = parseInt(quantityInput.value);
+        handleDonation(amountRequestedElement, amountRequested, quantityToDonate);
+    }
+
+    function handleDonation(amountRequestedElement, amountRequested, quantityToDonate) {
+        if (!quantityToDonate || quantityToDonate <= 0) {
+            alert("Please enter a valid quantity to donate.");
+            return; 
+        }
+
+        var newAmountRequested = amountRequested - quantityToDonate;
+        if (newAmountRequested >= 0) {
+            amountRequestedElement.innerText = newAmountRequested;
+            alert("Are you sure you want to donate " + quantityToDonate + " items?");
+        } else {
+            alert("Amount to donate exceeds amount requested.");
+        }
+    }
+    var details = JSON.parse(decodeURIComponent(window.location.search.substr(1)));
+ 
+    document.getElementById("columnName1").innerText = details.columnName1;
+    document.getElementById("amountRequested").innerText = details.amountRequested; // Update the initial "Amount Requested"
+</script>
+</html>
