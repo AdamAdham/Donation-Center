@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../style.css" />
+     <link rel="stylesheet" type="text/css" href="../map.css" />
+    <script type="module" src="../map.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<title>Blood Donation</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                    <!-- END CHANGE ORGS -->
+                    <!-- CHANGE -->
+                    <li><a href="newBloodList.html">Blood Requests</a></li>
+                    <!-- END CHANGE -->
+                    <li><a href="account.html">Account</a></li>
+                    <div class="notification-image flex-center" onclick="window.location.href = 'notifications.html'"><img src="../images/notification.png" alt="">  </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+<div id="container">
+    <div id="details-container">
+        <h2 class="line-below white">Donor Details</h2>
+        <div>
+            <p><strong style="font-size: 20px;">Patient Name:</strong> <span id="patientName"></span></p>
+            <p><strong style="font-size: 20px;">Blood Type:</strong> <span id="bloodType"></span></p>
+            <p><strong style="font-size: 20px;">Hospital Name:</strong> <span id="hospName"></span></p>
+            <p><strong style="font-size: 20px;">Hospital Area:</strong> <span id="hospArea"></span></p>
+            <p><strong style="font-size: 20px;">Hospital Governorate:</strong> <span id="hospGov"></span></p>
+            <p><strong style="font-size: 20px;">Hospital Address:</strong> <span id="hospAdd"></span></p>
+            <p><strong style="font-size: 20px;">Location Map:</strong> <span id="locMap"></span></p>
+            <div id="map"></div>
+        </div>
+        <!-- <div class="button-container">
+            <button class="positive-button" onclick="fulfill()">Fulfill Request</button>   
+        </div> -->
+    </div>
+</div>
+
+<script>
+    // function fulfill() {
+    //     alert('Request Fulfilled');
+    //     window.location.href = 'teachingPosts.html';
+    // }
+
+    var queryParams = new URLSearchParams(window.location.search);
+        var patientName = queryParams.get('patientName');
+        var bloodType = queryParams.get('bloodType');
+        var hospName = queryParams.get('hospName');
+        var hospArea = queryParams.get('hospArea');
+        var hospGov = queryParams.get('hospGov');
+        var hospAdd = queryParams.get('hospAdd');
+        var locMap = queryParams.get('locMap');
+
+    document.getElementById('patientName').innerText = patientName;
+    document.getElementById('bloodType').innerText = bloodType;
+    document.getElementById('hospName').innerText = hospName;
+    document.getElementById('hospArea').innerText = hospArea;
+    document.getElementById('hospGov').innerText = hospGov;
+    document.getElementById('hospAdd').innerText = hospAdd;
+    document.getElementById('locMap').innerText = locMap;
+    
+</script>
+
+</body>
+</html>

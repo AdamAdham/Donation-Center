@@ -5,7 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../style.css" />
-<title>Teaching Posts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<title>Medical Cases</title>
 </head>
 <body>
     <nav>
@@ -18,11 +21,10 @@
                     <!-- CHANGE ORGS -->
                     <!-- Change href to your orgs dashboard -->
                     <li><a href="donorDashboard.html">Dashboard</a></li>
-                    <!-- END CHANGE ORGS -->
-                    <!-- CHANGE -->
-                    <li><a href="requestedDonations.html">Donation Categories</a></li>
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
                     <!-- END CHANGE -->
                     <li><a href="account.html">Account</a></li>
+                    <div class="notification-image flex-center" onclick="window.location.href = 'notifications.html'"><img src="../images/notification.png" alt="">  </div>
                 </ul>
             </div>
         </div>
@@ -36,8 +38,8 @@
                 <!-- CHANGE -->
                 <!-- change all colName1 to your column name -->
                 <!-- change all value1/2/3 to your values -->
-                <div class="filter-column">Specialty:</div>
-                <select id="filter-select-specialty" onchange="filter('specialty')">
+                <div class="filter-column">Speciality:</div>
+                <select id="filter-select-speciality" onchange="filter('speciality')">
                     <option value="">All</option>
                     <option value="Pediatric">Pediatric</option>
                     <option value="Neurology">Neurology</option>
@@ -113,7 +115,7 @@
                     <thead>
                         <tr>
                             <!-- CHANGE -->
-                            <th>Specialty</th>
+                            <th>Speciality</th>
                             <th>Organization Name</th>
                             <th>Area</th>
                             <th>Governorate</th>
@@ -138,103 +140,103 @@
     // add rows if needed (same incremental naming so if added a row name it 'row3')
     var originalRows  = {
         row0:{
-                specialty:"Pediatric",
+                speciality:"Pediatric",
                 organizationName:"Grey Sloan Memorial Hospital",
                 governorate:"Cairo",
                 area:"Heliopolis",
             },
         row1:{
-                specialty:"Cardiology",
+                speciality:"Cardiology",
                 organizationName:"Burke Hospital",
                 governorate:"Giza",
                 area:"Haram",
             },
         row2:{
-                specialty:"Neurology",
+                speciality:"Neurology",
                 organizationName:"Shepard Hospital",
                 governorate:"Giza",
                 area:"Sheikh Zayed",
             },
         row3:{
-                specialty:"Pediatric",
+                speciality:"Pediatric",
                 organizationName:"Grey Sloan Memorial Hospital",
                 governorate:"Cairo",
                 area:"Heliopolis",
             },
         row4:{
-                specialty:"Cardiology",
+                speciality:"Cardiology",
                 organizationName:"Burke Hospital",
                 governorate:"Giza",
                 area:"Haram",
             },
         row5:{
-                specialty:"Neurology",
+                speciality:"Neurology",
                 organizationName:"Shepard Hospital",
                 governorate:"Giza",
                 area:"Sheikh Zayed",
             },
         row6:{
-                specialty:"Pediatric",
+                speciality:"Pediatric",
                 organizationName:"Grey Sloan Memorial Hospital",
                 governorate:"Cairo",
                 area:"Heliopolis",
             },
         row7:{
-                specialty:"Cardiology",
+                speciality:"Cardiology",
                 organizationName:"Burke Hospital",
                 governorate:"Giza",
                 area:"Haram",
             },
         row8:{
-                specialty:"Neurology",
+                speciality:"Neurology",
                 organizationName:"Shepard Hospital",
                 governorate:"Giza",
                 area:"Sheikh Zayed",
             },
         row9:{
-                specialty:"Cardiology",
+                speciality:"Cardiology",
                 organizationName:"Burke Hospital",
                 governorate:"Giza",
                 area:"Haram",
             },
         row10:{
-                specialty:"Neurology",
+                speciality:"Neurology",
                 organizationName:"Shepard Hospital",
                 governorate:"Giza",
                 area:"Sheikh Zayed",
             },
         row11:{
-                specialty:"Pediatric",
+                speciality:"Pediatric",
                 organizationName:"Grey Sloan Memorial Hospital",
                 governorate:"Cairo",
                 area:"Heliopolis",
             },
         row12:{
-                specialty:"Cardiology",
+                speciality:"Cardiology",
                 organizationName:"Burke Hospital",
                 governorate:"Giza",
                 area:"Haram",
             },
         row13:{
-                specialty:"Neurology",
+                speciality:"Neurology",
                 organizationName:"Shepard Hospital",
                 governorate:"Giza",
                 area:"Sheikh Zayed",
             },
         row14:{
-                specialty:"Pediatric",
+                speciality:"Pediatric",
                 organizationName:"Grey Sloan Memorial Hospital",
                 governorate:"Cairo",
                 area:"Heliopolis",
             },
         row15:{
-                specialty:"Cardiology",
+                speciality:"Cardiology",
                 organizationName:"Burke Hospital",
                 governorate:"Giza",
                 area:"Haram",
             },
         row16:{
-                specialty:"Neurology",
+                speciality:"Neurology",
                 organizationName:"Shepard Hospital",
                 governorate:"Giza",
                 area:"Sheikh Zayed",

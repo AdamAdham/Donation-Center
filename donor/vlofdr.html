@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<title>View List of Food Donation Requests</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+
+                    <li><a href="account.html">Account</a></li>
+                    <div class="notification-image flex-center" onclick="window.location.href = 'notifications.html'"><img src="../images/notification.png" alt="">  </div>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="container">
+        <h1>Food Donation Requests</h1>
+        <div id="list-container">
+            <div id="filter-container">
+                <h3 class="line-below">Filters</h3>
+                <div class="filter-column-container line-below">
+                    <div class="filter-column">Item Type:</div>
+                    <select id="filter-select">
+                        <option value="All">All</option>
+                        <option value="fruits and vegetables">fruits and vegetables</option>
+                        <option value="canned foods">canned foods</option>
+                        <option value="fresh meals">fresh meals</option>
+                        <option value="baked goods">baked goods</option>
+                    </select>
+                </div>
+                
+                <div class="button-container">
+                    <button class="neutral-button" onclick="resetFilters()">Reset Filters</button>
+                </div>
+            </div>
+
+            <div id="table-container">
+                <table id="donationTable">
+
+                    <thead>
+                        <tr>
+                            <th>Requester</th>
+                            <th>Food Category</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="row1" class="row">
+                            <td>Egyptian Food Bank</td>
+                            <td>Fruits and Vegetables</td>
+                            <td> <button onclick="vdeets1()">View Details</button></td>
+                        </tr>
+                        <tr id="row2" class="row">
+                            <td>Misr El Kheir Foundation</td>
+                            <td>Canned Foods</td>
+                            <td> <button onclick="vdeets2()">View Details</button></td>
+                        </tr>
+                        <tr id="row3" class="row">
+                            <td>Al-Orman</td>
+                            <td>Fresh Meals</td>
+                            <td> <button onclick="vdeets3()">View Details</button></td>
+                        </tr>
+                        <tr id="row4" class="row">
+                            <td>Resala</td>
+                            <td>Baked Goods</td>
+                            <td> <button onclick="vdeets4()">View Details</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('filter-select').addEventListener('change', filter);
+
+        function filter() {
+            var select = document.getElementById("filter-select");
+            var value = select.value;
+            var rows = document.querySelectorAll("#donationTable tbody tr");
+
+            rows.forEach(function(row) {
+                var foodCategory = row.children[1].textContent;
+                if (value === "All" || foodCategory.toLowerCase().includes(value.toLowerCase())) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+        function resetFilters() {
+            var select = document.getElementById("filter-select");
+            select.value = "All";
+            filter();
+        }
+
+        function vdeets1() {
+            window.location = "vdf1.html";
+        }
+
+        function vdeets2() {
+            window.location = "vdf2.html";
+        }
+
+        function vdeets3() {
+            window.location = "vdf3.html"; 
+        }
+
+        function vdeets4() {
+            window.location = "vdf4.html"; 
+        }
+    </script>
+</body>
+</html>

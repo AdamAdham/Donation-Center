@@ -1,14 +1,14 @@
-<!-- TEMPLATE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../input.css" />
 <link rel="stylesheet" type="text/css" href="../style.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-<title>Teaching Requests</title>
+<title>Teaching Posts</title>
 </head>
 <body>
     <nav>
@@ -18,8 +18,11 @@
             </div>
             <div id="right">
                 <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
                     <li><a href="donorDashboard.html">Dashboard</a></li>
                     <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                    <!-- END CHANGE -->
                     <li><a href="account.html">Account</a></li>
                     <div class="notification-image flex-center" onclick="window.location.href = 'notifications.html'"><img src="../images/notification.png" alt="">  </div>
                 </ul>
@@ -27,42 +30,53 @@
         </div>
     </nav>
 <div id="container">
-    <h1>Teaching Posts</h1>
+    <h1>Clothes Requests</h1>
     <div id="list-container">
         <div id="filter-container">
             <h3 class="line-below">Filters</h3>
             <div class="filter-column-container line-below">
-                <div class="filter-column">Subject:</div>
-                <select id="filter-select-subject" onchange="filter('subject')">
+                <!-- CHANGE -->
+                <!-- change all Item to your column name -->
+                <!-- change all value1/2/3 to your values -->
+                <div class="filter-column">Age:</div>
+                <select id="filter-select-Age" onchange="filter('Age')">
                     <option value="">All</option>
-                    <option value="Mathematics">Mathematics</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Computer Science">Computer Science</option>
-                    <option value="History">History</option>
+                    <option value="Newborns">Newborns</option>
+                    <option value="Childrens">Childrens</option>
+                    <option value="Teenagers">Teenagers</option>
+                    <option value="Adults">Adults</option>
                 </select>
+                <!-- END CHANGE -->
             </div>
 
-            <div class="filter-column-container line-below" onchange="filter('governorate')">
-                <div class="filter-column">Governorate:</div>
-                <select id="filter-select-governorate">
+            <div class="filter-column-container line-below">
+                <!-- CHANGE -->
+                <!-- change all Item to your column name -->
+                <!-- change all value1/2/3 to your values -->
+                <div class="filter-column">Gender:</div>
+                <select id="filter-select-Gender" onchange="filter('Gender')">
                     <option value="">All</option>
-                    <option value="Cairo">Cairo</option>
-                    <option value="Alexandria">Alexandria</option>
-                    <option value="Giza">Giza</option>
-                    <option value="Refugee">Aswan</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                 </select>
+                <!-- END CHANGE -->
             </div>
         
-            <div class="filter-column-container line-below" onchange="filter('area')">
-                <div class="filter-column">Area:</div>
-                <select id="filter-select-area">
+            <div class="filter-column-container line-below">
+                <!-- CHANGE -->
+                <!-- change all Item to your column name -->
+                <!-- change all value1/2/3 to your values -->
+                <div class="filter-column">Season:</div>
+                <select id="filter-select-Season" onchange="filter('Season')">
                     <option value="">All</option>
-                    <option value="New Cairo">New Cairo</option>
-                    <option value="Haram">Haram</option>
-                    <option value="Heliopolis">Heliopolis</option>
-                    <option value="Sheikh Zayed">Sheikh Zayed</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Winter">Winter</option>
+                    <option value="Autumn">Autumn</option>
+                    <option value="Spring">Spring</option>
                 </select>
+                <!-- END CHANGE -->
             </div>
+
             <div class="button-container">
                 <button class="neutral-button" onclick="resetFilters()">Reset Filters</button>
             </div>
@@ -71,7 +85,9 @@
         <div id="table-search-container">
             
             <div class="search-bar">
-                <input type="text" class="input" id="search-input" placeholder="Search Subject.." onkeyup="search('subject')"/>
+                <!-- CHANGE -->
+                <!-- Change colName to column name to search for -->
+                <input type="text" class="input" id="search-input" placeholder="Search Item.." onkeyup="search('Item')"/>
                 <div class='search-icon'>
                 <img src="../images/search-icon.png"></img>
                 </div>
@@ -81,10 +97,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Subject</th>
-                            <th>Governorate</th>
-                            <th>Area</th>
-                            <th>Organization</th>
+                            <!-- CHANGE -->
+                            <th>Item</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Season</th>
+                            <!-- END CHANGE -->
                         </tr>
                     </thead>
                     <tbody id="table-body">
@@ -99,28 +117,50 @@
 <script>
     var filters = {}
     var searches = {}
+    // CHANGE
+    // replace all Item/2/3/4 with  your column names
+    // replace all value1/2/3/4 with your values
+    // add rows if needed (same incremental naming so if added a row name it 'row3')
     var originalRows  = {
         row0:{
-                subject:"Mathematics",
-                governorate:"Cairo",
-                area:"New Cairo",
-                organization: "Mashroo3 Kheir"
+                Item:"Jackets",
+                Age:"Teenagers",
+                Gender:"Male",
+                Season: "Autumn"
             },
         row1:{
-                subject:"Chemistry",
-                governorate:"Giza",
-                area:"Haram",
-                organization: "Pyramid Scheme"
+                Item:"Coats",
+                Age:"Adults",
+                Gender:"Female",
+                Season: "Winter"
             },
         row2:{
-                subject:"Computer Science",
-                governorate:"Cairo",
-                area:"Heliopolis",
-                organization: "HSC"
-        }
+                Item:"Shorts",
+                Age:"Childrens",
+                Gender:"Male",
+                Season: "Summer"
+            },
+        row3:{
+                Item:"T-shirts",
+                Age:"Newborns",
+                Gender:"Female",
+                Season: "Spring"
+
+            },
+        row4:{
+                Item:"Socks",
+                Age:"Teenagers",
+                Gender:"Male",
+                Season: "Winter"
+            }
     }
 
-    columnNames = ["subject","governorate", "area"]
+    // ENDCHANGE
+
+    //CHANGE
+    // make sure all column names are here
+    columnNames = ["Item","Age", "Gender","Season"]
+    // END CHANGE
 
     function display(){
         const tableBody = document.getElementById("table-body")
@@ -187,18 +227,13 @@
         display()
     }
 
-    function filterSearchAll(){
-        search("subject")
-        filter("area")
-        filter("governorate")
-        filter("subject")
-    }
-
-
 
 function passToNextPage(rowName) {
     obj = originalRows[rowName]
-    window.location = "teachingPost.html?" + encodeURIComponent(JSON.stringify(obj));
+    // CHANGE
+    // Replace with next page for details
+    window.location = "ViewClothesDetails.html?" + encodeURIComponent(JSON.stringify(obj));
+    //ENDCHANGE
 }
 
 
