@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Donation Post</title>
+</head>
+<body>
+    <a href="donationposts.html"><button>Back</button></a>
+
+<h2>The Donation Post</h2>
+<div id="labelContainer"></div>
+
+<div>
+    <!-- Change column names -->
+    
+    
+
+</div>
+
+
+
+
+<script>
+
+    var details = JSON.parse(decodeURIComponent(window.location.search.substr(1)));
+    //  Change column names
+   
+
+
+
+
+
+    var container = document.getElementById("labelContainer");
+
+// Check if details.Category equals a certain string
+if (details.Category === "Clothes") {
+    var label0 = document.createElement("label")
+    label0.innerText = "Category:  Clothes";
+    label0.style.fontWeight = "bold";
+    label0.style.fontSize = "20px";
+    container.appendChild(label0);
+    container.appendChild(document.createElement("br"));
+    // If it matches, create and append certain labels
+    var label1 = document.createElement("label");
+    label1.innerText = "Type of clothing: Trousers";
+
+    container.appendChild(label1);
+    container.appendChild(document.createElement("br"));
+    var label2 = document.createElement("label");
+    label2.innerText = "Material: Cotton";
+    container.appendChild(label2);
+    container.appendChild(document.createElement("br"));
+    var label3 = document.createElement("label");
+    label3.innerText = "Age: 18";
+    container.appendChild(label3);
+    container.appendChild(document.createElement("br"));
+    var label4 = document.createElement("label");
+    label4.innerText = "Gender: Male";
+    container.appendChild(label4);
+    container.appendChild(document.createElement("br"));
+    var label5 = document.createElement("label");
+    label5.innerText = "Season: Winter";
+    container.appendChild(label5);
+    container.appendChild(document.createElement("br"));
+    var label6 = document.createElement("label");
+    label6.innerText = "Quantity: 5";
+    container.appendChild(label6);
+    container.appendChild(document.createElement("br"));
+    var button1 = document.createElement("button");
+    button1.innerText = "Update this Donation Post";
+    
+    button1.addEventListener("click", function() {
+        window.location.href = "updateClothesDP.html"; // Change "anotherPage.html" to the URL of the desired webpage
+    });
+
+
+
+    container.appendChild(button1);
+}
+ else if(details.Category === "Blood Donations") {
+    var label0 = document.createElement("label")
+    label0.innerText = "Category:  Blood Donations";
+    label0.style.fontWeight = "bold";
+    label0.style.fontSize = "20px";
+    container.appendChild(label0);
+    container.appendChild(document.createElement("br"));
+    // If it matches, create and append certain labels
+    var label1 = document.createElement("label");
+    label1.innerText = "Blood Type: O negative";
+
+    container.appendChild(label1);
+    container.appendChild(document.createElement("br"));
+    var label2 = document.createElement("label");
+    label2.innerText = "Quantity: 4 Liters";
+    container.appendChild(label2);
+    
+    container.appendChild(document.createElement("br"));
+    var button1 = document.createElement("button");
+    button1.innerText = "Update this Donation Post";
+    
+    button1.addEventListener("click", function() {
+        window.location.href = "updatebloodDP.html"; // Change "anotherPage.html" to the URL of the desired webpage
+    });
+
+
+
+    container.appendChild(button1);
+    
+    
+}
+else if(details.Category === "Toys"){
+    var label0 = document.createElement("label")
+    label0.innerText = "Category:  Toys";
+    label0.style.fontWeight = "bold";
+    label0.style.fontSize = "20px";
+    container.appendChild(label0);
+    container.appendChild(document.createElement("br"));
+    // If it matches, create and append certain labels
+    var label1 = document.createElement("label");
+    label1.innerText = "Type: Dolls";
+
+    container.appendChild(label1);
+    container.appendChild(document.createElement("br"));
+    var label2 = document.createElement("label");
+    label2.innerText = "Age: 12";
+    container.appendChild(label2);
+    container.appendChild(document.createElement("br"));
+    var label3 = document.createElement("label");
+    label3.innerText = "Gender: Female";
+    container.appendChild(label3);
+    container.appendChild(document.createElement("br"));
+    var label4 = document.createElement("label");
+    label4.innerText = "Quantity: 5";
+    container.appendChild(label4);
+
+
+    container.appendChild(document.createElement("br"));
+    var button1 = document.createElement("button");
+    button1.innerText = "Update this Donation Post";
+    
+    button1.addEventListener("click", function() {
+        window.location.href = "updatetoysDP.html"; // Change "anotherPage.html" to the URL of the desired webpage
+    });
+
+    container.appendChild(button1);
+    
+}
+else if(details.Category === "Food"){
+    var label0 = document.createElement("label")
+    label0.innerText = "Category:  Food";
+    label0.style.fontWeight = "bold";
+    label0.style.fontSize = "20px";
+    container.appendChild(label0);
+    container.appendChild(document.createElement("br"));
+    // If it matches, create and append certain labels
+    var label1 = document.createElement("label");
+    label1.innerText = "Food Name: Pineapple";
+
+    container.appendChild(label1);
+    container.appendChild(document.createElement("br"));
+    var label2 = document.createElement("label");
+    label2.innerText = "Type: Fruits & Vegetables";
+    container.appendChild(label2);
+    container.appendChild(document.createElement("br"));
+    var label3 = document.createElement("label");
+    label3.innerText = "Quantity: 5";
+    container.appendChild(label3);
+
+
+
+    container.appendChild(document.createElement("br"));
+    var button1 = document.createElement("button");
+    button1.innerText = "Update this Donation Post";
+    
+    button1.addEventListener("click", function() {
+        window.location.href = "updatefoodDP.html"; // Change "anotherPage.html" to the URL of the desired webpage
+    });
+
+    container.appendChild(button1);
+
+
+
+    
+}
+else if(details.Category === "Medical Supplies"){
+    var label0 = document.createElement("label")
+    label0.innerText = "Category:  Medical Supplies";
+    label0.style.fontWeight = "bold";
+    label0.style.fontSize = "20px";
+    container.appendChild(label0);
+    container.appendChild(document.createElement("br"));
+    // If it matches, create and append certain labels
+    var label1 = document.createElement("label");
+    label1.innerText = "Medical Supply Name: Thermometer";
+
+    container.appendChild(label1);
+    container.appendChild(document.createElement("br"));
+    var label2 = document.createElement("label");
+    label2.innerText = "Type: Medical Equipment";
+    container.appendChild(label2);
+    container.appendChild(document.createElement("br"));
+    var label3 = document.createElement("label");
+    label3.innerText = "Quantity: 5";
+    container.appendChild(label3);
+
+    container.appendChild(document.createElement("br"));
+    var button1 = document.createElement("button");
+    button1.innerText = "Update this Donation Post";
+    
+    button1.addEventListener("click", function() {
+        window.location.href = "updatemedicalsuppliesDP.html"; // Change "anotherPage.html" to the URL of the desired webpage
+    });
+
+    container.appendChild(button1);
+
+
+}
+else if(details.Category === "School Supplies"){
+    var label0 = document.createElement("label")
+    label0.innerText = "Category:  School Supplies";
+    label0.style.fontWeight = "bold";
+    label0.style.fontSize = "20px";
+    container.appendChild(label0);
+    container.appendChild(document.createElement("br"));
+    // If it matches, create and append certain labels
+    var label1 = document.createElement("label");
+    label1.innerText = "School Supply Name: English Books";
+
+    container.appendChild(label1);
+    container.appendChild(document.createElement("br"));
+    var label2 = document.createElement("label");
+    label2.innerText = "Type: School Books";
+    container.appendChild(label2);
+    container.appendChild(document.createElement("br"));
+    var label3 = document.createElement("label");
+    label3.innerText = "Quantity: 5";
+    container.appendChild(label3);
+
+
+
+    container.appendChild(document.createElement("br"));
+    var button1 = document.createElement("button");
+    button1.innerText = "Update this Donation Post";
+    
+    button1.addEventListener("click", function() {
+        window.location.href = "updateschoolsuppliesDP.html"; // Change "anotherPage.html" to the URL of the desired webpage
+    });
+
+    container.appendChild(button1);
+
+
+
+}
+    
+
+    
+</script>
+
+</body>
+</html>

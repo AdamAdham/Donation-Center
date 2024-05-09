@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creating a Donation Post</title>
+<link rel="stylesheet" type="text/css" href="./inputO.css" />
+<link rel="stylesheet" type="text/css" href="./styleO.css" />
+<script type="module" src="./dropDownO.js"></script>
+
+</head>
+<body>
+  <nav>
+    <div id="nav-bar">
+        <div id="left">
+            <img class="logo" src="D:\chelSEa\allforOrganization\images\logo.svg" alt="logo">
+        </div>
+        <div id="right">
+            <ul>
+              <!-- CHANGE -->
+                <li><a href="organizationDashboard.html">Dashboard</a></li>
+               
+                <li><a href="updateorganizationprofile.html">Account</a></li>
+                <!-- END CHANGE -->
+            </ul>
+        </div>
+    </div>
+  </nav>
+<div id="input-container">
+  <div id="container">
+    <div id="details-container">
+      <!-- CHANGE -->
+        <h2 class="line-below white">Create a Donation Post </h2>
+
+     
+
+
+
+        <div class="dropdown-container">
+          <h3>Choose a Category for the Item:</h3>
+          <div class="dropdown">
+            <div class="select" id="categorySelect">
+              <span class="selected">Blood Donations</span>
+              <div class="caret"></div>
+            </div>
+            <ul class="menu">
+              <li id="clothes">Clothes</li>
+              <li id="toys">Toys</li>
+              <li id="food">Food</li>
+              <li id="schoolSupplies">School Supplies</li>
+              <li id="medicalSupplies">Medical Supplies</li>
+              <li id="bloodDonations" class="active">Blood Donations</li>
+            </ul>
+          </div>
+        </div>
+        
+
+            <div class="button-container">
+                <button class="positive-button submit" onclick="handleCategorySelection(event)">Click to enter details of the item</button>   
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+<script>
+
+
+function handleCategorySelection() {
+  var selectedCategory = document.querySelector('.menu .active').id;
+
+  // Switch case based on the selected category
+  switch (selectedCategory) {
+    case "clothes":
+      window.location.href = "clothesRequest.html";
+      break;
+    case "toys":
+      window.location.href = "toysRequest.html";
+      break;
+    case "food":
+      window.location.href = "foodRequest.html";
+      break;
+    case "schoolSupplies":
+      window.location.href = "schoolsuppliesRequest.html";
+      break;
+    case "medicalSupplies":
+      window.location.href = "medicalsuppliesRequest.html";
+      break;
+    case "bloodDonations":
+      window.location.href = "blooddonationsRequest.html";
+      break;
+    default:
+      console.log("Unknown category selected");
+  }
+}
+
+
+</script>
+</html>

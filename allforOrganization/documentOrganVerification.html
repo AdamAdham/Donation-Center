@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document upload Page</title>
+</head>
+<body>
+
+<h2>Please upload a document for organization verification</h2>
+<form id="Form" onsubmit="return validateupload()">
+    <label for="document-upload">Upload Document:</label>
+    <input type="file" id="document-upload" name="document-upload" multiple required>
+
+    <input type="submit" value="Upload Document">
+</form>
+
+<script>
+function validateupload() {
+    
+        window.location.href = "organizationDashboard.html";
+        return false;
+} 
+</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="./styleO.css" />
+<title>Fulfilled Donation Post</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="./images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="organizationDashboard.html">Dashboard</a></li>
+                    <!-- END CHANGE ORGS -->
+                    <!-- CHANGE -->
+                    <li><a href="fulfilledDonationposts.html">Fulfilled Donation Posts</a></li>
+                    <!-- END CHANGE -->
+                    <li><a href="updateorganizationprofile.html">Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+<div id="container">
+    <div id="details-container">
+        <h2 class="line-below white">Fulfilled Donation Post</h2>
+        <div>
+            <!-- CHANGE -->
+            <!-- PUT here details -->
+            <!-- leave the class -->
+            <!-- change id and colName1 -->
+            <p class="column-name">Category: <span id="columnName1">Blood Donations</span></p>
+            <p class="column-name">Blood Type: <span id="columnName1">O negative</span></p>
+            <p class="column-name">Quantity(in Liters): <span id="columnName1">4</span></p>
+            <!-- END CHANGE -->
+        </div>
+        <div class="button-container">
+            <button class="positive-button" onclick="donordetails()">View Donor Details </button>
+            <button class="positive-button" onclick="donorCdetails()">View Donor Contact Details </button>
+            <button class="negative-button" onclick="deleteItem()">Delete</button>    
+        </div>
+    </div>
+</div>
+
+<script>
+    function donorCdetails() {
+        //alert('Request Fulfilled');
+        window.location.href = 'donorcontactdetails.html';
+    }
+    function donordetails() {
+        //alert('Request Fulfilled');
+        window.location.href = 'viewdonordetails.html';
+    }
+    function deleteItem(){
+        localStorage.setItem("deleteRowRequest", "row2");
+            // Redirect back to the original HTML file
+            window.location.href = "fulfilledDonationposts.html";
+    }
+
+    // Extract the organization details from the URL
+    var details = JSON.parse(decodeURIComponent(window.location.search.substr(1)));
+    // Populate the organization details on the page
+
+    // CHANGE
+    // Any details from previous pages are put here
+    // change each columnName with the actual column name
+    // can add more if needed
+   
+</script>
+
+</body>
+</html>

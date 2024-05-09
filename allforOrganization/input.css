@@ -1,0 +1,339 @@
+form{
+    margin:0;
+    padding: 0;
+}
+
+.flex-container{
+  display: flex;
+  align-items: center;
+}
+
+/* Text/Input field */
+.input-field {
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+.input-field input {
+    width: 96%;
+    height: 50px;
+    border-radius: 6px;
+    font-size: 17px;
+    padding: 0 15px;
+    border: 1px solid var(--darkest-grey);
+    background: transparent;
+    color: var(--black);
+    outline: none;
+  }
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--darkest-grey);
+    font-size: 19px;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+  .input-field input:focus {
+    border: 2px solid var(--focus-color);
+}
+.input-field input:focus ~ label,
+.input-field input:valid ~ label {
+    color: var(--focus-color);
+    top: 0;
+    left: 15px;
+    font-size: 16px;
+    padding: 0 2px;
+    background: var(--light-grey);
+}
+
+
+
+
+/* RADIO */
+
+.radio-container ul{
+    list-style: none;
+    margin-left: 25px;
+    padding: 0;
+    overflow: auto;
+  }
+  
+  .radio-container ul li{
+    color: var(--darkest-grey);
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+  }
+  
+  .radio-container ul li input[type=radio]{
+    position: absolute;
+    visibility: hidden;
+  }
+  
+  .radio-container ul li input[type=checkbox]{
+    position: absolute;
+    visibility: hidden;
+  }
+
+
+  .radio-container ul li label{
+    display: block;
+    position: relative;
+    font-weight: 300;
+    font-size: 20px;
+    padding: 10px 10px 10px 50px;
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.25s linear;
+  }
+
+  .radio-container ul li .check{
+    display: block;
+    position: absolute;
+    border: 5px solid var(--darkest-grey);
+    border-radius: 100%;
+    height: 15px;
+    width: 15px;
+    top: 10px;
+    left: 15px;
+      z-index: 5;
+      transition: border .25s linear;
+      -webkit-transition: border .25s linear;
+  }
+  
+  .radio-container ul li .check::before {
+    display: block;
+    position: absolute;
+    content: '';
+    border-radius: 100%;
+    height: 18px;
+    width: 18px;
+    top: -1px;
+    left: -1px;
+    margin: auto;
+      transition: background 0.25s linear;
+      -webkit-transition: background 0.25s linear;
+  }
+  
+  input[type=radio]:checked ~ .check,input[type=checkbox]:checked ~ .check {
+    border: 5px solid var(--focus-color);
+  }
+  
+  input[type=radio]:checked ~ .check::before,input[type=checkbox]:checked ~ .check::before{
+    background: var(--focus-color);
+  }
+  
+  input[type=radio]:checked ~ label,input[type=checkbox]:checked ~ label{
+    color: var(--focus-color);
+  }
+  
+  .radio-container{
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .radio-container ul, .radio-container li{
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+
+  #input-container h3{
+    font-weight: bold;
+    color: var(--light-black);
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+
+  #input-container .positive-button{
+    margin-top: 20px;
+    background-color: var(--focus-color);
+    color: var(--lighter-grey);
+  }
+
+  #input-container #details-container{
+    margin-top: 60px;
+}
+
+
+/* DROP DOWN */
+
+
+.dropdown {
+    min-width: 15em;
+    position: relative;
+    top: 0;
+    margin-left: 40px;
+}
+.select {
+    background: var(--light-black);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px var(--light-black) solid;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+/* .select-clicked {
+    border: 2px var(--focus-color) solid;
+    box-shadow: 0 0 0.5em var(--focus-color);
+} */
+.select:hover {
+    background: #323741;
+    border-color: #323741;
+}
+.caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: 0.3s;
+}
+.caret-rotate {
+    transform: rotate(180deg);
+}
+.menu {
+    list-style: none;
+    padding: 0.2em 0;
+    background: #323741;
+    border: 1px #323741 solid;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    color: #9fa5b5;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: auto;
+    min-width: 60%;
+    max-width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+    margin-top: 5px;
+}
+.menu li {
+    padding: 0.7em 0.9em;
+    margin: 0em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+}
+.menu li:hover {
+    background: #2a2d35;
+}
+.active {
+    background: #23242a;
+}
+.menu-open {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-container{
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+/* Time */
+
+input[type=time] {
+  background-color: transparent;
+  border: none;
+  color: var(--light-black);
+  font-size: 14px;
+  font-family: helvetica;
+  width: 200px;
+  margin-left: 10px;
+}
+
+/* Wrapper around the hour, minute, second, and am/pm fields as well as 
+the up and down buttons and the 'X' button */
+input[type=time]::-webkit-datetime-edit-fields-wrapper {
+  display: flex;
+}
+
+/* The space between the fields - between hour and minute, the minute and 
+second, second and am/pm */
+input[type=time]::-webkit-datetime-edit-text {
+  padding: 15px 4px;
+}
+
+/* The naming convention for the hour, minute, second, and am/pm field is
+`-webkit-datetime-edit-{field}-field` */
+
+/* Hour */
+input[type=time]::-webkit-datetime-edit-hour-field {
+  color: var(--light-black);
+  background-color: var(--dark-grey);
+  border-radius: 15%;
+  padding: 15px 13px;
+}
+
+/* Minute */
+input[type=time]::-webkit-datetime-edit-minute-field {
+  color: var(--light-black);
+  background-color: var(--dark-grey);
+  border-radius: 15%;
+  padding: 15px 13px;
+}
+
+/* AM/PM */
+input[type=time]::-webkit-datetime-edit-ampm-field {
+  color: var(--light-black);
+  background-color: var(--dark-grey);
+  border-radius: 15%;
+  padding: 15px 13px;
+}
+
+/* 'X' button for resetting/clearing time */
+input[type=time]::-webkit-clear-button {
+  display: none;
+}
+
+/* Up/Down arrows for incrementing/decrementing the value */
+input[type=time]::-webkit-inner-spin-button {
+  display: none;
+}
+
+input[type=time]:focus,input[type=time]:active{
+  color: var(--light-black);
+  outline: none;
+}
+
+
+
+/* Date */
+
+
+input[type=date] {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  color: var(--light-black);
+  font-family: helvetica;
+  width: auto;
+  margin-left: 10px;
+}
+
+input[type=date]:focus,input[type=date]:active{
+  color: var(--light-black);
+  outline: none;
+}
+/* 
+input[type=date]::-webkit-datetime-edit-year-field, input[type=date]::-webkit-datetime-edit-month-field, input[type=date]::-webkit-datetime-edit-week-field, input[type=date]::-webkit-datetime-edit-day-field{
+  color: red;
+} */

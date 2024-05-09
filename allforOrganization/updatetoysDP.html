@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Request</title>
+<link rel="stylesheet" type="text/css" href="./inputO.css" />
+<link rel="stylesheet" type="text/css" href="./styleO.css" />
+<link rel="stylesheet" type="text/css" href="./uploaddocument.css" />
+<script type="module" src="./dropDownO.js"></script>
+
+
+</head>
+<body>
+  <nav>
+    <div id="nav-bar">
+        <div id="left">
+            <img class="logo" src="D:\chelSEa\allforOrganization\images\logo.svg" alt="logo">
+        </div>
+        <div id="right">
+            <ul>
+              <!-- CHANGE -->
+                <li><a href="organizationDashboard.html">Dashboard</a></li>
+                <li><a href="donationposts.html">Donation Posts</a></li>
+                <li><a href="updateorganizationprofile.html">Account</a></li>
+                <!-- END CHANGE -->
+            </ul>
+        </div>
+    </div>
+  </nav>
+<div id="input-container">
+  <div id="container">
+    <div id="details-container">
+      <!-- CHANGE -->
+        <h2 class="line-below white">Update Request </h2>
+        <!-- END CHANGE -->
+        <!-- <form action="" onsubmit="requestDonation()"> -->
+            <div>
+              <div class="input-field">
+                  <input class="age" type="number" required spellcheck="false" value="12">
+                  <!-- CHANGE -->
+                  <label>Enter Age</label>
+                  <!-- END CHANGE -->
+              </div>
+    
+              <div class="input-field">
+                <input class="quantity" type="number" required spellcheck="false" value="5">
+                <!-- CHANGE -->
+                <label>Enter Quantity</label>
+                <!-- END CHANGE -->
+              </div>
+            
+    
+            
+            <!-- Radio buttons (only 1 choice) -->
+              <div class="radio-container">
+                <!-- CHANGE -->
+                <!-- replace ColName5 to your column name -->
+                <!-- replace value1/2/3 to your values -->
+                <h3>Gender:</h3>
+                <ul>
+                  <li>
+                    <input type="radio" id="value1-option" name="ColName5">
+                    <label for="value1-option">Male</label>
+                    <div class="check"></div>
+                  </li>
+                  
+                  <li>
+                    <input type="radio" id="value2-option" name="ColName5" checked>
+                    <label for="value2-option">Female</label>
+                    
+                    <div class="check"></div>
+                  </li>
+                </ul>
+                <!-- END CHANGE -->
+              </div>
+              <!-- End radio buttons -->
+    
+          
+              <!-- Check boxes (can be multiple values) -->
+
+
+
+              <div class="dropdown-container">
+                <h3>Choose Type of Toy:</h3>
+                <div class="dropdown">
+                  <div class="select">
+                    <!-- Default value -->
+                      <span class="selected">Dolls</span>
+                      <div class="caret"></div>
+                  </div>
+                  <ul class="menu">
+                      <li>Board Games</li>
+                      <li>Stuffed Toys</li>
+                      <li>Sports</li>
+                      <li>Cars</li>
+                      <li>Outdoors</li>
+                     
+                      <!-- MAKE Sure that this value is the same as the one above in span element with class="selected" -->
+                      <li class="active">Dolls</li>
+                  </ul>
+                </div>
+              </div>
+
+
+              <br>
+              <br>
+
+              <h3>Upload Photo of toy: </h3>
+                
+
+                  <div class="input-field">
+            
+                    <input type="file" id="document-upload" name="document-upload" multiple required>
+                </div>
+              
+
+
+            <div class="button-container">
+                <button class="positive-button submit" onclick="requestDonation(event)">Request</button>   
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+<script>
+  function requestDonation(){
+    // Check if all text field are entered
+    var inputs = document.querySelectorAll('input[type="text"]');
+    var allFilled = true;
+
+    inputs.forEach(function(input) {
+        if (input.value === '') {
+            allFilled = false;
+        }
+    });
+
+    if(!allFilled){
+      alert("Please enter all required fields")
+      return
+    }
+
+    
+     inputs = document.querySelectorAll('input[type="number"]');
+     allFilled = true;
+
+    inputs.forEach(function(input) {
+        if (input.value === '') {
+            allFilled = false;
+        }
+    });
+
+    if(!allFilled){
+      alert("Please enter all required fields")
+      return
+    }
+
+
+
+    // Check if all radio buttons and checkboxes are selected
+    var checkboxes = []
+    // CHANGE
+    // Change ColName5/6 to column names of the ones you a checkbox or radio button for
+    checkboxes.push(document.querySelectorAll('input[name="ColName5"]'))
+    
+    // END CHANGE
+    var atLeastOneChecked = false;
+    console.log(checkboxes);
+    for(checkboxElement of checkboxes){
+      checkboxElement.forEach(function(checkbox) {
+          if (checkbox.checked) {
+              atLeastOneChecked = true;
+          }
+      });
+
+      if (!atLeastOneChecked) {
+          // At least one checkbox is checked
+          // Perform your action here
+          console.log(checkboxElement[0]);
+          alert(`Fill out ${checkboxElement[0].name} field`);
+          return;
+      }
+      atLeastOneChecked = false;
+    }
+    
+
+    
+
+
+
+var maleRadioButton = document.getElementById('value1-option');
+var femaleRadioButton = document.getElementById('value2-option');
+
+// Check if the male radio button is checked
+if (maleRadioButton.checked) {
+    // Male was chosen
+    var gender = "Male";
+    localStorage.setItem("gender", gender);
+    // Now you can create strings or perform actions based on the choice
+    
+} 
+// Check if the female radio button is checked
+else if (femaleRadioButton.checked) {
+    // Female was chosen
+    var gender = "Female";
+    // Now you can create strings or perform actions based on the choice
+    localStorage.setItem("gender", gender);
+} else {
+    // Neither male nor female was chosen
+    console.log("No gender chosen.");
+    localStorage.setItem("gender", "Male");
+}
+
+
+
+
+// Get the value of the input field
+  var inputElement = document.querySelector('.age');
+
+// Get the value of the input field
+  var ageValue = inputElement.value.toString();
+localStorage.setItem("age", ageValue);
+localStorage.setItem("category", "Toys");
+
+inputElement = document.querySelector('.quantity');
+quantityValue = inputElement.value.toString();
+localStorage.setItem("quantity", quantityValue);
+
+
+var selectedItem = document.querySelector('.dropdown-container .selected').textContent;
+localStorage.setItem("typeoftoy",selectedItem);
+
+
+
+
+
+
+window.location.href = "toysUPdetails.html";
+
+
+alert("Request has been submitted");
+
+
+
+    // CHANGE
+    // change to desired page
+    
+}
+</script>
+</html>

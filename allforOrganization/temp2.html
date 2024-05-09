@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification System</title>
+</head>
+<body>
+    <h2>Notification System</h2>
+    <a href="organizationDashboard.html"><button>Back</button></a>
+
+    
+    <button onclick="showNotifications()">Show Notifications</button>
+
+   
+    <div id="notificationList" style="display: none;">
+      
+    </div>
+
+   
+    <button onclick="clearAllNotifications()">Clear All</button>
+
+    
+    <script>
+       
+        const notifications = [
+            "The Clothes donation post with id 1 was chosen to be fulfilled by a donor",
+            "The Toys donation post with id 2 was chosen to be fulfilled by a donor",
+            "The Medical Supply donation post with id 3 was chosen to be fulfilled by a donor "
+        ];
+
+       
+        function showNotifications() {
+            const notificationList = document.getElementById("notificationList");
+            notificationList.innerHTML = ""; 
+
+           
+            notifications.forEach(notification => {
+                const div = document.createElement("div");
+                div.textContent = notification;
+
+               
+                const clearButton = document.createElement("button");
+                clearButton.textContent = "Clear";
+                clearButton.onclick = function() {
+                    clearNotification(notification);
+                };
+
+                div.appendChild(clearButton);
+                notificationList.appendChild(div);
+            });
+
+           
+            notificationList.style.display = "block";
+        }
+
+       
+        function clearNotification(notification) {
+            const index = notifications.indexOf(notification);
+            if (index !== -1) {
+                notifications.splice(index, 1);
+                showNotifications(); 
+            }
+        }
+
+       
+        function clearAllNotifications() {
+            notifications.length = 0; 
+            showNotifications(); 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date and Time Input</title>
+</head>
+<body>
+    <a href="timeslotforDonationdrop.html"><button>Back</button></a>
+    <h2>Enter Date and Time</h2>
+    <form id="dateForm">
+        <label for="datetime">Date and Time:</label>
+        <input type="datetime-local" id="datetime" name="datetime" >
+        <button type="button" onclick="proceed()">Click to Schedule</button>
+    </form>
+
+    <script>
+        function proceed() {
+            
+            var dateTime = document.getElementById("datetime").value;
+
+
+
+    
+
+            
+            if (!dateTime) {
+                alert("Please enter a date and time.");
+            
+            }
+            else{
+                window.location.href = "timeslotforDonationdrop.html?datetime=" + dateTime;
+            }
+
+            
+           
+        }
+    </script>
+</body>
+</html>
+

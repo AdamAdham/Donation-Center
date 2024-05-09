@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donor Details</title>
+</head>
+<body>
+    <a href="manageDonors.html"><button>Manage Donors</button></a>
+
+<h2>Donor Details</h2>
+
+<div>
+    <h3>Name: <span id="name">Charity A</span></h3>
+    <p>Donations Done: <span id="donations">235</span></p>
+    <p>Phone Number: <span id="phone-number">+201000000000</span></p>
+    <p>Email Address:  <span id="email">example@hotmail.com</span> </p>
+</div>
+
+<div class="submissions">
+    <h2>Submissions Review</h2><hr>
+    <div class="submission">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="images">
+            <img src="1.png" alt="" width="200px" length="200px">
+            <img src="2.png" alt="" width="200px" length="200px">
+            <img src="3.png" alt="" width="200px" length="200px">
+        </div>
+        <button onclick="approveSubmission()">Approve</button>
+        <button onclick="rejectSubmission()">Reject</button>
+    </div>
+</div>
+
+<button onclick="confirmDelete()">Delete Donor</button>
+
+<script>
+    function approveSubmission() {
+        alert('Submission Approved');
+        window.location.href = 'manageDonors.html';
+    }
+
+    function rejectSubmission() {
+        alert('Submission Rejected');
+        window.location.href = 'manageDonors.html';
+    }
+
+    function confirmDelete() {
+        if (confirm("Are you sure you want to delete this Donor?")) {
+            alert("Donor deleted successfully!");
+            window.location.href = 'manageDonors.html';
+        }
+    }
+
+    // Extract the organization details from the URL
+    var donor = JSON.parse(decodeURIComponent(window.location.search.substr(1)));
+    // Populate the organization details on the page
+    document.getElementById("name").innerText = donor.name;
+    document.getElementById("donations").innerText = donor.donations;
+    document.getElementById("phone-number").innerText = donor.phone;
+    document.getElementById("email").innerText = donor.email;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!-- TEMPLATE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="./styleO.css" />
+<title>Schedule Time Slot for Donation Drop-off</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="./images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="organizationDashboard.html">Dashboard</a></li>
+                    <!-- END CHANGE ORGS -->
+                    <!-- CHANGE -->
+                
+                    <!-- END CHANGE -->
+                    <li><a href="updateorganizationprofile.html">Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div id="container">
+    <h1>Schedule Time Slot for Donation Drop-off</h1>
+    <div id="list-container">
+        <div id="filter-container">
+            <h3 class="line-below">Filters</h3>
+            <div class="filter-column-container line-below">
+                <!-- CHANGE -->
+                <!-- change all colName1 to your column name -->
+                <!-- change all value1/2/3 to your values -->
+                <div class="filter-column">Category:</div>
+                <select id="filter-select-Category" onchange="filter('Category')">
+                    <option value="">All</option>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Food">Food</option>
+                    <option value="Medical Supplies">Medical Supplies</option>
+                    <option value="School supplies">School Supplies</option>
+                    <option value="Blood Donations">Blood Donations</option>
+                </select>
+                <!-- END CHANGE -->
+            </div>
+
+            
+        
+           
+
+            <div class="button-container">
+                <button class="neutral-button" onclick="resetFilters()">Reset Filters</button>
+            </div>
+        </div>
+
+        <div id="table-search-container">
+            
+            <div class="search-bar">
+                <!-- CHANGE -->
+                <!-- Change colName to column name to search for -->
+                <input type="text" class="input" id="search-input" placeholder="Search colName.." onkeyup="search('colName')"/>
+                <div class='search-icon'>
+                <img src="../images/search-icon.png"></img>
+                </div>
+            </div>
+            <!-- <input type="text" id="search-input" placeholder="Search Subject..." onkeyup="search('subject')"> -->
+            <div id="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <!-- CHANGE -->
+                            <th>Category</th>
+                            <th>DonationID</th>
+                            <th>Fulfilled</th>
+                            <th>Action</th>
+                            
+                            <!-- END CHANGE -->
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var filters = {}
+    var searches = {}
+    // CHANGE
+    // replace all colName1/2/3/4 with  your column names
+    // replace all value1/2/3/4 with your values
+    // add rows if needed (same incremental naming so if added a row name it 'row3')
+    var originalRows  = {
+        row0:{
+                Category:"Clothes",
+                DonationID:"1",
+                Fulfilled:"Fulfilled",
+            
+            },
+        row1:{
+                Category:"Toys",
+                DonationID:"2",
+                Fulfilled:"Fulfilled",
+            
+            },
+        row2:{
+                Category:"Blood Donations",
+                DonationID:"3",
+                Fulfilled:"Fulfilled",
+            
+            }
+        
+    }
+
+    // ENDCHANGE
+
+    //CHANGE
+    // make sure all column names are here
+    columnNames = ["Category"]
+    // END CHANGE
+
+    function display(){
+        const tableBody = document.getElementById("table-body")
+        var text = ""
+        index=0;
+        for(rowName in originalRows){
+            const row = originalRows[rowName]
+            flag = true
+            for(filterCol in filters){
+                if(row[filterCol]!==filters[filterCol]){                
+                    flag = false
+                }
+            }
+            for(searchCol in searches){
+                if(!(row[searchCol].toLowerCase().includes(searches[searchCol]))){
+                   flag = false
+                }
+            }
+            if(!flag){
+                continue
+            }
+            text += `<tr id="${rowName}" class="row" onclick="passToNextPage('${rowName}')">` // Assuming single digits
+            
+            for(col in row){
+                text+=`<td name=${col}>${row[col]}</td>` 
+            }
+            index++
+           // text+="</tr>"
+
+            text += `<td>
+                
+                <button onclick="viewDetails('${rowName}')">Schedule Time Slot</button>
+            </td>`
+
+    text+="</tr>"
+        }
+        tableBody.innerHTML = text
+    }
+
+    display()
+
+    function filter(columnName) {
+        const filterSelect = document.getElementById('filter-select-'+columnName)
+        var temp = {}
+        const selectValue = filterSelect.value
+        if(selectValue==""){
+            delete filters[columnName]
+        }else{
+            filters = {...filters, [columnName]:selectValue};
+        }
+        display()
+    }
+
+    function resetFilters(){
+        filters = {}
+        for(columnName of columnNames){
+            const filterSelect = document.getElementById('filter-select-'+columnName)
+            filterSelect.value = ""
+        }
+        display()
+    }
+
+    function search(columnName){
+        // onkeypress introduces a delay that the value is behind by one key press
+        const inputValue = document.getElementById('search-input').value.toLowerCase()
+        if(inputValue==""){
+            delete searches[columnName]
+        }else{
+            searches = {...searches, [columnName]:inputValue}
+        }
+        display()
+    }
+    
+function viewDetails(rowName) {
+    obj = originalRows[rowName]
+   
+   // window.location = "thedonationpost.html?" + encodeURIComponent(JSON.stringify(obj));
+   window.location = "picktimeslot.html?";
+   
+   
+   
+}
+
+function deleteRow(rowName) {
+   
+   if(confirm("are you sure you want to delete")){
+       delete originalRows[rowName];
+      display(); 
+
+   }
+
+   
+}
+
+
+/*function passToNextPage(rowName) {
+    obj = originalRows[rowName]
+    // CHANGE
+    // Replace with next page for details
+    window.location = "thedonationpost.html?" + encodeURIComponent(JSON.stringify(obj));
+    //ENDCHANGE
+}
+*/
+
+</script>
+</body>
+</html>

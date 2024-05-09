@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Request</title>
+<link rel="stylesheet" type="text/css" href="./inputO.css" />
+<link rel="stylesheet" type="text/css" href="./styleO.css" />
+<script type="module" src="D:\chelSEa\allforOrganization\dropDownO.js"></script>
+
+</head>
+<body>
+  <nav>
+    <div id="nav-bar">
+        <div id="left">
+            <img class="logo" src="D:\chelSEa\allforOrganization\images\logo.svg" alt="logo">
+        </div>
+        <div id="right">
+            <ul>
+              <!-- CHANGE -->
+                <li><a href="organizationDashboard.html">Dashboard</a></li>
+                <li><a href="donationposts.html">Donation Posts</a></li>
+                <li><a href="updateorganizationprofile.html">Account</a></li>
+                <!-- END CHANGE -->
+            </ul>
+        </div>
+    </div>
+  </nav>
+<div id="input-container">
+  <div id="container">
+    <div id="details-container">
+      <!-- CHANGE -->
+        <h2 class="line-below white">Update Request </h2>
+        <!-- END CHANGE -->
+        <!-- <form action="" onsubmit="requestDonation()"> -->
+            <div>
+              <div class="input-field">
+                <input class="clothingType"  type="text" required spellcheck="false" value="Trousers">
+                <!-- CHANGE -->
+                <label>Enter Type of Clothing</label>
+                <!-- END CHANGE -->
+            </div>
+      
+            <div class="input-field">
+                <input class="material" type="text" required spellcheck="false" value="Cotton">
+                <!-- CHANGE -->
+                <label>Enter Material</label>
+                <!-- END CHANGE -->
+            </div>
+            
+            <div class="input-field">
+                <input class="age" type="number" required spellcheck="false" value="18">
+                <!-- CHANGE -->
+                <label>Enter Age</label>
+                <!-- END CHANGE -->
+            </div>
+    
+            <div class="input-field">
+                <input class="quantity" type="number" required spellcheck="false" value="5">
+                <!-- CHANGE -->
+                <label>Enter Quantity</label>
+                <!-- END CHANGE -->
+            </div>
+
+
+          
+            <!-- Radio buttons (only 1 choice) -->
+              <div class="radio-container">
+                <!-- CHANGE -->
+                <!-- replace ColName5 to your column name -->
+                <!-- replace value1/2/3 to your values -->
+                <h3>Gender:</h3>
+                <ul>
+                  <li>
+                    <input type="radio" id="value1-option" name="ColName5" checked>
+                    <label for="value1-option">Male</label>
+                    <div class="check"></div>
+                  </li>
+                  
+                  <li>
+                    <input type="radio" id="value2-option" name="ColName5">
+                    <label for="value2-option">Female</label>
+                    
+                    <div class="check"></div>
+                  </li>
+                </ul>
+                <!-- END CHANGE -->
+              </div>
+              <!-- End radio buttons -->
+    
+          
+              <!-- Check boxes (can be multiple values) -->
+              <div class="radio-container">
+                <!-- CHANGE -->
+                <!-- replace ColName6 to your column name -->
+                <!-- replace value3/4/5 to your values -->
+                <h3>Season:</h3>
+                <ul>
+                  <li>
+                    <input type="checkbox" id="value3-option" name="ColName6" checked>
+                    <label for="value3-option">Winter</label>
+                    <div class="check"></div>
+                  </li>
+                  
+                  <li>
+                    <input type="checkbox" id="value4-option" name="ColName6">
+                    <label for="value4-option">Summer</label>
+                    
+                    <div class="check"></div>
+                  </li>
+    
+                  <li>
+                    <input type="checkbox" id="value5-option" name="ColName6">
+                    <label for="value5-option">Autumn</label>
+                    
+                    <div class="check"></div>
+                  </li>
+    
+                  <li>
+                    <input type="checkbox" id="value6-option" name="ColName6">
+                    <label for="value6-option">Spring</label>
+                    
+                    <div class="check"></div>
+                  </li>
+                </ul>
+                
+              </div>
+             
+             
+
+            <div class="button-container">
+                <button class="positive-button submit" onclick="requestDonation(event)">Update Request</button>   
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+<script>
+  function requestDonation(){
+    // Check if all text field are entered
+    var inputs = document.querySelectorAll('input[type="text"]');
+    var allFilled = true;
+
+    inputs.forEach(function(input) {
+        if (input.value === '') {
+            allFilled = false;
+        }
+    });
+
+    if(!allFilled){
+      alert("Please enter all required fields")
+      return
+    }
+
+    var inputs2 = document.querySelectorAll('input[type="number"]');
+    var allFilled2 = true;
+
+    inputs2.forEach(function(input2) {
+        if (input2.value === '') {
+            allFilled2 = false;
+        }
+    });
+
+    if(!allFilled2){
+      alert("Please enter all required fields")
+      return
+    }
+
+   
+
+    // Check if all radio buttons and checkboxes are selected
+    var checkboxes = []
+    // CHANGE
+    // Change ColName5/6 to column names of the ones you a checkbox or radio button for
+   checkboxes.push(document.querySelectorAll('input[name="ColName5"]'))
+    checkboxes.push(document.querySelectorAll('input[name="ColName6"]'));
+    // END CHANGE
+    var atLeastOneChecked = false;
+    console.log(checkboxes);
+    for(checkboxElement of checkboxes){
+      checkboxElement.forEach(function(checkbox) {
+          if (checkbox.checked) {
+              atLeastOneChecked = true;
+          }
+      });
+
+      if (!atLeastOneChecked) {
+          // At least one checkbox is checked
+          // Perform your action here
+          console.log(checkboxElement[0]);
+          alert(`Fill out all fields`);
+          return;
+      }
+      atLeastOneChecked = false;
+    }
+
+
+
+
+var maleRadioButton = document.getElementById('value1-option');
+var femaleRadioButton = document.getElementById('value2-option');
+
+// Check if the male radio button is checked
+if (maleRadioButton.checked) {
+    // Male was chosen
+    var gender = "Male";
+    localStorage.setItem("gender", gender);
+    // Now you can create strings or perform actions based on the choice
+    
+} 
+// Check if the female radio button is checked
+else if (femaleRadioButton.checked) {
+    // Female was chosen
+    var gender = "Female";
+    // Now you can create strings or perform actions based on the choice
+    localStorage.setItem("gender", gender);
+} else {
+    // Neither male nor female was chosen
+    console.log("No gender chosen.");
+    localStorage.setItem("gender", "Male");
+}
+
+
+ var inputElement = document.querySelector('.clothingType');
+
+// Get the value of the input field
+var volo = inputElement.value;
+localStorage.setItem("typeOfClothing", volo);
+inputElement = document.querySelector('.material');
+volo = inputElement.value;
+localStorage.setItem("material", volo);
+ inputElement = document.querySelector('.age');
+
+// Get the value of the input field
+ ageValue = inputElement.value.toString();
+localStorage.setItem("age", ageValue);
+localStorage.setItem("category", "Clothes");
+
+inputElement = document.querySelector('.quantity');
+quantityValue = inputElement.value.toString();
+localStorage.setItem("quantity", quantityValue);
+
+
+var winterCheckbox = document.getElementById('value3-option');
+var summerCheckbox = document.getElementById('value4-option');
+var autumnCheckbox = document.getElementById('value5-option');
+var springCheckbox = document.getElementById('value6-option');
+
+
+var chosenSeasons = [];
+
+
+if (winterCheckbox.checked) {
+    chosenSeasons.push("Winter");
+}
+
+if (summerCheckbox.checked) {
+    chosenSeasons.push("Summer");
+}
+
+if (autumnCheckbox.checked) {
+    chosenSeasons.push("Autumn");
+}
+
+if (springCheckbox.checked) {
+    chosenSeasons.push("Spring");
+}
+
+
+var seasonsString = chosenSeasons.join(', ');
+
+
+localStorage.setItem("season", seasonsString);
+
+
+
+window.location.href = "clothesUPdetails.html";
+
+
+
+// Joining multiple values with a delimiter
+
+    // Redirect to the new page with parameters
+    
+    
+
+    alert("Request has been submitted");
+    // CHANGE
+    // change to desired page
+  
+}
+</script>
+</html>

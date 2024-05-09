@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="./styleO.css" />
+<title>Organization Dashboard</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                    <li><a href="updateorganizationprofile.html">Account</a></li>  
+                    <div class="notification-image flex-center" onclick="window.location.href = notifications.html"><img src="../images/notification.png" alt="">  </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="dashboard-container">
+        <h1>Organization Dashboard</h1>
+        <div class="dashboard-inner-container">
+            <button class="dashboard-button" onclick="window.location.href='creatingdonationpost.html'">Create Donation Post</button>
+            <button class="dashboard-button" onclick="window.location.href='donationposts.html'">View Donation Posts</button>
+            <button class="dashboard-button" onclick="window.location.href='fulfilledDonationposts.html'">View Fulfilled donation posts</button>
+        </div>
+
+       
+
+        <div class="dashboard-inner-container">
+            <button class="dashboard-button" onclick="window.location.href='timeslotforDonationdrop.html'">Schedule time slot for donation drop-off</button>
+            <button class="dashboard-button" onclick="window.location.href='notifications.html'">Notifications for chosen donation posts</button>
+            <button class="dashboard-button" onclick="window.location.href='updateorganizationprofile.html'">Update Profile</button>
+        </div>
+
+    </div>
+</body>
+</html>

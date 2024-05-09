@@ -1,0 +1,34 @@
+/* File Upload Button */
+.input-field input[type="file"] {
+    /* Your existing styles for input[type="file"] */
+    width: 100%;
+    height: 50px;
+    border-radius: 6px;
+    font-size: 17px;
+    padding: 0; /* Set padding to zero */
+    border: none; /* Remove border */
+    background: transparent;
+    color: var(--black);
+    outline: none;
+    margin-top: 25px; /* Adjust as needed */
+}
+
+/* Additional styles for the file upload button to match other buttons */
+.input-field input[type="file"]::-webkit-file-upload-button {
+    background-color: var(--focus-color); /* Match other button background color */
+    color: var(--lighter-grey); /* Match other button text color */
+    border: none; /* Remove default button border */
+    border-radius: 6px; /* Match other button border radius */
+    padding: 10px 20px; /* Match other button padding */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: 16px; /* Match other button font size */
+    transition: background-color 0.3s; /* Add transition effect */
+}
+
+.input-field input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: var(--darker-focus-color); /* Darken button color on hover */
+} 
+
+
+
+  
