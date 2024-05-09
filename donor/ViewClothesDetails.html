@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../input.css" />
 <link rel="stylesheet" type="text/css" href="../style.css" />
-<script type="module" src="./dropDown.js"></script>
+<script type="module" src="../dropDown.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -74,28 +74,46 @@
 
 <script>
 function fulfill() {
-    const selectedQuantity = document.querySelector('.dropdown .selected').innerText;
-    if (selectedQuantity === '0') {
+//     const selectedQuantity = document.querySelector('.dropdown .selected').innerText;
+//     if (selectedQuantity === '0') {
+//         alert('Please select a quantity before fulfilling the request.');
+//     } else {
+//         alert('Request Fulfilled');
+//         window.location.href = 'ViewClothesRequests.html';
+//     }
+// }
+const selectedQuantity = parseInt(document.querySelector('.dropdown .selected').innerText);
+    const availableQuantity = parseInt(document.getElementById('Quantity').innerText);
+
+    if (selectedQuantity === 0) {
         alert('Please select a quantity before fulfilling the request.');
+    } else if (selectedQuantity > availableQuantity) {
+        alert('The selected quantity exceeds the available quantity. Please select a lower quantity.');
     } else {
         alert('Request Fulfilled');
-        window.location.href = 'ViewClothesRequests.html';
+        // Update the available quantity
+        document.getElementById('Quantity').innerText = availableQuantity - selectedQuantity;
+        // Redirect to the next page
+        // window.location.href = 'ViewClothesRequests.html';
     }
 }
 
-
-    // Extract the organization details from the URL
+//     // Extract the organization details from the URL
     var details = JSON.parse(decodeURIComponent(window.location.search.substr(1)));
-    // Populate the organization details on the page
+//     // Populate the organization details on the page
 
-    // CHANGE
-    // Any details from previous pages are put here
-    // change each columnName with the actual column name
-    // can add more if needed
-    document.getElementById("Item").innerText = details.Item;
-    document.getElementById("Age").innerText = details.Age;
-    document.getElementById("Gender").innerText = details.Gender;
+//     // CHANGE
+//     // Any details from previous pages are put here
+//     // change each columnName with the actual column name
+//     // can add more if needed
+     document.getElementById("Item").innerText = details.Item;
+     document.getElementById("Age").innerText = details.Age;
+     document.getElementById("Gender").innerText = details.Gender;
     document.getElementById("Season").innerText = details.Season;
+   
+
+</script>
+
 </script>
 
 </body>

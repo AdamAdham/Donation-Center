@@ -11,11 +11,16 @@
 <link rel="stylesheet" type="text/css" href="../style.css" />
     <script type="module" src="../map.js"></script>
 </head>
+<button type="button" onclick="Back()">Back</button>
 <body>
-    <h2>Clinic Form</h2>
-    <button type="button" onclick="Back()">Back</button>
     <br></br>
-    <form id="clinicForm">
+    <div id="input-container">
+        <div id="container">
+          <div id="details-container">
+            <!-- CHANGE -->
+              <h2 class="line-below white">Clinic Form</h2>
+              
+    <form id="clinicForm">  
         <label for="address">Clinic Address:</label><br>
         <input type="text" id="address" name="address" required><br>
 
@@ -30,14 +35,14 @@
 
         <label for="proBonoCases">Number of Pro-bono Cases:</label><br>
         <input type="number" id="proBonoCases" name="proBonoCases" min="0" required><br><br>
-
+        <div id="map"></div>
         <button type="button" onclick="submitClinicDetails()">Submit</button>
     </form>
-    <div id="map"></div>
+  
     
     <script>
         function Back(){
-        window.location.href = "TypeofDonor.html";
+        window.location.href = "ChooseTypeofDonor.html";
     }
         function submitClinicDetails() {
             var form = document.getElementById('clinicForm');
@@ -57,22 +62,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
 <title>*Document Upload for Donor Verification</title>
 </head>
 <body>
-    <h2>Upload Verification</h2>
+    <div id="input-container">
+        <div id="container">
+          <div id="details-container">
+            <!-- CHANGE -->
+              <h2 class="line-below white">Upload Verification</h2>
     <form id="uploadForm" enctype="multipart/form-data">
         <div>
             <label for="document">Select Document:</label>
             <input type="file" id="document" name="document">
         </div>
         <button type="button" onclick="uploadVerification()">Upload</button>
-        <br></br>
-        <br></br>
-        <button type="button" onclick="Done()">Done</button>
     </form>
-
+    
     <div id="upload"></div>
+          </div>
+    <br>
+    <button type="button" onclick="Done()">Done</button>
+
     <script>
      function uploadVerification() {
         var fileInput = document.getElementById('document');
