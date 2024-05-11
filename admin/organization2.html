@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Organization Details</title>
-<link rel="stylesheet" type="text/css" href="./style.css" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
 <style>
     #accept {
         background-color: green;
@@ -14,13 +14,28 @@
         background-color: red;
         margin: 10px;
     }
+    .positive-button{
+        font-size: 16px;
+        background-color: var(--focus-color);
+        color: white;
+        padding: 15px 30px;
+        border-radius: 40px;
+    }
+
+    .negative-button{
+        font-size: 16px;
+        color: white;
+        background-color: var(--negative-color);
+        padding: 15px 30px;
+        border-radius: 40px;
+    }
 </style>
 </head>
 <body>
     <nav>
         <div id="nav-bar">
             <div id="left">
-                <img class="logo" src="./images/logo.svg" alt="logo">
+                <img class="logo" src="../images/logo.svg" alt="logo">
             </div>
             <div id="right">
                 <ul>
@@ -59,7 +74,7 @@
                 </div>
             </div>
             <div class="button-container">
-                <button id="accept" onclick="approveSubmission()" class="positive-button">Approve</button>
+                <button id="accept" onclick="approveSubmission()" class="positive-button">Approve</button><hr style="border: #FFFFFF;">
                 <button id="reject" onclick="rejectSubmission()" class="negative-button">Reject</button>        
             </div>
     </div>
