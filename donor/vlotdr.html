@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-<title>Organizations</title>
+<title>Toy Donation Requests</title>
 <link rel="stylesheet" type="text/css" href="../style.css" />
 </head>
 <body>
@@ -178,31 +178,23 @@ function display(){
     }
 
     function filter(columnName) {
-        const filterSelect = document.getElementById('filter-select-'+columnName)
-        var temp = {}
-        const selectValue = filterSelect.value
-        if(selectValue==""){
-            delete filters[columnName]
-        }else{
-            filters = {...filters, [columnName]:selectValue};
-        }
-        display()
+    const filterSelect = document.getElementById('filter-select-' + columnName)
+    const selectValue = filterSelect.value
+    if (selectValue === "All") {
+        delete filters[columnName];
+    } else {
+        filters[columnName] = selectValue;
     }
+    display();
+}
 
-    function reset() {
-        delete filters["columnName1"];
-        delete filters["columnName2"];
-        delete filters["columnName3"];
-        delete filters["columnName4"];
-        var dropdown = document.getElementById("filter-select-columnName4");
-        dropdown.value = "All";
-        var dropdown2 = document.getElementById("filter-select-columnName3");
-        dropdown2.value = "All";
-        var dropdown3 = document.getElementById("filter-select-columnName2");
-        dropdown3.value = "All";
-        display();
-
-    }
+function reset() {
+    filters = {};
+    document.getElementById("filter-select-columnName4").value = "All";
+    document.getElementById("filter-select-columnName3").value = "All";
+    document.getElementById("filter-select-columnName2").value = "All";
+    display();
+}
 
     function redirectToPage(rowName) {
     obj = originalRows[rowName];
