@@ -1,297 +1,282 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" type="text/css" href="./input.css" />
- <link rel="stylesheet" type="text/css" href="./style.css" />
- <title>Donation Requests</title>
- </head>
- <body>
-     <nav>
-         <div id="nav-bar">
-             <div id="left">
-                 <img class="logo" src="./images/logo.svg" alt="logo">
-             </div>
-             <div id="right">
-                 <ul>
-                     <!-- CHANGE ORGS -->
-                     <!-- Change href to your orgs dashboard -->
-                     <li><a href="donorDashboard.html">Dashboard</a></li>
-                     <!-- END CHANGE ORGS -->
-                     <!-- END CHANGE -->
-                     <li><a href="account.html">Account</a></li>
-                 </ul>
-             </div>
-         </div>
-     </nav>
- <div id="container">
-     <h1>Donation Requests</h1>
-     <div id="list-container">
-         <div id="filter-container">
-             <h3 class="line-below">Filters</h3>
-             <div class="filter-column-container line-below">
-                 <!-- CHANGE -->
-                 <!-- change all colName1 to your column name -->
-                 <!-- change all value1/2/3 to your values -->
-                 <div class="filter-column">Organisation:</div>
-                 <select id="filter-select-Organisation" onchange="filter('Organisation')">
-                     <option value="">All</option>
-                     <option value="Schools">Schools</option>
-                     <option value="Refugees">Refugees</option>
-                     <option value="Orphanage">Orphanage</option>
-                     <option value="Health sector">Health sector</option>
-                 </select>
-                 <!-- END CHANGE -->
-             </div>
- 
-             <div class="filter-column-container line-below">
-                 <!-- CHANGE -->
-                 <!-- change all colName1 to your column name -->
-                 <!-- change all value1/2/3 to your values -->
-                 <div class="filter-column">TypeofItem:</div>
-                 <select id="filter-select-TypeofItem" onchange="filter('TypeofItem')">
-                     <option value="">All</option>
-                     <option value="Clothes">Clothes</option>
-                     <option value="Toys">Toys</option>
-                     <option value="Food">Food</option>
-                     <option value="Medical supplies">Medical supplies</option>
-                     <option value="Blood donations">Blood donations</option>
-                 </select>
-                 <!-- END CHANGE -->
-             </div>
-         
-             <div class="filter-column-container line-below">
-                 <!-- CHANGE -->
-                 <!-- change all colName1 to your column name -->
-                 <!-- change all value1/2/3 to your values -->
-                 <div class="filter-column">Itemdetails:</div>
-                 <select id="filter-select-Itemdetails" onchange="filter('Itemdetails')">
-                     <option value="">All</option>
-                     <option value="age">age</option>
-                     <option value="material">material</option>
-                     <option value="season">season</option>
-                 </select>
-                 <!-- END CHANGE -->
-             </div>
- 
-             <div class="button-container">
-                 <button class="neutral-button" onclick="resetFilters()">Reset Filters</button>
-             </div>
-         </div>
- 
-         <div id="table-search-container">
-             
-             <div class="search-bar">
-                 <input type="text" class="input" id="search-input" placeholder="Search TypeofItem.." onkeyup="search('TypeofItem')"/>
-                 <div class='search-icon'>
-                 <img src="../images/search-icon.png"></img>
-                 </div>
-             </div>
-             <!-- <input type="text" id="search-input" placeholder="Search Subject..." onkeyup="search('subject')"> -->
-             <div id="table-container">
-                 <table>
-                     <thead>
-                         <tr>
-                             <!-- CHANGE -->
-                             <th>Organisation</th>
-                             <th>TypeofItem</th>
-                             <th>Itemdetails</th>
-                             <th>RequestID</th>
-                             <!-- END CHANGE -->
-                         </tr>
-                     </thead>
-                     <tbody id="table-body">
-                     </tbody>
-                 </table>
-             </div>
-         </div>
-     </div>
- </div>
- 
- 
- <script>
-     var filters = {}
-     var searches = {}
-     // CHANGE
-     // replace all colName1/2/3/4 with  your column names
-     // replace all value1/2/3/4 with your values
-     // add rows if needed (same incremental naming so if added a row name it 'row3')
-     var originalRows  = {
-         row0:{
-                 Organisation:"Schools",
-                 TypeofItem:"School supplies",
-                 Itemdetails:"English primary level books",
-                 RequestID: "1"
-             },
-         row1:{
-                Organisation:"Refugees",
-                TypeofItem:"Clothes",
-                Itemdetails:"Men's winter jackets",
-                 RequestID: "2"
-             },
-         row2:{
-            Organisation:"Orphanage",
-            TypeofItem:"Toys",
-            Itemdetails:"Lego",
-                 RequestID: "3"
-             },
-        row3:{
-            Organisation:"Refugees",
-            TypeofItem:"Food",
-                 Itemdetails:"Canned Products",
-                 RequestID: "4"
-             },
-         row4:{
-            Organisation:"Health sector",
-            TypeofItem:"Medical supplies",
-                 Itemdetails:"Bandages",
-                 RequestID: "5"
-             },
-        row5:{
-            Organisation:"Health sector",
-            TypeofItem:"Blood donations",
-                 Itemdetails:"Blood type O+",
-                 RequestID: "6"
-             },
-             row6:{
-                Organisation:"Orphanage",
-                TypeofItem:"Clothes",
-                 Itemdetails:"Children Shorts",
-                 RequestID: "7"
-             },
-             row7:{
-                Organisation:"Orphanage",
-                TypeofItem:"Clothes",
-                 Itemdetails:"Teenage's Socks",
-                 RequestID: "8"
-             },
-             row8:{
-                Organisation:"Refugees",
-                TypeofItem:"Clothes",
-                 Itemdetails:"Women's wool t-shirts",
-                 RequestID: "9"
-             },
-             row9:{
-                Organisation:"Orphanage",
-                TypeofItem:"Food",
-                 Itemdetails:"Chocolate Sweets",
-                 RequestID: "10"
-             },
-             row10:{
-                Organisation:"Orphanages",
-                TypeofItem:"Food",
-                 Itemdetails:"Warm meals",
-                 RequestID: "11"
-             },
-             row11:{
-                Organisation:"Health sector",
-                TypeofItem:"Pro-bono Visit",
-                 Itemdetails:"Checkup",
-                 RequestID: "12"
-             },
-             row12:{
-                Organisation:"Health sector",
-                TypeofItem:"Medical supplies",
-                 Itemdetails:"Panadol",
-                 RequestID: "13"
-             },
-             row13:{
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../input.css" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<title>Donation Requests</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <!-- END CHANGE -->
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div id="container">
+    <h1>Donation Requests</h1>
+    <div id="list-container">
+        <div id="filter-container">
+            <h3 class="line-below">Filters</h3>
+            <div class="filter-column-container line-below">
+                <!-- CHANGE -->
+                <!-- change all colName1 to your column name -->
+                <!-- change all value1/2/3 to your values -->
+                <div class="filter-column">Organisation:</div>
+                <select id="filter-select-Organisation" onchange="filter('Organisation')">
+                    <option value="">All</option>
+                    <option value="Schools">Schools</option>
+                    <option value="Refugees">Refugees</option>
+                    <option value="Orphanage">Orphanage</option>
+                    <option value="Health sector">Health sector</option>
+                </select>
+                <!-- END CHANGE -->
+            </div>
+
+            <div class="filter-column-container line-below">
+                <!-- CHANGE -->
+                <!-- change all colName1 to your column name -->
+                <!-- change all value1/2/3 to your values -->
+                <div class="filter-column">TypeofItem:</div>
+                <select id="filter-select-TypeofItem" onchange="filter('TypeofItem')">
+                    <option value="">All</option>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Food">Food</option>
+                    <option value="Medical supplies">Medical supplies</option>
+                    <option value="Blood donations">Blood donations</option>
+                </select>
+                <!-- END CHANGE -->
+            </div>
+        
+            <div class="button-container">
+                <button class="neutral-button" onclick="resetFilters()">Reset Filters</button>
+            </div>
+        </div>
+
+        <div id="table-search-container">
+            
+            <div class="search-bar">
+                <input type="text" class="input" id="search-input" placeholder="Search TypeofItem.." onkeyup="search('TypeofItem')"/>
+                <div class='search-icon'>
+                <img src="../images/search-icon.png"></img>
+                </div>
+            </div>
+            <!-- <input type="text" id="search-input" placeholder="Search Subject..." onkeyup="search('subject')"> -->
+            <div id="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <!-- CHANGE -->
+                            <th>Organisation</th>
+                            <th>TypeofItem</th>
+                            <th>Itemdetails</th>
+                            <th>RequestID</th>
+                            <!-- END CHANGE -->
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var filters = {}
+    var searches = {}
+    // CHANGE
+    // replace all colName1/2/3/4 with  your column names
+    // replace all value1/2/3/4 with your values
+    // add rows if needed (same incremental naming so if added a row name it 'row3')
+    var originalRows  = {
+        row0:{
                 Organisation:"Schools",
                 TypeofItem:"School supplies",
-                 Itemdetails:"Secondary level Seience Books",
-                 RequestID: "14"
-             },
-             row14:{
-                Organisation:"Schools",
-                TypeofItem:"Pro-bono Teaching",
-                 Itemdetails:"Math Tutoring",
-                 RequestID: "15"
-             }
-     }
- 
-     // ENDCHANGE
- 
-     //CHANGE
-     // make sure all column names are here
-     columnNames = ["Organisation","TypeofItem", "Itemdetails","RequestID"]
-     // END CHANGE
- 
-     function display(){
-         const tableBody = document.getElementById("table-body")
-         var text = ""
-         index=0;
-         for(rowName in originalRows){
-             const row = originalRows[rowName]
-             flag = true
-             for(filterCol in filters){
-                 if(row[filterCol]!==filters[filterCol]){                
-                     flag = false
-                 }
-             }
-             for(searchCol in searches){
-                 if(!(row[searchCol].toLowerCase().includes(searches[searchCol]))){
+                Itemdetails:"English primary level books",
+                RequestID: "1"
+            },
+        row1:{
+               Organisation:"Refugees",
+               TypeofItem:"Clothes",
+               Itemdetails:"Men's winter jackets",
+                RequestID: "2"
+            },
+        row2:{
+           Organisation:"Orphanage",
+           TypeofItem:"Toys",
+           Itemdetails:"Lego",
+                RequestID: "3"
+            },
+       row3:{
+           Organisation:"Refugees",
+           TypeofItem:"Food",
+                Itemdetails:"Canned Products",
+                RequestID: "4"
+            },
+        row4:{
+           Organisation:"Health sector",
+           TypeofItem:"Medical supplies",
+                Itemdetails:"Bandages",
+                RequestID: "5"
+            },
+       row5:{
+           Organisation:"Health sector",
+           TypeofItem:"Blood donations",
+                Itemdetails:"Blood type O+",
+                RequestID: "6"
+            },
+            row6:{
+               Organisation:"Orphanage",
+               TypeofItem:"Clothes",
+                Itemdetails:"Children Shorts",
+                RequestID: "7"
+            },
+            row7:{
+               Organisation:"Orphanage",
+               TypeofItem:"Clothes",
+                Itemdetails:"Teenage's Socks",
+                RequestID: "8"
+            },
+            row8:{
+               Organisation:"Refugees",
+               TypeofItem:"Clothes",
+                Itemdetails:"Women's wool t-shirts",
+                RequestID: "9"
+            },
+            row9:{
+               Organisation:"Orphanage",
+               TypeofItem:"Food",
+                Itemdetails:"Chocolate Sweets",
+                RequestID: "10"
+            },
+            row10:{
+               Organisation:"Orphanages",
+               TypeofItem:"Food",
+                Itemdetails:"Warm meals",
+                RequestID: "11"
+            },
+            row11:{
+               Organisation:"Health sector",
+               TypeofItem:"Pro-bono Visit",
+                Itemdetails:"Checkup",
+                RequestID: "12"
+            },
+            row12:{
+               Organisation:"Health sector",
+               TypeofItem:"Medical supplies",
+                Itemdetails:"Panadol",
+                RequestID: "13"
+            },
+            row13:{
+               Organisation:"Schools",
+               TypeofItem:"School supplies",
+                Itemdetails:"Secondary level Seience Books",
+                RequestID: "14"
+            },
+            row14:{
+               Organisation:"Schools",
+               TypeofItem:"Pro-bono Teaching",
+                Itemdetails:"Math Tutoring",
+                RequestID: "15"
+            }
+    }
+
+    // ENDCHANGE
+
+    //CHANGE
+    // make sure all column names are here
+    columnNames = ["Organisation","TypeofItem", "Itemdetails","RequestID"]
+    // END CHANGE
+
+    function display(){
+        const tableBody = document.getElementById("table-body")
+        var text = ""
+        index=0;
+        for(rowName in originalRows){
+            const row = originalRows[rowName]
+            flag = true
+            for(filterCol in filters){
+                if(row[filterCol]!==filters[filterCol]){                
                     flag = false
-                 }
-             }
-             if(!flag){
-                 continue
-             }
-             text += `<tr id="${rowName}" class="row" onclick="passToNextPage('${rowName}')">` // Assuming single digits
-             
-             for(col in row){
-                 text+=`<td name=${col}>${row[col]}</td>` 
-             }
-             index++
-             text+="</tr>"
-         }
-         tableBody.innerHTML = text
-     }
- 
-     display()
- 
-     function filter(columnName) {
-         const filterSelect = document.getElementById('filter-select-'+columnName)
-         var temp = {}
-         const selectValue = filterSelect.value
-         if(selectValue==""){
-             delete filters[columnName]
-         }else{
-             filters = {...filters, [columnName]:selectValue};
-         }
-         display()
-     }
- 
-     function resetFilters(){
-         filters = {}
-         for(columnName of columnNames){
-             const filterSelect = document.getElementById('filter-select-'+columnName)
-             filterSelect.value = ""
-         }
-         display()
-     }
- 
-     function search(columnName){
-         // onkeypress introduces a delay that the value is behind by one key press
-         const inputValue = document.getElementById('search-input').value.toLowerCase()
-         if(inputValue==""){
-             delete searches[columnName]
-         }else{
-             searches = {...searches, [columnName]:inputValue}
-         }
-         display()
-     }
- 
- 
- function passToNextPage(rowName) {
-     obj = originalRows[rowName]
-     // CHANGE
-     // Replace with next page for details
-     window.location = "ViewDetailsofAll.html?" + encodeURIComponent(JSON.stringify(obj));
-     //ENDCHANGE
- }
- 
- 
- </script>
- </body>
- </html>
+                }
+            }
+            for(searchCol in searches){
+                if(!(row[searchCol].toLowerCase().includes(searches[searchCol]))){
+                   flag = false
+                }
+            }
+            if(!flag){
+                continue
+            }
+            text += `<tr id="${rowName}" class="row" onclick="passToNextPage('${rowName}')">` // Assuming single digits
+            
+            for(col in row){
+                text+=`<td name=${col}>${row[col]}</td>` 
+            }
+            index++
+            text+="</tr>"
+        }
+        tableBody.innerHTML = text
+    }
+
+    display()
+
+    function filter(columnName) {
+        const filterSelect = document.getElementById('filter-select-'+columnName)
+        var temp = {}
+        const selectValue = filterSelect.value
+        if(selectValue==""){
+            delete filters[columnName]
+        }else{
+            filters = {...filters, [columnName]:selectValue};
+        }
+        display()
+    }
+
+    function resetFilters(){
+        filters = {}
+        for(columnName of columnNames){
+            const filterSelect = document.getElementById('filter-select-'+columnName)
+            filterSelect.value = ""
+        }
+        display()
+    }
+
+    function search(columnName){
+        // onkeypress introduces a delay that the value is behind by one key press
+        const inputValue = document.getElementById('search-input').value.toLowerCase()
+        if(inputValue==""){
+            delete searches[columnName]
+        }else{
+            searches = {...searches, [columnName]:inputValue}
+        }
+        display()
+    }
+
+
+function passToNextPage(rowName) {
+    obj = originalRows[rowName]
+    // CHANGE
+    // Replace with next page for details
+    window.location = "ViewDetailsofAll.html?" + encodeURIComponent(JSON.stringify(obj));
+    //ENDCHANGE
+}
+
+
+</script>
+</body>
+</html>
