@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organization Details</title>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+<style>
+    #accept {
+        background-color: green;
+        margin: 10px;
+    }
+    #reject {
+        background-color: red;
+        margin: 10px;
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="./images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="pendingOrganizations.html">Return to Manage Pending Organizations</a></li>
+                    <!-- END CHANGE ORGS -->
+                    <!-- CHANGE -->
+                    <li><a href="adminDashboard.html">Dashboard</a></li>
+                    <!-- END CHANGE -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="container">
+        <div id="details-container">
+            <h2 class="line-below white">Organization Details</h2>
+            <div>
+                <!-- CHANGE -->
+                <!-- PUT here details -->
+                <!-- leave the class -->
+                <!-- change id and colName1 -->
+                <p class="column-name">Organization Name: <span id="name">Orman</span></p>
+                <p class="column-name">Email: <span id="columnName1">example@example.com</span></p>
+                <p class="column-name">Phone Number: <span id="columnName1">+201000000000</span></p>
+                <p class="column-name">Address: <span id="columnName1">221B Baker Street</span></p>
+                <p class="column-name">Organization Type: <span id="columnName1">Health Sector</span></p>
+
+                <!-- END CHANGE -->
+            </div>
+            <div class="submissions">
+                <h2 class="line-below white">Submissions Review</h2>
+                <div class="submission">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <embed src="desc.pdf" type="application/pdf" width="100%" height="600px" />
+                </div>
+            </div>
+            <div class="button-container">
+                <button id="accept" onclick="approveSubmission()" class="positive-button">Approve</button>
+                <button id="reject" onclick="rejectSubmission()" class="negative-button">Reject</button>        
+            </div>
+    </div>
+<script>
+    function approveSubmission() {
+        alert('Submission Approved');
+        window.location.href = 'pendingOrganizations.html?deleted=' + myName;
+    }
+
+    function rejectSubmission() {
+        alert('Submission Rejected');
+        window.location.href = 'pendingOrganizations.html?deleted=' + myName;
+    }
+
+    
+    function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    const myName = getQueryParam('name');
+    const variableSpan = document.getElementById('name');
+    variableSpan.innerText = myName;
+</script>
+
+</body>
+</html>

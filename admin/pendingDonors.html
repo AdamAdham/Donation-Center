@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Pending Donors</title>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="./images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE -->
+                    <li><a href="adminDashboard.html">Dashboard</a></li>
+                    <!-- END CHANGE -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="container">
+        <h1>Pending Donors</h1>
+        <table id="donorsTable">
+            <thead>
+                <tr>
+                    <th>Donor Name</th>
+                    <th>Request Type</th>
+                    <th>Review Submissions</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr id="Ahmed">
+                    <td>Ahmed</td>
+                    <td>Teacher</td>
+                    <td><a href="donor2.html?name=Ahmed">Review Submissions</a></td></button>
+                </tr>
+                <tr id="Ali">
+                    <td>Ali</td>
+                    <td>Doctor</td>
+                    <td><a href="donor2.html?name=Ali">Review Submissions</a></td></button>
+                </tr>
+                <tr id="Shaker">
+                    <td>Shaker</td>
+                    <td>Doctor</td>
+                    <td><a href="donor2.html?name=Shaker">Review Submissions</a></td></button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        const myName = getQueryParam('deleted');
+        const variableSpan = document.getElementById(myName);
+        variableSpan.style.display = 'none';
+    </script>
+</body>
+</html>

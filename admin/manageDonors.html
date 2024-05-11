@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Donors</title>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="./images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE -->
+                    <li><a href="adminDashboard.html">Dashboard</a></li>
+                    <!-- END CHANGE -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="container">
+        <h1>Donors</h1>
+        <table id="donorsTable">
+            <thead>
+                <tr>
+                    <th>Donor Name</th>
+                    <th>Phone Number</th>
+                    <th>E-mail</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr id="Ahmed">
+                    <td><a href="donor.html?name=Ahmed">Ahmed</a></td>
+                    <td>+20 1000000000</td>
+                    <td>donor@example.com</td>
+                </tr>
+                <tr id="Ali">
+                    <td><a href="donor.html?name=Ali">Ali</a></td>
+                    <td>+20 1000000000</td>
+                    <td>donor@example.com</td>
+                </tr>
+                <tr id="Shaker">
+                    <td><a href="donor.html?name=Shaker">Shaker</a></td>
+                    <td>+20 1000000000</td>
+                    <td>donor@example.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        const myName = getQueryParam('deleted');
+        const variableSpan = document.getElementById(myName);
+        variableSpan.style.display = 'none';
+    </script>
+</body>
+</html>

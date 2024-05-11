@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<title>Organization Details</title>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+<script src="map.js"></script>
+<link rel="stylesheet" type="text/css" href="map.css">
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="./images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="manageOrgs.html">Return to Manage Organizations</a></li>
+                    <!-- END CHANGE ORGS -->
+                    <!-- CHANGE -->
+                    <li><a href="adminDashboard.html">Dashboard</a></li>
+                    <!-- END CHANGE -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="container">
+        <div id="details-container">
+            <h2 class="line-below white">Organization Details</h2>
+            <div>
+                <!-- CHANGE -->
+                <!-- PUT here details -->
+                <!-- leave the class -->
+                <!-- change id and colName1 -->
+                <p class="column-name">Organization Name: <span id="columnName1">Orman</span></p>
+                <p class="column-name">Organization Type: <span>Charity</span></p>
+                <p class="column-name">Email: <span id="columnName1">example@example.com</span></p>
+                <p class="column-name">Phone Number: <span id="columnName1">+201000000000</span></p>
+                <p class="column-name">Address: <span id="columnName1">221B Baker Street</span></p>
+
+                <!-- END CHANGE -->
+            </div>
+            <div id="map"></div>
+            <div class="button-container">
+                <button onclick="confirmDelete()">Delete Organization</button>
+            </div>
+    </div>
+
+<script>
+    function confirmDelete() {
+    if (confirm("Are you sure you want to delete this organization?")) {
+        alert("Organization deleted successfully!");
+        window.location.href = 'manageOrgs.html';
+    }
+}
+</script>
+
+</body>
+</html>

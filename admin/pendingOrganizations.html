@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pending Organizations</title>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="./images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE -->
+                    <li><a href="adminDashboard.html">Dashboard</a></li>
+                    <!-- END CHANGE -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="container">
+        <h1>Pending Organizations</h1>
+        <table id="donorsTable">
+            <thead>
+                <tr id="hardcodedRow2">
+                    <th>Organization Name</th>
+                    <th>Category</th>
+                    <th>Review Submissions</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr id="Orman">
+                    <td>Orman</td>
+                    <td>Hospital</td>
+                    <td><a href="organization2.html?name=Orman">Review Submission</a></td>
+                </tr>
+                <tr id="Resala">
+                    <td>Resala</td>
+                    <td>Orphanage</td>
+                    <td><a href="organization2.html?name=Resala">Review Submission</a></td>
+                </tr>
+                <tr id="57357">
+                    <td>57357</td>
+                    <td>Hospital</td>
+                    <td><a href="organization2.html?name=57357">Review Submission</a></td>
+                </tr>
+                <tr id="Food Bank">
+                    <td>Food Bank</td>
+                    <td>Charity</td>
+                    <td><a href="organization2.html?name=Food Bank">Review Submission</a></td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+<script>
+    
+    function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    const myName = getQueryParam('deleted');
+    const variableSpan = document.getElementById(myName);
+    variableSpan.style.display = 'none';
+</script>
+
+</body>
+</html>

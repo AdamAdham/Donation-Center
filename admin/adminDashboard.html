@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .whole-container {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .buttons {
+        margin: 0;
+        margin-left: 40%;
+        margin-right: 40%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .button-set {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    button {
+        width: 100%;
+        padding: 20px 40px;
+        margin: 10px;
+        margin-left: -5px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        background-color: #3498db; /*to be changed according to color pallete*/
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+</style>
+</head>
+<body>
+    <br><br><br>
+    <div class="whole-container">
+        <h1>Welcome Admin!</h1>
+    </div>
+    <div class="whole-container" id="button-sets">
+        <div class="buttons">
+            <button onclick="window.location.href='manageDonors.html'">Manage Donors</button>
+            <button onclick="window.location.href='manageOrgs.html'">Manage Organizations</button>
+            <button onclick="window.location.href='pendingDonors.html'">Manage Pending Donors</button>
+            <button onclick="window.location.href='pendingOrganizations.html'">Manage Pending Organizations</button>
+            <button onclick="window.location.href='changeAdminPassword.html'">Change Password</button>
+        </div>
+    </div>
+</body>
+</html>

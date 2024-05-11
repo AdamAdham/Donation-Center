@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donor Details</title>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="./images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="manageDonors.html">Return to Manage Donors</a></li>
+                    <!-- END CHANGE ORGS -->
+                    <li><a href="adminDashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="container">
+        <div id="details-container">
+            <h2 class="line-below white">Donor Details</h2>
+            <div>
+                <!-- CHANGE -->
+                <!-- PUT here details -->
+                <!-- leave the class -->
+                <!-- change id and colName1 -->
+                <p class="column-name">Donor Name: <span id="name"></span></p>
+                <p class="column-name">Email: <span id="columnName1">example@example.com</span></p>
+                <p class="column-name">Phone Number: <span id="columnName1">+201000000000</span></p>
+    
+                <!-- END CHANGE -->
+            </div>
+            <div class="button-container">
+                <button onclick="confirmDelete()" class="negative-button">Delete Donor</button>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+
+    function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    const myName = getQueryParam('name');
+    const variableSpan = document.getElementById('name');
+    variableSpan.innerText = myName;
+
+    function confirmDelete() {
+        if (confirm("Are you sure you want to delete this Donor?")) {
+            alert("Donor deleted successfully!");
+            window.location.href = 'manageDonors.html?deleted=' + myName;
+        }
+    }
+
+    
+
+</script>
+
+</body>
+</html>

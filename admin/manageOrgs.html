@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Organizations</title>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="./images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <!-- CHANGE ORGS -->
+                    <!-- Change href to your orgs dashboard -->
+                    <li><a href="adminDashboard.html">Dashboard</a></li>
+                    <!-- END CHANGE ORGS -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="container">
+        <h1>Organizations</h1>
+        <div id="list-container">
+            <div id="filter-container">
+                <h3 class="line-below">Filters</h3>
+                <div class="filter-column-container line-below">
+                    <!-- CHANGE -->
+                    <!-- change all colName1 to your column name -->
+                    <!-- change all value1/2/3 to your values -->
+                    <div class="filter-column">Governorate:</div>
+                    <select id="filter-select-columnName3" onchange="filter('columnName3')">
+                        <option value="">All</option>
+                        <option value="Cairo">Cairo</option>
+                        <option value="Giza">Giza</option>
+                        <option value="Alexandria">Alexandria</option>
+                        <option value="Ismailia">Ismailia</option>
+                    </select>
+                    <!-- END CHANGE -->
+                </div>
+                <div class="filter-column-container line-below">
+                    <!-- CHANGE -->
+                    <!-- change all colName1 to your column name -->
+                    <!-- change all value1/2/3 to your values -->
+                    <div class="filter-column">Area:</div>
+                    <select id="filter-select-columnName2" onchange="filter('columnName2')">
+                        <option value="">All</option>
+                        <option value="Nasr City">Nasr City</option>
+                        <option value="Heliopolis">Heliopolis</option>
+                        <option value="Sidi Beshr">Sidi Beshr</option>
+                        <option value="Mohandessin">Mohandessin</option>
+                    </select>
+                    <!-- END CHANGE -->
+                </div>
+                <div class="filter-column-container line-below">
+                    <!-- CHANGE -->
+                    <!-- change all colName1 to your column name -->
+                    <!-- change all value1/2/3 to your values -->
+                    <div class="filter-column">Organization Type:</div>
+                    <select id="filter-select-columnName4" onchange="filter('columnName4')">
+                        <option value="">All</option>
+                        <option value="Health">Health</option>
+                        <option value="Orphanages">Orphanages</option>
+                        <option value="Refugees">Refugees</option>
+                        <option value="Education">Education</option>
+                    </select>
+                    <!-- END CHANGE -->
+                </div>
+                <div class="button-container">
+                    <button class="neutral-button" onclick="reset()">Reset Filters</button>
+                </div>
+            </div>
+    
+            <div id="table-search-container">
+                
+                <div class="search-bar">
+                    <input type="text" class="input" id="search-input" placeholder="Search by Name.." onkeyup="search('columnName1')"/>
+                    <div class='search-icon'>
+                    <img src="../images/search-icon.png"></img>
+                    </div>
+                </div>
+                <!-- <input type="text" id="search-input" placeholder="Search Subject..." onkeyup="search('subject')"> -->
+                <div id="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <!-- CHANGE -->
+                                <th>Organization Name</th>
+                                <th>Area</th>
+                                <th>Governorate</th>
+                                <th>Organization Type</th>
+                                <th>Link</th>
+                                <!-- END CHANGE -->
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var filters = {}
+    var searches = {}
+    // Change column names and values
+    var originalRows  = {
+        row0:{
+                columnName1:"Orman",
+                columnName2:"Nasr City",
+                columnName3:"Cairo",
+                columnName4: "Charity"
+            },
+        row1:{
+                columnName1:"Resala",
+                columnName2:"Mohandessin",
+                columnName3:"Giza",
+                columnName4: "Orphanage"
+            },
+        row2:{
+                columnName1:"Food Bank",
+                columnName2:"Sidi Beshr",
+                columnName3:"Alexandria",
+                columnName4: "Hospital"
+            }
+    }
+
+    function display(){
+        const tableBody = document.getElementById("table-body")
+        columnNames = ["colName1","colName2", "colName3","colName4"];
+
+        var text = ""
+        index=0;
+        for(rowName in originalRows){
+            const row = originalRows[rowName]
+            flag = true
+            for(filterCol in filters){
+                if(row[filterCol]!==filters[filterCol]){                
+                    flag = false
+                }
+            }
+            for(searchCol in searches){
+                if(!(row[searchCol].toLowerCase().includes(searches[searchCol]))){
+                   flag = false
+                }
+            }
+            if(!flag){
+                continue
+            }
+            console.log(rowName)
+            text += `<tr id="${rowName}" class="row" ">` // Assuming single digits
+            
+            for(col in row){
+                text+=`<td name=${col}>${row[col]}</td>` 
+            }
+            text+="<td><a href='organization.html'>More</a></td></tr>"
+        }
+        tableBody.innerHTML = text
+    }
+
+    display()
+
+    function filterAll() {
+        filter("columnName2");
+        filter("columnName3");
+        filter("columnName4");
+    }
+
+    function filter(columnName) {
+        const filterSelect = document.getElementById('filter-select-'+columnName)
+        var temp = {}
+        const selectValue = filterSelect.value
+        if(selectValue==""){
+            delete filters[columnName]
+        }else{
+            filters = {...filters, [columnName]:selectValue};
+        }
+        display()
+    }
+
+    function reset() {
+        delete filters["columnName1"];
+        delete filters["columnName2"];
+        delete filters["columnName3"];
+        delete filters["columnName4"];
+        var dropdown = document.getElementById("filter-select-columnName4");
+        dropdown.value = "";
+        var dropdown2 = document.getElementById("filter-select-columnName3");
+        dropdown2.value = "";
+        var dropdown3 = document.getElementById("filter-select-columnName2");
+        dropdown3.value = "";
+        display();
+
+    }
+
+function search(columnName){
+    const inputValue = document.getElementById('search-input').value.toLowerCase()
+    if(inputValue==""){
+        delete searches[columnName]
+    }else{
+        searches = {...searches, [columnName]:inputValue}
+    }
+    display()
+}
+
+function passToNextPage(rowName) {
+    obj = originalRows[rowName]
+    window.location = "template.html?" + encodeURIComponent(JSON.stringify(obj));
+}
+
+</script>
+</body>
+</html>
