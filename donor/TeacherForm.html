@@ -124,7 +124,7 @@ function displayUploadedDocument() {
     // Display the document using an <a> tag for downloading
     const fileExtension = dataUrl.split(';')[0].split('/')[1];
     const downloadLink = `
-        <a href="${dataUrl}" download="uploaded_document.${fileExtension}">Download Uploaded Document</a>
+        <a href="${dataUrl}" download="uploaded_document.${fileExtension}">Access Uploaded File</a>
     `;
     document.getElementById('documentContainer').innerHTML = downloadLink;
 }
