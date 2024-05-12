@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download</title>
+</head>
+<body>
+
+<script>
+    console.log("here");
+window.onload = function() {
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    const nameParam = urlParams.get('name');
+
+    switch (nameParam) {
+        case 'do':
+            var filename = "desc.pdf"; // Specify the filename
+            var pdfUrl = "../images/desc.pdf"; // Specify the URL of the PDF file
+            break;
+        case 'db':
+            var filename = "desc.pdf"; // Specify the filename
+            var pdfUrl = "../images/desc.pdf"; // Specify the URL of the PDF file
+            break;
+        case 'dd': 
+            var filename = "desc.pdf"; // Specify the filename
+            var pdfUrl = "../images/desc.pdf"; // Specify the URL of the PDF file
+            break;
+        default:
+            var filename = "desc.pdf"; // Specify the filename
+            var pdfUrl = "../images/desc.pdf"; // Specify the URL of the PDF file
+    }
+
+    // Fetch the PDF file
+    fetch(pdfUrl)
+        .then(response => response.blob()) // Convert response to Blob object
+        .then(blob => {
+            // Create a temporary anchor element
+            var link = document.createElement("a");
+            link.href = window.URL.createObjectURL(blob);
+            link.download = filename; // Set the filename for download
+            link.style.display = "none"; // Hide the anchor element
+
+            // Append the anchor element to the document body
+            document.body.appendChild(link);
+
+            // Trigger a click event on the anchor element
+            link.click();
+
+            // Remove the anchor element from the document body
+            document.body.removeChild(link);
+
+            // Release the resources associated with the Blob object
+            window.URL.revokeObjectURL(link.href);
+        })
+        .catch(error => console.error("Error fetching PDF file:", error));
+
+    switch (nameParam) {
+        case 'do':
+            window.location.href = "../allforOrganization/organizationDashboard.html";
+            break;
+        case 'db':    
+            window.location.href = "donorDashboard.html";
+            break;
+        case 'dd': 
+            window.location.href = "donorDashboard.html";
+            break;
+        default:
+            window.location.href = "donorDashboard.html";
+
+    }
+
+    };
+
+    
+
+</script>
+
+
+</body>
+</html>

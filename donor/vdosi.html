@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style.css" />
+    <link rel="stylesheet" type="text/css" href="../input.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -38,8 +39,12 @@
             <div>
                 <p class="column-name">Type of Item: <span id="columnName1">Pens</span></p>
                 <p class="column-name">Amount Requested: <span id="amountRequested">50</span></p>
-                <p class="column-name">Amount to Donate:  <span id="columnName3"><input type="number" id="quantityInput1"></span></p>
             </div>
+            <div class="input-field">
+                <input type="text"  id="quantityInput1" required class="donor-input clinic-input" spellcheck="false">
+
+                <label>Quantity</label>
+              </div>
             <div class="button-container">
                 <button class="positive-button" onclick="fulfill()">Donate</button>   
             </div>
