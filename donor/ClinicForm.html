@@ -81,9 +81,9 @@
             <div id="upload"></div>
         </div>
         <br>
-        <button type="button" onclick="done()">Done</button>
     </div>
 </div>
+
 
 <div id="documentContainer">
     <!-- Document will be displayed here -->
@@ -132,11 +132,13 @@ function displayUploadedDocument() {
     // Display the document using an <a> tag for downloading
     const fileExtension = dataUrl.split(';')[0].split('/')[1];
     const downloadLink = `
-        <a href="${dataUrl}" download="uploaded_document.${fileExtension}">Download Uploaded Document</a>
+        <a href="${dataUrl}" download="uploaded_document.${fileExtension}">Access the uploaded file</a>
     `;
     document.getElementById('documentContainer').innerHTML = downloadLink;
 }
-</script>
 
+</script>
+ <br>
+<button type="button" onclick="done()">Done</button>
 </body>
 </html>
