@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../input.css" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<title>Medical Donation</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                    <li><a href="account.html">Account</a></li>  
+                    <div class="notification-image flex-center" onclick="window.location.href = 'notifications.html'"><img src="../images/notification.png" alt="">  </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="container">
+        <div id="details-container">
+            <h2 class="line-below white">Donor Details</h2>
+            <div>
+    <p><strong style="font-size: 20px;">Item Name:</strong> <span id="itemName"></span></p>
+    <p><strong style="font-size: 20px;">Item Type:</strong> <span id="itemType"></span></p>
+    <p><strong style="font-size: 20px;">Item Usage:</strong> <span id="itemUse"></span></p>
+    <p><strong style="font-size: 20px;">Image:</strong> <img id="itemImage" src="" alt="" style="max-width: 100px; max-height: 100px;"></p>
+
+    <p class="column-name">Quantity/Amount Required: <span id="quantityAmount"></span></p>
+    <div class="input-field">
+        <input type="number" id="quantityInput" min="1" required spellcheck="false">
+        <label>Quantity to donate</label>
+    </div>
+    <!-- <button onclick="donate()">Donate</button> -->
+</div>
+
+<div class="button-container">
+    <button class="positive-button" onclick="donate(itemName)">Fulfill Request</button>   
+</div>
+</div>
+</div>
+
+
+    <script>
+        var queryParams = new URLSearchParams(window.location.search);
+        var itemName = queryParams.get('itemName');
+        var itemType = queryParams.get('itemType');
+        var itemUse = queryParams.get('itemUse');
+        var itemImage = queryParams.get('itemImage');
+        var quantityAmount = parseInt(queryParams.get('quantityAmount'));
+
+        document.getElementById('itemName').innerText = itemName;
+    document.getElementById('itemType').innerText = itemType;
+    document.getElementById('itemUse').innerText = itemUse;
+    document.getElementById('itemImage').src = itemImage;
+
+    document.getElementById('itemImage').alt = itemName + ' Image';
+        var quantityElement = document.getElementById("quantityAmount");
+        var quantityInput = document.getElementById("quantityInput");
+
+        quantityElement.innerText = quantityAmount;
+
+        function donate(itemName) {
+            var quantityToDonate = parseInt(quantityInput.value);
+            
+            var newQuantity = quantityAmount - quantityToDonate;
+            if (newQuantity >= 0) {
+                quantityAmount = newQuantity;
+                quantityElement.innerText = quantityAmount;
+               alert("Thank you for your donation of " + quantityToDonate + " " + itemName + "!");
+            } else {
+                alert("Insufficient quantity available.");
+            }
+        
+        }
+    </script>
+</body>
+</html>
