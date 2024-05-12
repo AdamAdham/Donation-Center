@@ -575,4 +575,63 @@ table tr:last-child td:last-child {
     background: #F8E71C;
   }
 
-  
+  /* Register */
+  .close{
+    display: none;
+  }
+
+  #registration-options-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 100px;
+    margin-bottom: 50px;
+    background-color: var(--dark-grey);
+    border-radius: 20px 20px 0 0;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+
+  #registration-options-container .reg-option{
+    font-weight: bold;
+    /* border: solid 2px var(--focus-color); */
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  #registration-options-container .active-reg{
+    border-bottom: 4px solid var(--focus-color);
+    color: var(--focus-color);
+  }
+
+  /* #registration-options-container .active-reg{
+   background-color: var(--focus-color);
+   color: white;
+  } */
+
+  #registration-options-container .reg-option:hover{
+    background-color: #dddddd;
+    cursor: pointer;
+  }
+
+  .register-title{
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .register-input-container #details-container{
+    padding: 0;
+
+  }
+
+  .register-container{
+    padding: 10px 50px 30px 50px;
+  }
+
+  .register-title::after{
+    width:94%;
+    left: 3%;
+  }

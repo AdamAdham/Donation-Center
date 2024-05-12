@@ -1,0 +1,538 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration</title>
+<link rel="stylesheet" type="text/css" href="../input.css" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<link rel="stylesheet" type="text/css" href="./map.css" />
+<link rel="stylesheet" type="text/css" href="../uploaddocument.css" />
+
+<script type="module" src="./dropDownO.js"></script>
+<script type="module" src="./map.js"></script>
+</head>
+<body>
+  <nav>
+    <div id="nav-bar">
+        <div id="left">
+            <img class="logo" src="../images/logo.svg" alt="logo">
+        </div>
+        <div id="right">
+            <ul>
+              <!-- CHANGE -->
+                <li><a href="../home.html">Home</a></li>
+                <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                <!-- END CHANGE -->
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <h2 class="register-title line-below">Register</h2>
+<div id="input-container" class="register-input-container">
+  <div id="details-container">
+    
+      <!-- CHANGE -->
+        <div id="registration-options-container">
+            <div id="donor-option" onclick="toggleRegister('donor')" class="reg-option flex-center active-reg">Donor</div>
+            <div id="organization-option" onclick="toggleRegister('orgnaization')" class="reg-option flex-center">Oragnization</div>
+        </div>
+        <div id="organization-registration" class="register-container close">
+            <div class="input-field">
+                <input type="text" required spellcheck="false">
+                <!-- CHANGE -->
+                <label>First Name</label>
+                <!-- END CHANGE -->
+            </div>
+
+            <div class="input-field">
+            <input type="text" required spellcheck="false">
+            <!-- CHANGE -->
+            <label>Last Name</label>
+            <!-- END CHANGE -->
+            </div>
+        
+
+            <div class="input-field">
+            <input type="text" required spellcheck="false">
+            <!-- CHANGE -->
+            <label>Email</label>
+            <!-- END CHANGE -->
+            </div>
+
+            <div class="input-field">
+            <input type="password" required spellcheck="false">
+            <!-- CHANGE -->
+            <label>Password</label>
+            <!-- END CHANGE -->
+        </div>
+
+        <div class="input-field">
+            <input type="password" required spellcheck="false">
+            <!-- CHANGE -->
+            <label>Confirm Password</label>
+            <!-- END CHANGE -->
+        </div>
+
+
+
+        <div class="input-field">
+            <input type="text"   required spellcheck="false">
+            <!-- CHANGE -->
+            <label>Contact Number</label>
+            <!-- END CHANGE -->
+        </div>
+
+        <div class="input-field">
+            <input type="text"   required spellcheck="false">
+            <!-- CHANGE -->
+            <label>Organization Name</label>
+            <!-- END CHANGE -->
+        </div>
+
+        <div class="input-field">
+            <input type="text"   required spellcheck="false">
+            <!-- CHANGE -->
+            <label>Area</label>
+            <!-- END CHANGE -->
+        </div>
+
+        <div class="input-field">
+            <input type="text"   required spellcheck="false">
+            <!-- CHANGE -->
+            <label>Organization Address</label>
+            <!-- END CHANGE -->
+        </div>
+
+    
+        <div class="input-field">
+            <input type="text"   required spellcheck="false">
+            <!-- CHANGE -->
+            <label>Governorate</label>
+            <!-- END CHANGE -->
+        </div>
+
+        
+        
+
+
+        <!-- Radio buttons (only 1 choice) -->
+            <div class="radio-container">
+            <!-- CHANGE -->
+            <!-- replace ColName5 to your column name -->
+            <!-- replace value1/2/3 to your values -->
+            <h3>Gender:</h3>
+            <ul>
+                <li>
+                <input type="radio" id="genderOrganizationqValue1" name="gender">
+                <label for="genderOrganizationqValue1">Male</label>
+                <div class="check"></div>
+                </li>
+                
+                <li>
+                <input type="radio" id="genderOrganizationqValue2" name="gender">
+                <label for="genderOrganizationqValue2">Female</label>
+                
+                <div class="check"></div>
+                </li>
+            </ul>
+            <!-- END CHANGE -->
+            </div>
+            <!-- End radio buttons -->
+
+        
+            <!-- Check boxes (can be multiple values) -->
+            
+            <!-- End Check box -->
+            
+            <!-- Drop Down -->
+            <!-- CHANGE -->
+            <div class="dropdown-container">
+            <h3>Organization Type:</h3>
+            <div class="dropdown">
+                <div class="select">
+                <!-- Default value -->
+                    <span class="selected">Charity</span>
+                    <div class="caret"></div>
+                </div>
+                <ul class="menu">
+                    <li>Public School</li>
+                    <li>Orphanage</li>
+                    <li>Hospital</li>
+                    <li>Church</li>
+                    <li>Mosque</li>
+                    <!-- MAKE Sure that this value is the same as the one above in span element with class="selected" -->
+                    <li class="active">Charity</li>
+                </ul>
+            </div>
+            </div>
+
+            
+
+            <br>
+            <br>
+            
+
+            <h3>Upload Document for Organization Verification:</h3>
+            
+        
+            
+            
+            <div class="input-field">
+        
+            <input type="file" id="document-upload" name="document-upload" multiple required>
+        </div>
+        
+        <h3>Pin location of Oragnization:</h3>
+        <div id="map"></div>
+        <br>
+        
+
+            
+            <!-- End Drop Down -->
+            
+            
+
+
+        <div class="button-container">
+            <button class="positive-button submit" onclick="registerOrganization()">Request Registration</button>   
+        </div>
+    </form>
+    </div>
+
+    <!-- here -->
+    <div id="donor-registration" class="register-container">
+              <div>
+                <div class="input-field">
+                    <input type="text" required class="donor-input" class="donor-input" spellcheck="false">
+                    <!-- CHANGE -->
+                    <label>First Name</label>
+                    <!-- END CHANGE -->
+                </div>
+      
+                <div class="input-field">
+                  <input type="text" required class="donor-input" spellcheck="false">
+                  <!-- CHANGE -->
+                  <label>Last Name</label>
+                  <!-- END CHANGE -->
+                </div>
+              
+      
+                <div class="input-field">
+                  <input type="text" required class="donor-input" spellcheck="false">
+                  <!-- CHANGE -->
+                  <label>Email</label>
+                  <!-- END CHANGE -->
+                </div>
+      
+                <div class="input-field">
+                  <input type="password" required class="donor-input" spellcheck="false">
+                  <!-- CHANGE -->
+                  <label>Password</label>
+                  <!-- END CHANGE -->
+              </div>
+
+              <div class="input-field">
+                <input type="password" required class="donor-input" spellcheck="false">
+                <!-- CHANGE -->
+                <label>Confirm Password</label>
+                <!-- END CHANGE -->
+            </div>
+  
+  
+              <div class="input-field">
+                  <input type="text"   required class="donor-input" spellcheck="false">
+                  <!-- CHANGE -->
+                  <label>Contact Number</label>
+                  <!-- END CHANGE -->
+              </div>
+  
+              <div class="input-field">
+                  <input type="text"   required class="donor-input" spellcheck="false">
+                  <!-- CHANGE -->
+                  <label>Address</label>
+                  <!-- END CHANGE -->
+              </div>
+  
+              <div class="input-field">
+                  <input type="text"   required class="donor-input" spellcheck="false">
+                  <!-- CHANGE -->
+                  <label>Area</label>
+                  <!-- END CHANGE -->
+              </div>
+  
+          
+              <div class="input-field">
+                  <input type="text"   required class="donor-input" spellcheck="false">
+                  <!-- CHANGE -->
+                  <label>Governorate</label>
+                  <!-- END CHANGE -->
+              </div>
+  
+              
+             
+  
+  
+              <!-- Radio buttons (only 1 choice) -->
+                <div class="radio-container">
+                  <!-- CHANGE -->
+                  <!-- replace ColName5 to your column name -->
+                  <!-- replace value1/2/3 to your values -->
+                  <h3>Gender:</h3>
+                  <ul>
+                    <li>
+                      <input type="radio" id="value1-option" name="gender" class="donor-input">
+                      <label for="value1-option">Male</label>
+                      <div class="check"></div>
+                    </li>
+                    
+                    <li>
+                      <input type="radio" id="value2-option" name="gender" class="donor-input">
+                      <label for="value2-option">Female</label>
+                      
+                      <div class="check"></div>
+                    </li>
+                  </ul>
+                  <!-- END CHANGE -->
+                </div>
+                <!-- End radio buttons -->
+  
+  
+              <div class="button-container">
+                  <button class="positive-button submit" onclick="registerDonor(event)">Register</button>   
+              </div>
+          </form>
+      </div>
+
+</div>
+</div>
+</body>
+<script>
+  function registerOrganization(){
+    // Check if all text field are entered
+    var inputs = document.querySelectorAll('input[type="text"]:not(.donor-input)');
+    var allFilled = true;
+
+    inputs.forEach(function(input) {
+        console.log(input.value);
+        if (input.value === '') {
+            allFilled = false;
+        }
+    });
+
+    if(!allFilled){
+      alert("Please enter all required fields")
+      return
+    }
+
+
+     inputs = document.querySelectorAll('input[type="password"]:not(.donor-input)');
+     allFilled = true;
+    if(inputs[0].value!=inputs[1].value){
+        alert("Passwords do not match");
+        return
+    }
+    inputs.forEach(function(input) {
+        if (input.value === '') {
+            allFilled = false;
+        }
+    });
+
+    if(!allFilled){
+      alert("Please enter all required fields")
+      return
+    }
+
+    
+    var missing = checkPasswordStrength(inputs[0].value)
+
+    if(missing!=""){
+        alert(missing)
+        return
+    }
+
+   
+
+    // Check if all radio buttons and checkboxes are selected
+    var checkboxes = []
+    // CHANGE
+    // Change gender/6 to column names of the ones you a checkbox or radio button for
+    checkboxes.push(document.querySelectorAll('input[name="gender"]:not(.donor-input)'))
+   // checkboxes.push(document.querySelectorAll('input[name="ColName6"]'));
+    // END CHANGE
+    var atLeastOneChecked = false;
+    console.log(checkboxes);
+    for(checkboxElement of checkboxes){
+      checkboxElement.forEach(function(checkbox) {
+          if (checkbox.checked) {
+              atLeastOneChecked = true;
+          }
+      });
+
+      if (!atLeastOneChecked) {
+          // At least one checkbox is checked
+          // Perform your action here
+          console.log(checkboxElement[0]);
+          alert(`Fill out ${checkboxElement[0].name} field`);
+          return;
+      }
+      atLeastOneChecked = false;
+    }
+
+
+
+    var fileInput = document.getElementById('document-upload');
+    if (!fileInput.files || fileInput.files.length === 0) {
+        alert("Please select a document to upload");
+        return;
+    }
+    
+
+    alert("Request has been submitted");
+    // CHANGE
+    // change to desired page
+    window.location.href = "allforOrganization/organizationDashboard.html";
+}
+
+
+function registerDonor(){
+    // Check if all text field are entered
+    var inputs = document.getElementsByClassName("donor-input");
+    var allFilled = true;
+
+    for (var i = 0; i < inputs.length; i++) {
+    if (inputs[i].value === "") {
+        allFilled=false
+    }
+}
+
+    if(!allFilled){
+      alert("Please enter all required fields")
+      return
+    }
+
+    // inputs = document.querySelectorAll('input[type="password"]:(.donor-input)');
+    //  allFilled = true;
+    
+    var allInputs = document.querySelectorAll('input[type="password"]');
+    var passwords = Array.from(allInputs).filter(function(input) {
+        return input.classList.contains('donor-input');
+    });
+    if(passwords[0].value!=passwords[1].value){
+        alert("Passwords do not match");
+        return
+    }
+    var missing = checkPasswordStrength(passwords[0].value)
+
+    if(missing!=""){
+        alert(missing)
+        return
+    }
+   
+
+    // Check if all radio buttons and checkboxes are selected
+    var checkboxes = []
+    // CHANGE
+    // Change gender/6 to column names of the ones you a checkbox or radio button for
+    var allInputs = document.querySelectorAll('input[name="gender"]');
+    var checkbox = Array.from(allInputs).filter(function(input) {
+        return input.classList.contains('donor-input');
+    });
+
+    checkboxes.push(checkbox)
+   // checkboxes.push(document.querySelectorAll('input[name="ColName6"]'));
+    // END CHANGE
+    var atLeastOneChecked = false;
+    console.log(checkboxes);
+    for(checkboxElement of checkboxes){
+      checkboxElement.forEach(function(checkbox) {
+          if (checkbox.checked) {
+              atLeastOneChecked = true;
+          }
+      });
+
+      if (!atLeastOneChecked) {
+          // At least one checkbox is checked
+          // Perform your action here
+          console.log(checkboxElement[0]);
+          alert(`Fill out ${checkboxElement[0].name} field`);
+          return;
+      }
+      atLeastOneChecked = false;
+    }
+    
+
+    alert("You are now a donor!");
+    // CHANGE
+    // change to desired page
+    window.location.href = "donor/donorDashboard.html";
+}
+
+
+function checkPasswordStrength(password) {
+    var missingConditions = [];
+
+    // Check if password length is at least 8 characters
+    if (password.length < 8) {
+        missingConditions.push("At least 8 characters");
+    }
+
+    // Check if password contains at least one uppercase letter
+    if (!/[A-Z]/.test(password)) {
+        missingConditions.push("At least one uppercase letter");
+    }
+
+    // Check if password contains at least one lowercase letter
+    if (!/[a-z]/.test(password)) {
+        missingConditions.push("At least one lowercase letter");
+    }
+
+    // Check if password contains at least one digit
+    if (!/\d/.test(password)) {
+        missingConditions.push("At least one digit");
+    }
+
+    // Check if password contains at least one special character
+    if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+        missingConditions.push("At least one special character");
+    }
+
+    // Return missing conditions as a structured string or an empty string if valid
+    return missingConditions.length > 0 ? "Password is missing: " + missingConditions.join(", ") : "";
+}
+
+
+
+
+function toggleRegister(which){
+    const donorOption = document.getElementById("donor-option")
+    const organizationOption = document.getElementById("organization-option")
+    const donorContainer = document.getElementById("donor-registration")
+    const organizationContainer = document.getElementById("organization-registration")
+    if(which=="donor"){
+        organizationOption.classList.remove("active-reg")
+        donorContainer.classList.remove("close")
+        !(donorOption.classList.contains("active-reg"))? donorOption.classList.add("active-reg"): null
+        !(organizationContainer.classList.contains("close"))? organizationContainer.classList.add("close"): null
+        return
+    }
+    donorOption.classList.remove("active-reg")
+    organizationContainer.classList.remove("close")
+    !(organizationOption.classList.contains("active-reg"))? organizationOption.classList.add("active-reg"): null
+    !(donorContainer.classList.contains("close"))? donorContainer.classList.add("close"): null
+}
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

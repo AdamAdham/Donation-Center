@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Organization Registration</title>
+<title>Donor Registration</title>
 <link rel="stylesheet" type="text/css" href="../input.css" />
 <link rel="stylesheet" type="text/css" href="../style.css" />
-<link rel="stylesheet" type="text/css" href="./mapO.css" />
+<link rel="stylesheet" type="text/css" href="../map.css" />
 <link rel="stylesheet" type="text/css" href="../uploaddocument.css" />
 
 <script type="module" src="./dropDownO.js"></script>
@@ -35,7 +35,7 @@
   <div id="details-container">
     <div id="organization-registration" class="">
       <!-- CHANGE -->
-        <h2 class="line-below white">Organization Representative Registration</h2>
+        <h2 class="line-below white">Donor Registration</h2>
         <!-- END CHANGE -->
         <!-- <form action="" onsubmit="requestDonation()"> -->
             <div>
@@ -79,7 +79,7 @@
             <div class="input-field">
                 <input type="text"   required spellcheck="false">
                 <!-- CHANGE -->
-                <label>Organization Name</label>
+                <label>Address</label>
                 <!-- END CHANGE -->
             </div>
 
@@ -87,13 +87,6 @@
                 <input type="text"   required spellcheck="false">
                 <!-- CHANGE -->
                 <label>Area</label>
-                <!-- END CHANGE -->
-            </div>
-
-            <div class="input-field">
-                <input type="text"   required spellcheck="false">
-                <!-- CHANGE -->
-                <label>Organization Address</label>
                 <!-- END CHANGE -->
             </div>
 
@@ -132,63 +125,10 @@
                 <!-- END CHANGE -->
               </div>
               <!-- End radio buttons -->
-    
-          
-              <!-- Check boxes (can be multiple values) -->
-              
-              <!-- End Check box -->
-              
-              <!-- Drop Down -->
-              <!-- CHANGE -->
-              <div class="dropdown-container">
-                <h3>Organization Type:</h3>
-                <div class="dropdown">
-                  <div class="select">
-                    <!-- Default value -->
-                      <span class="selected">Charity</span>
-                      <div class="caret"></div>
-                  </div>
-                  <ul class="menu">
-                      <li>Public School</li>
-                      <li>Orphanage</li>
-                      <li>Hospital</li>
-                      <li>Church</li>
-                      <li>Mosque</li>
-                      <!-- MAKE Sure that this value is the same as the one above in span element with class="selected" -->
-                      <li class="active">Charity</li>
-                  </ul>
-                </div>
-              </div>
-
-             
-
-              <br>
-              <br>
-              
-
-              <h3>Upload Document for Organization Verification:</h3>
-              
-            
-               
-              
-              <div class="input-field">
-            
-                <input type="file" id="document-upload" name="document-upload" multiple required>
-            </div>
-            
-            <h3>Pin location of Oragnization:</h3>
-            <div id="map"></div>
-            <br>
-            
-
-             
-              <!-- End Drop Down -->
-             
-              
 
 
             <div class="button-container">
-                <button class="positive-button submit" onclick="requestDonation(event)">Request Registration</button>   
+                <button class="positive-button submit" onclick="register(event)">Register</button>   
             </div>
         </form>
     </div>
@@ -200,7 +140,7 @@
 </div>
 </body>
 <script>
-  function requestDonation(){
+  function register(){
     // Check if all text field are entered
     var inputs = document.querySelectorAll('input[type="text"]');
     var allFilled = true;
@@ -258,20 +198,12 @@
       }
       atLeastOneChecked = false;
     }
-
-
-
-    var fileInput = document.getElementById('document-upload');
-    if (!fileInput.files || fileInput.files.length === 0) {
-        alert("Please select a document to upload");
-        return;
-    }
     
 
-    alert("Request has been submitted");
+    alert("You are now a donor!");
     // CHANGE
     // change to desired page
-    window.location.href = "organizationDashboard.html";
+    window.location.href = "donorDashboard.html";
 }
 
 
