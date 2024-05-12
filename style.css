@@ -347,7 +347,7 @@ table tr:last-child td:last-child {
 
   .positive-button{
     font-size: 16px;
-    background-color: var(--positive-color);
+    background-color: var(--focus-color);
     color: white;
     padding: 15px 30px;
     border-radius: 40px;
