@@ -28,7 +28,7 @@
     </nav>
     <div id="container">
         <div id="details-container">
-            <h2 class="line-below white">Donor Details</h2>
+            <h2 class="line-below white">Food Donation</h2>
             <div>
                 <p><strong style="font-size: 20px;">Item Name:</strong> <span id="itemName"></span></p>
                 <p class="column-name">Quantity/Amount Required: <span id="quantityAmount"></span></p>
@@ -44,40 +44,51 @@
     </div>
 
     <script>
-        var queryParams = new URLSearchParams(window.location.search);
-        var itemName = queryParams.get('itemName');
-        var quantityAmount = parseInt(queryParams.get('quantityAmount'));
+        var details = JSON.parse(decodeURIComponent(window.location.search.substr(1)));
+        const itemNameElement = document.getElementById("itemName")
+        const quantityElement = document.getElementById("quantityAmount")
+        var quantityAmount;
+        if(details.colName1=="Canned Foods"){
+            itemNameElement.innerText = "Beans";
+            quantityElement.innerText = "20";
+            quantityAmount = 20;
+        }else if(details.colName1=="Fresh Meals"){
+            itemNameElement.innerText = "Grilled Chicken";
+            quantityElement.innerText = "10";
+            quantityAmount = 10
+        }else if(details.colName1=="Baked Goods"){
+            itemNameElement.innerText = "Cakes";
+            quantityElement.innerText = "4";
+            quantityAmount = 4
+        }else if(details.colName1=="Fruits and Vegetables"){
+            itemNameElement.innerText = "Apples";
+            quantityElement.innerText = "3";
+            quantityAmount = 3
+        }
+        
+        
 
-        var itemNameElement = document.getElementById("itemName");
-        var quantityElement = document.getElementById("quantityAmount");
-        var quantityInput = document.getElementById("quantityInput");
-
-        itemNameElement.innerText = itemName;
-        quantityElement.innerText = quantityAmount;
-
-        if (itemName == "Apple" || itemName == "Tomato") {
+        if (itemNameElement.innerText == "Apples" || itemNameElement.innerText == "Grilled Chicken") {
             quantityElement.innerText += ' KG'; // Append 'kg' for Apple and Tomato
         }
+        const quantityInput = document.getElementById("quantityInput")
 
         function donate() {
-            var quantityToDonate = parseInt(quantityInput.value);
-            if (quantityToDonate >= 1) {
+            var quantityToDonate = parseFloat(quantityInput.value);
                 var newQuantity = quantityAmount - quantityToDonate;
                 if (newQuantity >= 0) {
                     quantityAmount = newQuantity;
                     quantityElement.innerText = quantityAmount;
-                    if (itemName == "Apple" || itemName == "Tomato") {
+                    if (itemNameElement.innerText == "Apples" || itemName == "Grilled Chicken") {
                         quantityElement.innerText += ' KG';
-                        alert("Thank you for your donation of " + quantityToDonate + " KG " + itemName + "!");
+                        alert("Thank you for your donation of " + quantityToDonate + " KG " + "!");
                     } else {
-                        alert("Thank you for your donation of " + quantityToDonate + " " + itemName + "!");
+                        alert("Thank you for your donation of " + quantityToDonate + "!");
                     }
                 } else {
                     alert("Insufficient quantity available.");
                 }
-            } else {
-                alert("Please enter a valid quantity (minimum 1).");
-            }
+                quantityInput.value = ""
         }
     </script>
 </body>

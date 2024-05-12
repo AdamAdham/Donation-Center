@@ -57,7 +57,6 @@
                             <!-- CHANGE -->
                             <th>Requester</th>
                             <th>Food Category</th>
-                            <th>View Details</th>
 
                         </tr>
                     </thead>
@@ -79,26 +78,21 @@
     var originalRows  = {
         row0: {
                 colName2: "Hope Charity",
-                colName1: "Fruits and Vegetables",  
-                button: "<button onclick=\"viewDetails('Apple', 'Fruits and Vegetables')\">View Details</button>"
+                colName1: "Fruits and Vegetables"
             },
 
         row1:{
                 colName2:"Children Orphanage",
-                colName1:"Canned Foods" ,
-                button: "<button onclick=\"viewDetails('Beans', 'Canned Foods')\">View Details</button>"
+                colName1:"Canned Foods"
                    
             },
         row2:{
                 colName2:"Care Foundation",
-                colName1:"Fresh Meals",
-                button: "<button onclick=\"viewDetails('Roasted Chicken', 'Fresh Meals')\">View Details</button>"
-                    
+                colName1:"Fresh Meals"     
             },
         row3:{
                 colName2:"Mosque",
-                colName1:"Baked Goods",
-                button: "<button onclick=\"viewDetails('Cake', 'Baked Goods')\">View Details</button>"
+                colName1:"Baked Goods"
                      
             }
         }
@@ -126,7 +120,7 @@
         if (!flag) {
             continue;
         }
-        text += `<tr id="${rowName}" class="row">`; // Opening <tr> tag
+        text += `<tr id="${rowName}" class="row" onclick="passToNextPage('${rowName}')">`; // Opening <tr> tag
         for (col in row) {
             if (col !== 'button') {
                 text += `<td name=${col}>${row[col]}</td>`; // Generate normal <td>
@@ -166,23 +160,10 @@
     }
 
 
-// function passToNextPage(rowName) {
-//     obj = originalRows[rowName]
-//     // CHANGE
-//     // Replace with next page for details
-//     // Navigate to the second HTML document with the selected item's details in the URL
-//     window.location = "newFoodDonate.html?rowName=" + rowName;
-//     //ENDCHANGE
-// }
-
-function viewDetails(foodItem, category) {
-    var quantityAmount = (category === 'Fruits and Vegetables') ? '10 KG' : '20';
-    var encodedFoodItem = encodeURIComponent(foodItem);
-    var encodedQuantityAmount = encodeURIComponent(quantityAmount);
-    window.location.href = 'newFoodDonate.html?itemName=' + encodedFoodItem + '&quantityAmount=' + encodedQuantityAmount;
+function passToNextPage(rowName) {
+    obj = originalRows[rowName]
+    window.location = "newFoodDonate.html?" + encodeURIComponent(JSON.stringify(obj));
 }
-
-
 
 </script>
 </body>

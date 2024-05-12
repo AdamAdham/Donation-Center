@@ -66,7 +66,6 @@
                             <th>Medical Item</th>
                             <th>Medical Type</th>
                             <th>Medications Use</th>
-                            <th>View Details</th>
                         </tr>
                     </thead>
                     <tbody id="table-body">
@@ -131,12 +130,12 @@
         if (!flag) {
             continue;
         }
-        text += `<tr id="${rowName}" class="row">`; // Opening <tr> tag
+        var params = getParams(row.button)
+        console.log(params);
+        text += `<tr id="${rowName}" class="row" onclick="viewDetails('${params[0]}','${params[1]}','${params[2]}','${params[3]}')">`;  // Opening <tr> tag
         for (col in row) {
             if (col !== 'button') {
                 text += `<td name=${col}>${row[col]}</td>`; // Generate normal <td>
-            } else {
-                text += `<td>${row[col]}</td>`; // Include the button HTML in the row
             }
         }
         text += `</tr>`; // Closing </tr> tag
@@ -169,6 +168,14 @@
         dropdown.value = "";
         display()
     }
+
+    function getParams(buttonString) {
+    // Extracting parameters from the buttonString
+    var params = buttonString.match(/viewDetails\(([^)]+)\)/)[1].split("','").map(param => param.replace(/'/g, ''));
+
+    // Calling viewDetails function with extracted parameters
+    return params
+}
 
 
    
