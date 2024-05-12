@@ -685,3 +685,8 @@ table tr:last-child td:last-child {
 #medical-supplies-label{
   width: 170px;
 }
+
+.admin-dashboard{
+  display: flex;
+  justify-content: space-around;
+}
