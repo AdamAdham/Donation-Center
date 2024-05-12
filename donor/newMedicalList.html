@@ -58,15 +58,6 @@
             </div>
         </div>
 
-        <div id="table-search-container">
-            
-            <div class="search-bar">
-                <input type="text" class="input" id="search-input" placeholder="Search Subject.." onkeyup="search('subject')"/>
-                <div class='search-icon'>
-                <img src="../images/search-icon.png"></img>
-                </div>
-            </div>
-            <!-- <input type="text" id="search-input" placeholder="Search Subject..." onkeyup="search('subject')"> -->
             <div id="table-container">
                 <table>
                     <thead>
@@ -89,7 +80,6 @@
 
 <script>
     var filters = {}
-    var searches = {}
     var originalRows  = {
         row0: {
                 colName1: "MRI",
@@ -137,11 +127,7 @@
                 flag = false;
             }
         }
-        for (searchCol in searches) {
-            if (!(row[searchCol].toLowerCase().includes(searches[searchCol]))) {
-                flag = false;
-            }
-        }
+       
         if (!flag) {
             continue;
         }
@@ -185,17 +171,7 @@
     }
 
 
-    function search(columnName){
-        // onkeypress introduces a delay that the value is behind by one key press
-        const inputValue = document.getElementById('search-input').value.toLowerCase()
-        if(inputValue==""){
-            delete searches[columnName]
-        }else{
-            searches = {...searches, [columnName]:inputValue}
-        }
-        display()
-    }
-
+   
     function viewDetails(itemName,itemType,itemUse,itemImage) {
 
     var quantityAmount = '20';
