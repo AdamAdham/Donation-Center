@@ -117,6 +117,20 @@
         var text = "";
         for (rowName in originalRows) {
             const row = originalRows[rowName];
+            flag = true
+            for(filterCol in filters){
+                if(row[filterCol]!==filters[filterCol]){                
+                    flag = false
+                }
+            }
+            for(searchCol in searches){
+                if(!(row[searchCol].toLowerCase().includes(searches[searchCol]))){
+                   flag = false
+                }
+            }
+            if(!flag){
+                continue
+            }
             if (!row.markedForDeletion) {
                 text += `<tr id="${rowName}" class="row" onclick="passToNextPage('${rowName}')">`;
                 for (col in row) {
