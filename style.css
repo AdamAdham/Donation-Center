@@ -636,11 +636,11 @@ table tr:last-child td:last-child {
     left: 3%;
   }
 
-  #clinic-form-container h3{
+  #clinic-form-container h3,  #teacher-form-container h3{
     font-size: 25px;
     margin-bottom: 30px;
   }
 
-  #clinic-form-container .line-below::after{
+  #clinic-form-container .line-below::after,#teacher-form-container .line-below::after{
     bottom: -8px;
   }
