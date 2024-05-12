@@ -1,3 +1,5 @@
+/* General */
+
 form{
     margin:0;
     padding: 0;
@@ -82,12 +84,16 @@ form{
   .radio-container ul li label{
     display: block;
     position: relative;
-    font-weight: 300;
-    font-size: 20px;
+    font-weight: bold;
+    font-size: 19px;
     padding: 10px 10px 10px 50px;
     z-index: 9;
     cursor: pointer;
     -webkit-transition: all 0.25s linear;
+  }
+
+  #regular{
+    width: 130px;
   }
 
   .radio-container ul li .check{
@@ -171,25 +177,18 @@ form{
     margin-left: 40px;
 }
 .select {
-    background: var(--light-black);
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 2px var(--light-black) solid;
-    border-radius: 0.5em;
-    padding: 1em;
-    cursor: pointer;
-    transition: 0.3s;
+  background: #323741;;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px #323741 solid;
+  border-radius: 0.5em;
+  padding: 1em;
+  cursor: pointer;
+  transition: 0.3s;
 }
-/* .select-clicked {
-    border: 2px var(--focus-color) solid;
-    box-shadow: 0 0 0.5em var(--focus-color);
-} */
-.select:hover {
-    background: #323741;
-    border-color: #323741;
-}
+
 .caret {
     width: 0;
     height: 0;
@@ -245,8 +244,6 @@ form{
 .dropdown-container{
   position: relative; /* Change position to relative */
   z-index: 999;
-
-
     display: flex;
     align-items: center;
     height: auto;
@@ -333,13 +330,17 @@ input[type=date] {
   margin-left: 10px;
 }
 
-
-
 input[type=date]:focus,input[type=date]:active{
   color: var(--light-black);
   outline: none;
 }
-/* 
-input[type=date]::-webkit-datetime-edit-year-field, input[type=date]::-webkit-datetime-edit-month-field, input[type=date]::-webkit-datetime-edit-week-field, input[type=date]::-webkit-datetime-edit-day-field{
-  color: red;
-} */
+
+/* Sign In / Register */
+
+#switch-container{
+  text-align: center;
+}
+
+#switch-container a{
+  color: var(--focus-color);
+}

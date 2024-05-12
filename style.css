@@ -635,3 +635,12 @@ table tr:last-child td:last-child {
     width:94%;
     left: 3%;
   }
+
+  #clinic-form-container h3{
+    font-size: 25px;
+    margin-bottom: 30px;
+  }
+
+  #clinic-form-container .line-below::after{
+    bottom: -8px;
+  }

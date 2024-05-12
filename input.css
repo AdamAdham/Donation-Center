@@ -92,6 +92,10 @@ form{
     -webkit-transition: all 0.25s linear;
   }
 
+  #regular{
+    width: 130px;
+  }
+  
   .radio-container ul li .check{
     display: block;
     position: absolute;
@@ -184,10 +188,6 @@ form{
     cursor: pointer;
     transition: 0.3s;
 }
-/* .select-clicked {
-    border: 2px var(--focus-color) solid;
-    box-shadow: 0 0 0.5em var(--focus-color);
-} */
 
 .caret {
     width: 0;

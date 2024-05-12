@@ -298,6 +298,33 @@
                   </ul>
                   <!-- END CHANGE -->
                 </div>
+
+                <div class="radio-container">
+                    <!-- CHANGE -->
+                    <!-- replace ColName5 to your column name -->
+                    <!-- replace value1/2/3 to your values -->
+                    <h3>Role:</h3>
+                    <ul>
+                      <li>
+                        <input type="radio" id="regular" name="role" class="donor-input">
+                        <label for="regular" id="regular">Regular Donor</label>
+                        <div class="check"></div>
+                      </li>
+                      
+                      <li>
+                        <input type="radio" id="teacher" name="role" class="donor-input">
+                        <label for="teacher" id="next-regular">Teacher</label>
+                        <div class="check"></div>
+                      </li>
+        
+                      <li>
+                        <input type="radio" id="doctor" name="role"  class="donor-input">
+                        <label for="doctor">Doctor</label>
+                        <div class="check"></div>
+                      </li>
+                    </ul>
+                    <!-- END CHANGE -->
+                  </div>
                 <!-- End radio buttons -->
   
   
@@ -441,7 +468,12 @@ function registerDonor(){
     var checkbox = Array.from(allInputs).filter(function(input) {
         return input.classList.contains('donor-input');
     });
+    checkboxes.push(checkbox)
 
+    var allInputs = document.querySelectorAll('input[name="role"]');
+    var checkbox = Array.from(allInputs).filter(function(input) {
+        return input.classList.contains('donor-input');
+    });
     checkboxes.push(checkbox)
    // checkboxes.push(document.querySelectorAll('input[name="ColName6"]'));
     // END CHANGE
