@@ -556,12 +556,12 @@ function registerDonor(){
         alert("Passwords do not match");
         return
     }
-    // var missing = checkPasswordStrength(passwords[0].value)
+    var missing = checkPasswordStrength(passwords[0].value)
 
-    // if(missing!=""){
-    //     alert(missing)
-    //     return
-    // }
+    if(missing!=""){
+        alert(missing)
+        return
+    }
    
 
     // Check if all radio buttons and checkboxes are selected
