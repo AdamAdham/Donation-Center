@@ -95,32 +95,32 @@
                 colName1: "MRI",
                 colName3: "Medical Device",
                 colName2: "x",
-                button:  "<button onclick=\"viewDetails('MRI','Medical Device','Medical Imaging Test','1.png')\">View Details</button>",
+                button:  "<button onclick=\"viewDetails('MRI','Medical Device','Medical Imaging Test','../images/mri.jpeg')\">View Details</button>",
             },
 
         row1:{
                 colName1:"Ventilator" ,
                 colName3:"Medical Device",
                 colName2: "x",
-                button:"<button onclick=\"viewDetails('Ventilator','Medical Device','Provides oxygen to your lungs','2.png')\">View Details</button>"       
+                button:"<button onclick=\"viewDetails('Ventilator','Medical Device','Provides oxygen to your lungs','../images/ventilator.jpeg')\">View Details</button>"       
             },
         row2:{
                 colName1:"Oxygen Concentrator",
                 colName3:"Medical Equipment",
                 colName2: "x",
-                button:"<button onclick=\"viewDetails('Oxygen Concentrator','Medical Equipment','Separates nitrogen from the air','3.png')\">View Details</button>"     
+                button:"<button onclick=\"viewDetails('Oxygen Concentrator','Medical Equipment','Separates nitrogen from the air','../images/oxy.jpeg')\">View Details</button>"     
             },
         row3:{
                 colName1:"Insulin",
                 colName3:"Medications",
                 colName2: "Diabetes",
-                button:"<button onclick=\"viewDetails('Insulin','Medications','Reduces blood sugar level','4.png')\">View Details</button>"    
+                button:"<button onclick=\"viewDetails('Insulin','Medications','Reduces blood sugar level','../images/insulin.jpeg')\">View Details</button>"    
             },
         row4:{
                 colName1:"Aspirin",
                 colName3:"Medications",
                 colName2: "Pain Killer",
-                button:"<button onclick=\"viewDetails('Aspirin','Medications','Reduce physical pain','5.png')\">View Details</button>"           
+                button:"<button onclick=\"viewDetails('Aspirin','Medications','Reduce physical pain','../images/aspirin.jpeg')\">View Details</button>"           
             }
         }
     columnNames = ["Medical Item","Medical Type","Medical Use", "button"]
@@ -202,7 +202,7 @@
     var encodedItemType = encodeURIComponent(itemType);
     var encodedItemName = encodeURIComponent(itemName);
     var encodedItemUse = encodeURIComponent(itemUse);
-    var encodedItemImage = encodeURIComponent('./images/' + itemImage);
+    var encodedItemImage = encodeURIComponent( itemImage);
 
     var encodedQuantityAmount = encodeURIComponent(quantityAmount);
 
