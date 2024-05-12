@@ -1,0 +1,86 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.container{
+    display: flex;
+    justify-content: center;
+}
+.notificationContainer *{
+    margin: 0;
+    padding: 0;
+}
+.notificationContainer{
+    
+    background-color: #fff;
+    width: 700px;
+    margin: 2rem;
+    padding: 1rem 1rem;
+    border-radius: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.notificationHeader {
+    display: flex;
+    align-items: center;
+}
+.notificationHeader h1{
+    font-size: 35px;
+    margin: 20px 8px 20px 20px;
+}
+#num-of-notif{
+    display: block;
+    background-color: var(--negative-color);
+    font-size:13px;
+    width: 23px;
+    height: 23px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mark-as-read{
+    color: gray;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+#mark-as-read:hover{
+    color: black;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.notificationCard{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 17px;
+}
+.notificationCard img{
+    width: 50px;
+    margin-right: 20px;
+}
+.notificationCard .description{
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.unread{
+    background-color: #E7F3FE;
+}
+
+.notif-time{
+    font-size: 13px;
+    color: var(--darkest-grey);
+}

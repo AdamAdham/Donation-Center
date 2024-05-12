@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<title>Organization Details</title>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                    <li><a href="account.html">Account</a></li>
+                    <div class="notification-image flex-center" onclick="window.location.href = 'notifications.html'"><img src="../images/notification.png" alt="">  </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+<div id="container">
+    <div id="details-container">
+        <h2 class="line-below white">Organization Details</h2>
+        <div>
+            <!-- CHANGE -->
+            <!-- PUT here details -->
+            <!-- leave the class -->
+            <!-- change id and colName1 -->
+            <p class="column-name">Name: <span id="name"></span></p>
+            <p class="column-name">Governorate: <span id="governorate"></span></p>
+            <p class="column-name">Area: <span id="area"></span></p>
+            <p class="column-name">Type: <span id="type"></span></p>
+            <p class="column-name">Contact Info: <span id="contact">org@gmail.com</span></p>
+            <p class="column-name">Address: <span id="contact">12 Merghany</span></p>
+            <div id="map"></div>
+            <!-- END CHANGE -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // Extract the organization details from the URL
+    var details = JSON.parse(decodeURIComponent(window.location.search.substr(1)));
+    // Populate the organization details on the page
+
+    // CHANGE
+    // Any details from previous pages are put here
+    // change each columnName with the actual column name
+    // can add more if needed
+    document.getElementById("name").innerText = details.name;
+    document.getElementById("governorate").innerText = details.governorate;
+    document.getElementById("area").innerText = details.area;
+    document.getElementById("type").innerText = details.type;
+</script>
+
+</body>
+</html>

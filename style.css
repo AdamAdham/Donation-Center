@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 :root{
   --lighter-grey:#f8f8f8;
   --light-grey:#f0f0f0;
@@ -11,8 +12,6 @@
   --negative-color:#ce1717;
   --focus-color:#7731d8;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 body{
   background-color: var(--lighter-grey);
@@ -265,6 +264,11 @@ table svg{
 
 table .row{
   font-weight: normal;
+}
+
+tbody tr:hover{
+  background-color: var(--dark-grey);
+  transition: 0.3s;
 }
 
 /* BORDER START */

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organizations</title>
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <div id="left">
+                <img class="logo" src="../images/logo.svg" alt="logo">
+            </div>
+            <div id="right">
+                <ul>
+                    <li><a href="donorDashboard.html">Dashboard</a></li>
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
+                    <li><a href="account.html">Account</a></li>
+                    <div class="notification-image flex-center" onclick="window.location.href = 'notifications.html'"><img src="../images/notification.png" alt="">  </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="container">
+        <h1>Organizations</h1>
+        <div id="list-container">
+            <div id="filter-container">
+                <h3 class="line-below">Filters</h3>
+                <div class="filter-column-container line-below">
+                    <!-- CHANGE -->
+                    <!-- change all colName1 to your column name -->
+                    <!-- change all value1/2/3 to your values -->
+                    <div class="filter-column">Governorate:</div>
+                    <select id="filter-select-governorate" onchange="filter('governorate')">
+                        <option value="">All</option>
+                        <option value="Cairo">Cairo</option>
+                        <option value="Giza">Giza</option>
+                        <option value="Alexandria">Alexandria</option>
+                        <option value="Ismailia">Ismailia</option>
+                    </select>
+                    <!-- END CHANGE -->
+                </div>
+                <div class="filter-column-container line-below">
+                    <!-- CHANGE -->
+                    <!-- change all colName1 to your column name -->
+                    <!-- change all value1/2/3 to your values -->
+                    <div class="filter-column">Area:</div>
+                    <select id="filter-select-area" onchange="filter('area')">
+                        <option value="">All</option>
+                        <option value="Nasr City">Nasr City</option>
+                        <option value="Heliopolis">Heliopolis</option>
+                        <option value="Sidi Beshr">Sidi Beshr</option>
+                        <option value="Mohandessin">Mohandessin</option>
+                    </select>
+                    <!-- END CHANGE -->
+                </div>
+                <div class="filter-column-container line-below">
+                    <!-- CHANGE -->
+                    <!-- change all colName1 to your column name -->
+                    <!-- change all value1/2/3 to your values -->
+                    <div class="filter-column">Type:</div>
+                    <select id="filter-select-type" onchange="filter('type')">
+                        <option value="">All</option>
+                        <option value="Hospital">Hospital</option>
+                        <option value="Orphanage">Orphanage</option>
+                        <option value="Charity">Charity</option>
+                        <option value="Education">Education</option>
+                    </select>
+                    <!-- END CHANGE -->
+                </div>
+                <div class="button-container">
+                    <button class="neutral-button" onclick="reset()">Reset Filters</button>
+                </div>
+            </div>
+    
+            <div id="table-search-container">
+                
+                <div class="search-bar">
+                    <input type="text" class="input" id="search-input" placeholder="Search by Name.." onkeyup="search('name')"/>
+                    <div class='search-icon'>
+                    <img src="../images/search-icon.png"></img>
+                    </div>
+                </div>
+                <!-- <input type="text" id="search-input" placeholder="Search Subject..." onkeyup="search('subject')"> -->
+                <div id="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <!-- CHANGE -->
+                                <th>Name</th>
+                                <th>Area</th>
+                                <th>Governorate</th>
+                                <th>Type</th>
+                                <!-- END CHANGE -->
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var filters = {}
+    var searches = {}
+    // Change column names and values
+    var originalRows  = {
+        row0:{
+                name:"Orman",
+                governorate:"Cairo",
+                area:"Nasr City",
+                type: "Charity"
+            },
+        row1:{
+                name:"Resala",
+                governorate:"Giza",
+                area:"Mohandessin",
+                type: "Orphanage"
+            },
+        row2:{
+                name:"Food Bank",
+                governorate:"Alexandria",
+                area:"Sidi Beshr",
+                type: "Hospital"
+            }
+    }
+    columnNames = ["name","governorate", "area","type"];
+
+    function display(){
+        const tableBody = document.getElementById("table-body")
+
+        var text = ""
+        index=0;
+        for(rowName in originalRows){
+            const row = originalRows[rowName]
+            flag = true
+            for(filterCol in filters){
+                if(row[filterCol]!==filters[filterCol]){                
+                    flag = false
+                }
+            }
+            for(searchCol in searches){
+                if(!(row[searchCol].toLowerCase().includes(searches[searchCol]))){
+                   flag = false
+                }
+            }
+            if(!flag){
+                continue
+            }
+            text += `<tr id="${rowName}" class="row" onclick="passToNextPage('${rowName}')">` // Assuming single digits
+            
+            for(col in row){
+                text+=`<td name=${col}>${row[col]}</td>` 
+            }
+            text+="</tr>"
+        }
+        tableBody.innerHTML = text
+    }
+
+    display()
+
+    function filterAll() {
+        filter("governorate");
+        filter("area");
+        filter("type");
+    }
+
+    function filter(columnName) {
+        const filterSelect = document.getElementById('filter-select-'+columnName)
+        var temp = {}
+        const selectValue = filterSelect.value
+        if(selectValue==""){
+            delete filters[columnName]
+        }else{
+            filters = {...filters, [columnName]:selectValue};
+        }
+        display()
+    }
+
+    function reset() {
+        delete filters["governorate"];
+        delete filters["area"];
+        delete filters["type"];
+        var dropdown = document.getElementById("filter-select-type");
+        dropdown.value = "";
+        var dropdown2 = document.getElementById("filter-select-area");
+        dropdown2.value = "";
+        var dropdown3 = document.getElementById("filter-select-governorate");
+        dropdown3.value = "";
+        display();
+
+    }
+
+function search(columnName){
+    const inputValue = document.getElementById('search-input').value.toLowerCase()
+    if(inputValue==""){
+        delete searches[columnName]
+    }else{
+        searches = {...searches, [columnName]:inputValue}
+    }
+    display()
+}
+
+function passToNextPage(rowName) {
+    obj = originalRows[rowName]
+    window.location = "organization.html?" + encodeURIComponent(JSON.stringify(obj));
+}
+
+</script>
+</body>
+</html>
