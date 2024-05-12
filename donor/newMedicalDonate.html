@@ -72,16 +72,19 @@
 
         function donate(itemName) {
             var quantityToDonate = parseInt(quantityInput.value);
-            
-            var newQuantity = quantityAmount - quantityToDonate;
-            if (newQuantity >= 0) {
-                quantityAmount = newQuantity;
-                quantityElement.innerText = quantityAmount;
-               alert("Thank you for your donation of " + quantityToDonate + " " + itemName + "!");
+            if (quantityToDonate >= 1) {
+                var newQuantity = quantityAmount - quantityToDonate;
+                if (newQuantity >= 0) {
+                    quantityAmount = newQuantity;
+                    quantityElement.innerText = quantityAmount;
+                        alert("Thank you for your donation of " + quantityToDonate + " " + itemName + "!");
+                    
+                } else {
+                    alert("Insufficient quantity available.");
+                }
             } else {
-                alert("Insufficient quantity available.");
+                alert("Please enter a valid quantity (minimum 1).");
             }
-        
         }
     </script>
 </body>
