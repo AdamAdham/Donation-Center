@@ -306,19 +306,19 @@
                     <h3>Role:</h3>
                     <ul>
                       <li>
-                        <input type="radio" id="regular" name="role" class="donor-input">
+                        <input type="radio" id="regular" name="role" onchange="clinicForm(false)" class="donor-input" checked>
                         <label for="regular" id="regular">Regular Donor</label>
                         <div class="check"></div>
                       </li>
                       
                       <li>
-                        <input type="radio" id="teacher" name="role" class="donor-input">
+                        <input type="radio" id="teacher" name="role" onchange="clinicForm(false)" class="donor-input">
                         <label for="teacher" id="next-regular">Teacher</label>
                         <div class="check"></div>
                       </li>
         
                       <li>
-                        <input type="radio" id="doctor" name="role"  class="donor-input">
+                        <input type="radio" id="doctor" name="role" onchange="clinicForm(true)" class="donor-input">
                         <label for="doctor">Doctor</label>
                         <div class="check"></div>
                       </li>
@@ -326,7 +326,61 @@
                     <!-- END CHANGE -->
                   </div>
                 <!-- End radio buttons -->
-  
+
+                <h3>Upload Document for Role Verification:</h3>
+              
+            
+               
+              
+              <div class="input-field">
+            
+                <input type="file" id="document-upload" name="document-upload" multiple required>
+            </div>
+                <!-- End radio buttons -->
+
+
+                <!-- Clinic Form -->
+
+                <div id="clinic-form-container" class="close">
+                  <h3 class="line-below">Clinic Information</h3>
+
+                  <div class="input-field">
+                    <input type="text"   required class="donor-input clinic-input" spellcheck="false">
+                    <!-- CHANGE -->
+                    <label>Speciality</label>
+                    <!-- END CHANGE -->
+                  </div>
+
+                  <div class="input-field">
+                    <input type="text"   required class="donor-input clinic-input" spellcheck="false" >
+                    <!-- CHANGE -->
+                    <label>Number of Pro bono</label>
+                    <!-- END CHANGE -->
+                  </div>
+
+                    <div class="input-field">
+                      <input type="text"   required class="donor-input clinic-input" spellcheck="false">
+                      <!-- CHANGE -->
+                      <label>Address</label>
+                      <!-- END CHANGE -->
+                    </div>
+      
+                    <div class="input-field">
+                        <input type="text"   required class="donor-input clinic-input" spellcheck="false">
+                        <!-- CHANGE -->
+                        <label>Area</label>
+                        <!-- END CHANGE -->
+                    </div>
+        
+                
+                    <div class="input-field">
+                        <input type="text"   required class="donor-input clinic-input" spellcheck="false">
+                        <!-- CHANGE -->
+                        <label>Governorate</label>
+                        <!-- END CHANGE -->
+                    </div>
+      
+                </div>
   
               <div class="button-container">
                   <button class="positive-button submit" onclick="registerDonor(event)">Register</button>   
@@ -338,6 +392,7 @@
 </div>
 </body>
 <script>
+    var doctor = false
   function registerOrganization(){
     // Check if all text field are entered
     var inputs = document.querySelectorAll('input[type="text"]:not(.donor-input)');
@@ -428,6 +483,13 @@
 function registerDonor(){
     // Check if all text field are entered
     var inputs = document.getElementsByClassName("donor-input");
+    if(!doctor){
+        // Not a doctor so remove all inputs which are about clinic
+        var inputs = Array.from(inputs).filter(function(input) {
+            console.log(!(input.classList.contains('clinic-input')));
+            return !(input.classList.contains('clinic-input'))
+        });
+    }
     var allFilled = true;
 
     for (var i = 0; i < inputs.length; i++) {
@@ -557,7 +619,16 @@ function toggleRegister(which){
     !(donorContainer.classList.contains("close"))? donorContainer.classList.add("close"): null
 }
 
-
+function clinicForm(bool){
+  const clinicCont = document.getElementById("clinic-form-container")
+  if(!bool){
+    doctor = false
+      !(clinicCont.classList.contains("close"))?clinicCont.classList.add("close"):null;
+      return
+  }
+  doctor = true
+  clinicCont.classList.remove("close")
+}
 
 
 
