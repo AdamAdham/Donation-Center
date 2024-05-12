@@ -60,7 +60,7 @@
                         <th>Category</th>
                         <th>DonationID</th>
                         <th>Date Requested</th>
-                        <th>Options</th>
+                        
                         <!-- END CHANGE -->
                     </tr>
                 </thead>
@@ -142,7 +142,7 @@
                 for (col in row) {
                     text += `<td name=${col}>${row[col]}</td>`;
                 }
-                text += `<td><button onclick="viewDetails('${rowName}')">View Details</button></td></tr>`;
+            
             }
         }
         tableBody.innerHTML = text;
@@ -208,6 +208,28 @@
             display();
         }
     }
+    function passToNextPage(rowName) {
+    obj = originalRows[rowName]
+    if (rowName == "row0") {
+            window.location = "clothesDetails.html?";
+        } else if (rowName == "row1") {
+            window.location = "toysDetails.html?" + encodeURIComponent(JSON.stringify(obj));
+        } else if (rowName == "row2") {
+            window.location = "blooddonationsDetails.html?" + encodeURIComponent(JSON.stringify(obj));
+        } else if (rowName == "row3") {
+            window.location = "schoolsuppliesDetails.html?" + encodeURIComponent(JSON.stringify(obj));
+        } else if (rowName == "row4") {
+            window.location = "medicalsuppliesDetails.html?" + encodeURIComponent(JSON.stringify(obj));
+        } else if (rowName == "row5") {
+            window.location = "foodDetails.html?" + encodeURIComponent(JSON.stringify(obj));
+        } else {
+            window.location = "organizationDashboard.html?" + encodeURIComponent(JSON.stringify(obj));
+        }
+    // CHANGE
+    // Replace with next page for details
+   // window.location = "thedonationpost.html?" + encodeURIComponent(JSON.stringify(obj));
+    //ENDCHANGE
+}
 
     function deleteRowFromAnotherFile() {
         // Check if there's a row deletion request in localStorage

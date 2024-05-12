@@ -65,7 +65,7 @@
                             <!-- CHANGE -->
                             <th>Category</th>
                             <th>DonationID</th>
-                            <th>Action</th>
+                            
                             
                             <!-- END CHANGE -->
                         </tr>
@@ -136,7 +136,7 @@
                 for (col in row) {
                     text += `<td name=${col}>${row[col]}</td>`;
                 }
-                text += `<td><button onclick="viewDetails('${rowName}')">View Details</button></td></tr>`;
+                
             }
         }
         tableBody.innerHTML = text;
@@ -244,14 +244,35 @@ function deleteRowFromAnotherFile() {
     };
 
 
-/*function passToNextPage(rowName) {
+function passToNextPage(rowName) {
     obj = originalRows[rowName]
+    if (rowName == "row0") {
+    window.location = "clothesDetailsFul.html?";
+   }
+   else if(rowName == "row1"){
+    window.location = "toysDetailsFul.html?" + encodeURIComponent(JSON.stringify(obj));
+   }
+   else if(rowName == "row2"){
+    window.location = "blooddonationsDetailsFul.html?" + encodeURIComponent(JSON.stringify(obj));
+   }
+   else if(rowName == "row3"){
+    window.location = "schoolsuppliesDetailsFul.html?" + encodeURIComponent(JSON.stringify(obj));
+   }
+   else if(rowName == "row4"){
+    window.location = "medicalsuppliesDetailsFul.html?" + encodeURIComponent(JSON.stringify(obj));
+   }
+   else if(rowName == "row5"){
+    window.location = "foodDetailsFul.html?" + encodeURIComponent(JSON.stringify(obj));
+   }
+   else{
+    window.location = "organizationDashboard.html?" + encodeURIComponent(JSON.stringify(obj));
+   }
     // CHANGE
     // Replace with next page for details
-    window.location = "thedonationpost.html?" + encodeURIComponent(JSON.stringify(obj));
+   // window.location = "thedonationpost.html?" + encodeURIComponent(JSON.stringify(obj));
     //ENDCHANGE
 }
-*/
+
 
 </script>
 </body>
