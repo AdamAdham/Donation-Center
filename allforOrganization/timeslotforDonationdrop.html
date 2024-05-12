@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="./styleO.css" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
 <title>Schedule Time Slot for Donation Drop-off</title>
 </head>
 <body>
@@ -55,18 +55,9 @@
         </div>
 
         <div id="table-search-container">
-            
-            <div class="search-bar">
-                <!-- CHANGE -->
-                <!-- Change colName to column name to search for -->
-                <input type="text" class="input" id="search-input" placeholder="Search colName.." onkeyup="search('colName')"/>
-                <div class='search-icon'>
-                <img src="../images/search-icon.png"></img>
-                </div>
-            </div>
             <!-- <input type="text" id="search-input" placeholder="Search Subject..." onkeyup="search('subject')"> -->
             <div id="table-container">
-                <table>
+                <table id="time-slot-table">
                     <thead>
                         <tr>
                             <!-- CHANGE -->
@@ -143,7 +134,7 @@
             if(!flag){
                 continue
             }
-            text += `<tr id="${rowName}" class="row" onclick="passToNextPage('${rowName}')">` // Assuming single digits
+            text += `<tr id="${rowName}" class="row time-slot-tr"" onclick="passToNextPage('${rowName}')">` // Assuming single digits
             
             for(col in row){
                 text+=`<td name=${col}>${row[col]}</td>` 
@@ -151,9 +142,9 @@
             index++
            // text+="</tr>"
 
-            text += `<td>
+            text += `<td class='flex-center'>
                 
-                <button onclick="viewDetails('${rowName}')">Schedule Time Slot</button>
+                <button class='positive-button' onclick="viewDetails('${rowName}')">Schedule Time Slot</button>
             </td>`
 
     text+="</tr>"

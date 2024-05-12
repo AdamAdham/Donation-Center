@@ -636,11 +636,39 @@ table tr:last-child td:last-child {
     left: 3%;
   }
 
-  #clinic-form-container h3,  #teacher-form-container h3{
+  #clinic-form-container h3,  #teacher-form-container h3,#patient-title{
     font-size: 25px;
     margin-bottom: 30px;
   }
 
-  #clinic-form-container .line-below::after,#teacher-form-container .line-below::after{
+  #clinic-form-container .line-below::after,#teacher-form-container .line-below::after,#patient-title::after{
     bottom: -8px;
   }
+
+  #patient-title{
+    position: relative;
+  }
+
+  #patient-title::after{
+  content: "";
+  position: absolute;
+  left: 0px;
+  background-color: var(--darker-grey);
+  width: 100%;
+  height: 1px;
+  bottom: -15px;
+}
+
+#ongoing-table tr:hover,#time-slot-table tr:hover{
+  background-color: var(--lighter-grey);
+}
+
+#ongoing-table .positive-button{
+  margin-left: 50px ;
+  padding: 13px 27px;
+}
+
+#time-slot-table .positive-button{
+  margin: 0;
+  padding: 13px 27px;
+}

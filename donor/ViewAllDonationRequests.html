@@ -32,8 +32,8 @@
                 <!-- CHANGE -->
                 <!-- change all colName1 to your column name -->
                 <!-- change all value1/2/3 to your values -->
-                <div class="filter-column">Organisation:</div>
-                <select id="filter-select-Organisation" onchange="filter('Organisation')">
+                <div class="filter-column">Organization:</div>
+                <select id="filter-select-Organization" onchange="filter('Organization')">
                     <option value="">All</option>
                     <option value="Schools">Schools</option>
                     <option value="Refugees">Refugees</option>
@@ -78,10 +78,9 @@
                     <thead>
                         <tr>
                             <!-- CHANGE -->
-                            <th>Organisation</th>
+                            <th>Organization</th>
                             <th>Category</th>
                             <th>Itemdetails</th>
-                            <th>RequestID</th>
                             <!-- END CHANGE -->
                         </tr>
                     </thead>
@@ -103,94 +102,85 @@
     // add rows if needed (same incremental naming so if added a row name it 'row3')
     var originalRows  = {
         row0:{
-                Organisation:"Schools",
+                Organization:"Schools",
                 Category:"School supplies",
                 Itemdetails:"English primary level books",
-                RequestID: "1"
-            },
+                            },
         row1:{
-               Organisation:"Refugees",
+               Organization:"Refugees",
                Category:"Clothes",
                Itemdetails:"Men's winter jackets",
-                RequestID: "2"
-            },
+                            },
         row2:{
-           Organisation:"Orphanage",
+           Organization:"Orphanage",
            Category:"Toys",
            Itemdetails:"Lego",
-                RequestID: "3"
-            },
+                            },
        row3:{
-           Organisation:"Refugees",
+           Organization:"Refugees",
            Category:"Food",
                 Itemdetails:"Canned Products",
-                RequestID: "4"
-            },
+                            },
         row4:{
-           Organisation:"Health sector",
+           Organization:"Health sector",
            Category:"Medical supplies",
                 Itemdetails:"Bandages",
-                RequestID: "5"
-            },
+                            },
        row5:{
-           Organisation:"Health sector",
+           Organization:"Health sector",
            Category:"Blood donations",
                 Itemdetails:"Blood type O+",
-                RequestID: "6"
-            },
+                            },
             row6:{
-               Organisation:"Orphanage",
+               Organization:"Orphanage",
                Category:"Clothes",
                 Itemdetails:"Children Shorts",
-                RequestID: "7"
-            },
+                            },
             row7:{
-               Organisation:"Orphanage",
+               Organization:"Orphanage",
                Category:"Clothes",
                 Itemdetails:"Teenage's Socks",
-                RequestID: "8"
-            },
+                            },
             row8:{
-               Organisation:"Refugees",
+               Organization:"Refugees",
                Category:"Clothes",
                 Itemdetails:"Women's wool t-shirts",
-                RequestID: "9"
-            },
+                            },
             row9:{
-               Organisation:"Orphanage",
+               Organization:"Orphanage",
                Category:"Food",
                 Itemdetails:"Chocolate Sweets",
-                RequestID: "10"
+                
             },
             row10:{
-               Organisation:"Orphanages",
+               Organization:"Orphanages",
                Category:"Food",
                 Itemdetails:"Warm meals",
-                RequestID: "11"
+                
             },
             row11:{
-               Organisation:"Health sector",
+               Organization:"Health sector",
                Category:"Pro-bono Visit",
                 Itemdetails:"Checkup",
-                RequestID: "12"
+                
             },
             row12:{
-               Organisation:"Health sector",
+               Organization:"Health sector",
                Category:"Medical supplies",
                 Itemdetails:"Panadol",
-                RequestID: "13"
+                
             },
             row13:{
-               Organisation:"Schools",
+               Organization:"Schools",
                Category:"School supplies",
                 Itemdetails:"Secondary level Seience Books",
-                RequestID: "14"
+                
             },
             row14:{
-               Organisation:"Schools",
+               Organization:"Schools",
                Category:"Pro-bono Teaching",
                 Itemdetails:"Math Tutoring",
-                RequestID: "15"
+                
             }
     }
 
@@ -198,7 +188,7 @@
 
     //CHANGE
     // make sure all column names are here
-    columnNames = ["Organisation","Category", "Itemdetails","RequestID"]
+    columnNames = ["Organization","Category", "Itemdetails"]
     // END CHANGE
 
     function display(){
