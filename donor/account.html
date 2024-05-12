@@ -237,6 +237,7 @@
   
               <div class="button-container">
                   <button class="positive-button submit" onclick="registerDonor(event)">Update</button>   
+                  <button class="negative-button" onclick="deleteProfile()">Delete</button>   
               </div>
           </form>
       </div>
@@ -404,6 +405,12 @@ function changeForm(role){
         !(clinicCont.classList.contains("close"))?clinicCont.classList.add("close"):null;
         !(fileUplaod.classList.contains("close"))?fileUplaod.classList.add("close"):null;
     }
+}
+
+function deleteProfile(){
+  if (confirm("Are you sure you want to delete your profile")) {
+      window.location.href = '../home.html';
+  }
 }
 
 

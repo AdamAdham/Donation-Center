@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manage Organizations</title>
+<title>Organizations</title>
 <link rel="stylesheet" type="text/css" href="../style.css" />
 </head>
 <body>
@@ -14,10 +14,8 @@
             </div>
             <div id="right">
                 <ul>
-                    <!-- CHANGE ORGS -->
-                    <!-- Change href to your orgs dashboard -->
                     <li><a href="adminDashboard.html">Dashboard</a></li>
-                    <!-- END CHANGE ORGS -->
+                    <li><a href="mailto:chelSEa@example.com">Contact Us</a></li>
                 </ul>
             </div>
         </div>
@@ -32,7 +30,7 @@
                     <!-- change all colName1 to your column name -->
                     <!-- change all value1/2/3 to your values -->
                     <div class="filter-column">Governorate:</div>
-                    <select id="filter-select-columnName3" onchange="filter('columnName3')">
+                    <select id="filter-select-governorate" onchange="filter('governorate')">
                         <option value="">All</option>
                         <option value="Cairo">Cairo</option>
                         <option value="Giza">Giza</option>
@@ -46,7 +44,7 @@
                     <!-- change all colName1 to your column name -->
                     <!-- change all value1/2/3 to your values -->
                     <div class="filter-column">Area:</div>
-                    <select id="filter-select-columnName2" onchange="filter('columnName2')">
+                    <select id="filter-select-area" onchange="filter('area')">
                         <option value="">All</option>
                         <option value="Nasr City">Nasr City</option>
                         <option value="Heliopolis">Heliopolis</option>
@@ -59,8 +57,8 @@
                     <!-- CHANGE -->
                     <!-- change all colName1 to your column name -->
                     <!-- change all value1/2/3 to your values -->
-                    <div class="filter-column">Organization Type:</div>
-                    <select id="filter-select-columnName4" onchange="filter('columnName4')">
+                    <div class="filter-column">Type:</div>
+                    <select id="filter-select-type" onchange="filter('type')">
                         <option value="">All</option>
                         <option value="Hospital">Hospital</option>
                         <option value="Orphanage">Orphanage</option>
@@ -77,7 +75,7 @@
             <div id="table-search-container">
                 
                 <div class="search-bar">
-                    <input type="text" class="input" id="search-input" placeholder="Search by Name.." onkeyup="search('columnName1')"/>
+                    <input type="text" class="input" id="search-input" placeholder="Search by Name.." onkeyup="search('name')"/>
                     <div class='search-icon'>
                     <img src="../images/search-icon.png"></img>
                     </div>
@@ -88,11 +86,10 @@
                         <thead>
                             <tr>
                                 <!-- CHANGE -->
-                                <th>Organization Name</th>
+                                <th>Name</th>
                                 <th>Area</th>
                                 <th>Governorate</th>
-                                <th>Organization Type</th>
-                                <th>Link</th>
+                                <th>Type</th>
                                 <!-- END CHANGE -->
                             </tr>
                         </thead>
@@ -111,28 +108,28 @@
     // Change column names and values
     var originalRows  = {
         row0:{
-                columnName1:"Orman",
-                columnName2:"Nasr City",
-                columnName3:"Cairo",
-                columnName4: "Charity"
+                name:"Orman",
+                governorate:"Cairo",
+                area:"Nasr City",
+                type: "Charity"
             },
         row1:{
-                columnName1:"Resala",
-                columnName2:"Mohandessin",
-                columnName3:"Giza",
-                columnName4: "Orphanage"
+                name:"Resala",
+                governorate:"Giza",
+                area:"Mohandessin",
+                type: "Orphanage"
             },
         row2:{
-                columnName1:"Food Bank",
-                columnName2:"Sidi Beshr",
-                columnName3:"Alexandria",
-                columnName4: "Hospital"
+                name:"Food Bank",
+                governorate:"Alexandria",
+                area:"Sidi Beshr",
+                type: "Hospital"
             }
     }
+    columnNames = ["name","governorate", "area","type"];
 
     function display(){
         const tableBody = document.getElementById("table-body")
-        columnNames = ["colName1","colName2", "colName3","colName4"];
 
         var text = ""
         index=0;
@@ -152,13 +149,12 @@
             if(!flag){
                 continue
             }
-            console.log(rowName)
-            text += `<tr id="${rowName}" class="row" ">` // Assuming single digits
+            text += `<tr id="${rowName}" class="row" onclick="passToNextPage('${rowName}')">` // Assuming single digits
             
             for(col in row){
                 text+=`<td name=${col}>${row[col]}</td>` 
             }
-            text+="<td><a href='organization.html'>More</a></td></tr>"
+            text+="</tr>"
         }
         tableBody.innerHTML = text
     }
@@ -166,9 +162,9 @@
     display()
 
     function filterAll() {
-        filter("columnName2");
-        filter("columnName3");
-        filter("columnName4");
+        filter("governorate");
+        filter("area");
+        filter("type");
     }
 
     function filter(columnName) {
@@ -184,15 +180,14 @@
     }
 
     function reset() {
-        delete filters["columnName1"];
-        delete filters["columnName2"];
-        delete filters["columnName3"];
-        delete filters["columnName4"];
-        var dropdown = document.getElementById("filter-select-columnName4");
+        delete filters["governorate"];
+        delete filters["area"];
+        delete filters["type"];
+        var dropdown = document.getElementById("filter-select-type");
         dropdown.value = "";
-        var dropdown2 = document.getElementById("filter-select-columnName3");
+        var dropdown2 = document.getElementById("filter-select-area");
         dropdown2.value = "";
-        var dropdown3 = document.getElementById("filter-select-columnName2");
+        var dropdown3 = document.getElementById("filter-select-governorate");
         dropdown3.value = "";
         display();
 
@@ -210,7 +205,7 @@ function search(columnName){
 
 function passToNextPage(rowName) {
     obj = originalRows[rowName]
-    window.location = "template.html?" + encodeURIComponent(JSON.stringify(obj));
+    window.location = "organization.html?" + encodeURIComponent(JSON.stringify(obj));
 }
 
 </script>

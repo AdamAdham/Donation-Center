@@ -196,7 +196,8 @@
 
 
             <div class="button-container">
-                <button class="positive-button submit" onclick="requestDonation(event)">Request to Update</button>   
+                <button class="positive-button submit" onclick="requestDonation(event)">Request to Update</button>  
+                <button class="negative-button" onclick="deleteProfile()">Delete Profile</button>  
             </div>
         </form>
     </div>
@@ -275,6 +276,12 @@
     // CHANGE
     // change to desired page
     window.location.href = "../donor/download.html?name=do";
+}
+
+function deleteProfile(){
+  if (confirm("Are you sure you want to delete your profile")) {
+      window.location.href = '../home.html';
+  }
 }
 </script>
 </html>

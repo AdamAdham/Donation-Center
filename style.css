@@ -334,6 +334,10 @@ table tr:last-child td:last-child {
     position: relative;
   }
 
+  .donor-details{
+    margin-right: 70px;
+  }
+
   button,input[type="submit"]{
     padding: 10px 30px;
     font-weight: bold;
@@ -411,8 +415,8 @@ table tr:last-child td:last-child {
 
   .dashboard-inner-container{
     display: grid;
-    grid-template-columns: 30% 30% 30%;
-    gap: 5%;
+    grid-template-columns: 21% 22% 22% 22%; 
+    gap: 4%;
     margin: 20px 30px 50px 30px;
   }
 
@@ -671,4 +675,13 @@ table tr:last-child td:last-child {
 #time-slot-table .positive-button{
   margin: 0;
   padding: 13px 27px;
+}
+
+
+#school-supplies-label{
+   width: 160px;
+}
+
+#medical-supplies-label{
+  width: 170px;
 }
