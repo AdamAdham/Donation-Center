@@ -89,7 +89,6 @@
                                 <th>Age Group</th>
                                 <th>Gender</th>
                                 <th>Toy Preferences</th>
-                                <th></th>
                                 <!-- END CHANGE -->
                             </tr>
                         </thead>
@@ -138,36 +137,67 @@
     },
 };
 
-function display(){
-    const tableBody = document.getElementById("table-body")
-    var text = ""
-    for(rowName in originalRows){
-        const row = originalRows[rowName]
-        let flag = true
-        for(filterCol in filters){
-            if(row[filterCol] !== filters[filterCol]){                
-                flag = false
+
+function display() {
+    const tableBody = document.getElementById("table-body");
+    var text = "";
+    for (rowName in originalRows) {
+        const row = originalRows[rowName];
+        let flag = true;
+        for (filterCol in filters) {
+            if (row[filterCol] !== filters[filterCol]) {
+                flag = false;
             }
         }
-        for(searchCol in searches){
-            if(!(row[searchCol].toLowerCase().includes(searches[searchCol]))){
-               flag = false
+        for (searchCol in searches) {
+            if (!(row[searchCol].toLowerCase().includes(searches[searchCol]))) {
+                flag = false;
             }
         }
-        if(!flag){
-            continue
+        if (!flag) {
+            continue;
         }
-        text += `<tr id="${rowName}" class="row">`;
-        for(col in row){
-            text += `<td name=${col}>${row[col]}</td>` 
+        text += `<tr id="${rowName}" class="row" onclick="redirectToPage('${rowName}')">`;
+        for (col in row) {
+            text += `<td name=${col}>${row[col]}</td>`;
         }
-        text += `<td><button onclick="redirectToPage('${rowName}')">View Details</button></td></tr>`;
+        text += "</tr>";
     }
-    tableBody.innerHTML = text
+    tableBody.innerHTML = text;
 }
 
+// Remove the button-related functions (redirectToPage, vdeets1, vdeets2, etc.) since we're handling row clicks now.
 
-    display()
+// Add an event listener to handle row clicks and redirect accordingly.
+document.addEventListener("DOMContentLoaded", function () {
+    const tableRows = document.querySelectorAll(".row");
+    tableRows.forEach((row) => {
+        row.addEventListener("click", function () {
+            const rowId = this.id;
+            const rowObj = originalRows[rowId];
+            switch (rowObj.columnName4) {
+                case "Stuffed toys":
+                    window.location = "vdt1.html";
+                    break;
+                case "Cars":
+                    window.location = "vdt2.html";
+                    break;
+                case "Sports":
+                    window.location = "vdt3.html";
+                    break;
+                case "Dolls":
+                    window.location = "vdt4.html";
+                    break;
+                default:
+                    window.location = "vdt5.html";
+            }
+        });
+    });
+});
+
+// Ensure display is called initially to populate the table.
+display();
+
 
     function filterAll() {
         filter("columnName2");
