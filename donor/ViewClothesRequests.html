@@ -39,7 +39,7 @@
                 <select id="filter-select-Age" onchange="filter('Age')">
                     <option value="">All</option>
                     <option value="Newborns">Newborns</option>
-                    <option value="Childrens">Childrens</option>
+                    <option value="Children">Children</option>
                     <option value="Teenagers">Teenagers</option>
                     <option value="Adults">Adults</option>
                 </select>
@@ -133,7 +133,7 @@
             },
         row2:{
                 Item:"Shorts",
-                Age:"Childrens",
+                Age:"Children",
                 Gender:"Male",
                 Season: "Summer"
             },
@@ -156,7 +156,7 @@
 
     //CHANGE
     // make sure all column names are here
-    columnNames = ["Item","Age", "Gender","Season"]
+    columnNames = ["Age", "Gender","Season"]
     // END CHANGE
 
     function display(){
@@ -207,6 +207,7 @@
     function resetFilters(){
         filters = {}
         for(columnName of columnNames){
+            console.log(columnName);
             const filterSelect = document.getElementById('filter-select-'+columnName)
             filterSelect.value = ""
         }

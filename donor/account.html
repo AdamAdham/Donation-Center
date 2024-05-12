@@ -6,11 +6,9 @@
 <title>Account</title>
 <link rel="stylesheet" type="text/css" href="../input.css" />
 <link rel="stylesheet" type="text/css" href="../style.css" />
-<link rel="stylesheet" type="text/css" href="./map.css" />
+<link rel="stylesheet" type="text/css" href="../map.css" />
 <link rel="stylesheet" type="text/css" href="../uploaddocument.css" />
-
-<script type="module" src="./dropDown.js"></script>
-<script type="module" src="./map.js"></script>
+<script type="module" src="../map.js"></script>
 </head>
 <body>
   <nav>
@@ -132,80 +130,110 @@
                     <h3>Role:</h3>
                     <ul>
                       <li>
-                        <input type="radio" id="regular" name="role" onchange="clinicForm(false)" class="donor-input" checked>
+                        <input type="radio" id="regular" name="role" onchange="changeForm('regular')" class="donor-input" checked>
                         <label for="regular" id="regular">Regular Donor</label>
                         <div class="check"></div>
                       </li>
                       
                       <li>
-                        <input type="radio" id="teacher" name="role" onchange="clinicForm(false)" class="donor-input">
+                        <input type="radio" id="teacher" name="role" onchange="changeForm('teacher')" class="donor-input">
                         <label for="teacher" id="next-regular">Teacher</label>
                         <div class="check"></div>
                       </li>
         
                       <li>
-                        <input type="radio" id="doctor" name="role" onchange="clinicForm(true)" class="donor-input">
+                        <input type="radio" id="doctor" name="role" onchange="changeForm('doctor')" class="donor-input">
                         <label for="doctor">Doctor</label>
                         <div class="check"></div>
                       </li>
                     </ul>
                     <!-- END CHANGE -->
                   </div>
-
-                  <h3>Upload Document for Role Verification:</h3>
-              
-            
-               
-              
-              <div class="input-field">
-            
-                  <input type="file" id="document-upload" name="document-upload" multiple required>
-                </div>
                 <!-- End radio buttons -->
 
 
                 <!-- Clinic Form -->
 
-                <div id="clinic-form-container" class="close">
-                  <h3 class="line-below">Clinic Information</h3>
+                <div id="upload-file-container" class="close">
+                  <h3>Upload Document for Role Verification:</h3>
+                  <div class="input-field">
+          
+                      <input type="file" id="document-donor-upload" name="document-upload" multiple required>
+                  </div>
+              </div>
+
+
+              <!-- Clinic Form -->
+              
+              <div id="clinic-form-container" class="close">
+
+                <h3 class="line-below">Clinic Information</h3>
+
+                <div class="input-field">
+                  <input type="text"   required class="donor-input clinic-input" spellcheck="false">
+                  <!-- CHANGE -->
+                  <label>Speciality</label>
+                  <!-- END CHANGE -->
+                </div>
+
+                <div class="input-field">
+                  <input type="text"   required class="donor-input clinic-input" spellcheck="false" >
+                  <!-- CHANGE -->
+                  <label>Number of Pro bono</label>
+                  <!-- END CHANGE -->
+                </div>
 
                   <div class="input-field">
-                    <input type="text"   required class="donor-input" spellcheck="false" value="Pediatric">
+                    <input type="text"   required class="donor-input clinic-input" spellcheck="false">
                     <!-- CHANGE -->
-                    <label>Speciality</label>
+                    <label>Address</label>
                     <!-- END CHANGE -->
                   </div>
-
+    
                   <div class="input-field">
-                    <input type="text"   required class="donor-input" spellcheck="false" value="17">
-                    <!-- CHANGE -->
-                    <label>Number of Pro bono</label>
-                    <!-- END CHANGE -->
-                  </div>
-
-                    <div class="input-field">
-                      <input type="text"   required class="donor-input" spellcheck="false" value="12 merghany">
+                      <input type="text"   required class="donor-input clinic-input" spellcheck="false">
                       <!-- CHANGE -->
-                      <label>Address</label>
+                      <label>Area</label>
+                      <!-- END CHANGE -->
+                  </div>
+      
+              
+                  <div class="input-field">
+                      <input type="text"   required class="donor-input clinic-input" spellcheck="false">
+                      <!-- CHANGE -->
+                      <label>Governorate</label>
+                      <!-- END CHANGE -->
+                  </div>
+                  <h3>Pin location of Clinic:</h3>
+                  <div id="map"></div>
+    
+              </div>
+          
+              
+              <div id="teacher-form-container" class="close">
+                  <h3 class="line-below">Teacher Information</h3>
+                  <div class="input-field">
+                      <input type="text"   required class="donor-input teacher-input" spellcheck="false" >
+                      <!-- CHANGE -->
+                      <label>Subject</label>
                       <!-- END CHANGE -->
                     </div>
-      
-                    <div class="input-field">
-                        <input type="text"   required class="donor-input" spellcheck="false" value="Heliopolis">
+  
+                      <div class="input-field">
+                        <input type="text"   required class="donor-input teacher-input" spellcheck="false">
                         <!-- CHANGE -->
-                        <label>Area</label>
+                        <label>Number of classes</label>
                         <!-- END CHANGE -->
-                    </div>
+                      </div>
         
-                
-                    <div class="input-field">
-                        <input type="text"   required class="donor-input" spellcheck="false" value="Cairo">
-                        <!-- CHANGE -->
-                        <label>Governorate</label>
-                        <!-- END CHANGE -->
-                    </div>
-      
-                </div>
+                      <div class="input-field">
+                          <input type="text"   required class="donor-input teacher-input" spellcheck="false">
+                          <!-- CHANGE -->
+                          <label>Number of students</label>
+                          <!-- END CHANGE -->
+                      </div>
+
+              </div>
   
               <div class="button-container">
                   <button class="positive-button submit" onclick="registerDonor(event)">Update</button>   
@@ -217,9 +245,30 @@
 </div>
 </body>
 <script>
+  var doctor = false
+    var teacher = false
 function registerDonor(){
     // Check if all text field are entered
     var inputs = document.getElementsByClassName("donor-input");
+    if(doctor){
+        // A doctor so remove all inputs which are about teacher
+        var inputs = Array.from(inputs).filter(function(input) {
+            console.log(!(input.classList.contains('clinic-input')));
+            return !(input.classList.contains('teacher-input'))
+        });
+    }else if(teacher){
+        // A teacher so remove all inputs about clinic
+        var inputs = Array.from(inputs).filter(function(input) {
+            console.log(!(input.classList.contains('clinic-input')));
+            return !(input.classList.contains('clinic-input'))
+        });
+    }else{
+        // Not a doctor or teacher, remove both
+        var inputs = Array.from(inputs).filter(function(input) {
+            console.log(!(input.classList.contains('clinic-input')));
+            return !(input.classList.contains('teacher-input')) && !(input.classList.contains('clinic-input'))
+        });
+    }
     var allFilled = true;
 
     for (var i = 0; i < inputs.length; i++) {
@@ -266,6 +315,7 @@ function registerDonor(){
    // checkboxes.push(document.querySelectorAll('input[name="ColName6"]'));
     // END CHANGE
     var atLeastOneChecked = false;
+    console.log(checkboxes);
     for(checkboxElement of checkboxes){
       checkboxElement.forEach(function(checkbox) {
           if (checkbox.checked) {
@@ -282,20 +332,20 @@ function registerDonor(){
       }
       atLeastOneChecked = false;
     }
-    
-    var fileInput = document.getElementById('document-upload');
-    if (!fileInput.files || fileInput.files.length === 0) {
-        alert("Please select a document to upload");
-        return;
+    if(teacher||doctor){
+        var fileInput = document.getElementById('document-donor-upload');
+        console.log(fileInput);
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert("Please select a document to upload");
+            return;
+        }
     }
     
-    alert("Your account information is updated");
 
-    window.location.href = "download.html?name=db";
-    
+    alert("Your account information is updated");
     // CHANGE
     // change to desired page
-    //window.location.href = "donorDashboard.html";
+    window.location.href = "donorDashboard.html";
 }
 
 
@@ -331,13 +381,31 @@ function checkPasswordStrength(password) {
     return missingConditions.length > 0 ? "Password is missing: " + missingConditions.join(", ") : "";
 }
 
-function clinicForm(bool){
-  const clinicCont = document.getElementById("clinic-form-container")
-  if(!bool){
-      !(clinicCont.classList.contains("close"))?clinicCont.classList.add("close"):null;
-      return
-  }
-  clinicCont.classList.remove("close")
+function changeForm(role){
+    const clinicCont = document.getElementById("clinic-form-container")
+    const teacherCont = document.getElementById("teacher-form-container")
+    const fileUplaod = document.getElementById("upload-file-container")
+    if(role=="teacher"){
+        doctor = false
+        teacher = true
+        !(clinicCont.classList.contains("close"))?clinicCont.classList.add("close"):null;
+        teacherCont.classList.remove("close")  
+        fileUplaod.classList.remove("close")
+    }else if(role=="doctor"){
+        doctor = true
+        teacher = false
+        !(teacherCont.classList.contains("close"))?teacherCont.classList.add("close"):null;
+        clinicCont.classList.remove("close")  
+        fileUplaod.classList.remove("close")
+    }else if(role=="regular"){
+        doctor=false
+        teacher=false
+        !(teacherCont.classList.contains("close"))?teacherCont.classList.add("close"):null;
+        !(clinicCont.classList.contains("close"))?clinicCont.classList.add("close"):null;
+        !(fileUplaod.classList.contains("close"))?fileUplaod.classList.add("close"):null;
+    }
 }
+
+
 </script>
 </html>
