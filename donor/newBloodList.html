@@ -78,7 +78,7 @@
                             <th>Governorate</th>
                             <th>Area</th>
                             <th>Urgency</th>
-                            <th>View Details</th>
+                            
                         </tr>
                     </thead>
                     <tbody id="table-body">
@@ -137,34 +137,32 @@
     function display() {
     const tableBody = document.getElementById("table-body");
     var text = "";
-    index = 0;
     for (rowName in originalRows) {
         const row = originalRows[rowName];
-        flag = true;
+        var params = getParams(row.button);
+        var passedFilters = true; // Flag to track if the row passes all filters
         for (filterCol in filters) {
-            if (row[filterCol] !== filters[filterCol]) {
-                flag = false;
+            if (filters[filterCol] !== "" && row[filterCol] !== filters[filterCol]) {
+                passedFilters = false;
+                break; // If any filter doesn't match, break out of the loop
             }
         }
-       
-        if (!flag) {
-            continue;
-        }
-        text += `<tr id="${rowName}" class="row">`; // Opening <tr> tag
-        for (col in row) {
-            if (col !== 'button') {
-                text += `<td name=${col}>${row[col]}</td>`; // Generate normal <td>
-            } else {
-                text += `<td>${row[col]}</td>`; // Include the button HTML in the row
+        if (passedFilters) {
+            text += `<tr id="${rowName}" class="row" onclick="viewDetails('${params[0]}','${params[1]}','${params[2]}','${params[3]}','${params[4]}','${params[5]}','${params[6]}','${row.hospGov}','${row.hospAdd}','${row.locMap}')">`;
+            for (col in row) {
+                if (col !== 'button') {
+                    text += `<td name=${col}>${row[col]}</td>`;
+                }
             }
+            text += `</tr>`;
         }
-        text += `</tr>`; // Closing </tr> tag
-        index++;
     }
     tableBody.innerHTML = text;
 }
 
+
     display()
+
 
     function filter(columnName) {
         const filterSelect = document.getElementById('filter-select-'+columnName)
@@ -185,12 +183,18 @@
             filterSelect.value = ""
         }
         var dropdown = document.getElementById("filter-select-colName3");
-        dropdown.value = "";
+        dropdown.value = "";
         var dropdown = document.getElementById("filter-select-colName2");
-        dropdown.value = "";
+        dropdown.value = "";
         display()
     }
+    function getParams(buttonString) {
+    // Extracting parameters from the buttonString
+    var params = buttonString.match(/viewDetails\(([^)]+)\)/)[1].split("','").map(param => param.replace(/'/g, ''));
 
+    // Calling viewDetails function with extracted parameters
+    return params
+}
    
 
     function viewDetails(patientName,bloodType,hospName,hospArea,hospGov,hospAdd,locMap) {
