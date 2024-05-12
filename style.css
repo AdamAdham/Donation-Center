@@ -8,7 +8,7 @@
   --light-black:#2e2e2e;
   --black:#111111;
   --nav-text-color:#323232;
-  --positive-color:#3bedb7;
+  --positive-color:#19cc95;
   --negative-color:#ce1717;
   --focus-color:#7731d8;
 }
@@ -347,7 +347,7 @@ table tr:last-child td:last-child {
 
   .positive-button{
     font-size: 16px;
-    background-color: var(--focus-color);
+    background-color: var(--positive-color);
     color: white;
     padding: 15px 30px;
     border-radius: 40px;

@@ -33,18 +33,18 @@
                 </tr>
             </thead>
             <tbody id="table-body">
-                <tr id="Ahmed">
-                    <td><a href="donor.html?name=Ahmed">Ahmed</a></td>
+                <tr id="Ahmed" onclick="window.location.href='donor.html?name=Ahmed'">
+                    <td>Ahmed</td>
                     <td>+20 1000000000</td>
                     <td>donor@example.com</td>
                 </tr>
-                <tr id="Ali">
-                    <td><a href="donor.html?name=Ali">Ali</a></td>
+                <tr id="Ali" onclick="window.location.href='donor.html?name=Ali'">
+                    <td>Ali</td>
                     <td>+20 1000000000</td>
                     <td>donor@example.com</td>
                 </tr>
-                <tr id="Shaker">
-                    <td><a href="donor.html?name=Shaker">Shaker</a></td>
+                <tr id="Shaker" onclick="window.location.href='donor.html?name=Shaker'">
+                    <td>Shaker</td>
                     <td>+20 1000000000</td>
                     <td>donor@example.com</td>
                 </tr>
@@ -60,6 +60,7 @@
         const myName = getQueryParam('deleted');
         const variableSpan = document.getElementById(myName);
         variableSpan.style.display = 'none';
+
     </script>
 </body>
 </html>
