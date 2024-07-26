@@ -16,8 +16,15 @@ Donors use the platform to view and select donation requests from various organi
 Overall, the platform facilitates a structured and efficient way to manage donations and volunteer efforts, ensuring that organizations receive the support they need and donors can effectively contribute to meaningful causes. It combines user-friendly interfaces with robust backend systems to maintain a seamless experience for all participants.
 
 # User Experience
+## Home
 ### As the user opens our website, a landing page is visible to direct them either to register or sign in
 <img src="/readme-images/home.png" alt="Home Page"/>
+
+## Register
+### The user has an option to register either as a donor or an organization
+This is done with clear and visible state
+<img src="/readme-images/register-regular-donor.png" alt="Register Donor"/>
+
 
 
 
