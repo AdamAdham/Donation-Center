@@ -59,6 +59,9 @@ Organizations need  to upload verification so that the admin can accept or rejec
 #### Donor can specify some details about the transportation of their donation according to their needs
 <img src="/readme-images/transportation-specification.png" alt="Register Donor"/>
 
+### ETA
+<img src="/readme-images/eta.png" alt="ETA"/>
+
 ### Notifications
 Both organizations and donors receive notification to save time for all parties involved and let the donor and organizations feel involved and up to date to the current situation
 <img src="/readme-images/notifications.png" alt="Register Donor"/>
@@ -73,51 +76,6 @@ Both organizations and donors receive notification to save time for all parties 
 #### Once the organization has chosen they are prompted to enter the details of the requested item
 
 <img src="/readme-images/create-donation-example.png" alt="Register Donor"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # User Journeys
