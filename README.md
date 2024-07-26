@@ -53,7 +53,7 @@ Organizations need  to upload verification so that the admin can accept or rejec
 
 ### Ongoing Donations
 #### The donor can view all his ongoing donations specifying some details or view their estimated time of arrival 
-<img src="/readme-images/ongoing-deivery.png" alt="Register Donor"/>
+<img src="/readme-images/ongoing-delivery.png" alt="Register Donor"/>
 
 ### Transportation Specification
 #### Donor can specify some details about the transportation of their donation according to their needs
