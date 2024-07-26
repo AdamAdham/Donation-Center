@@ -60,6 +60,7 @@ Organizations need  to upload verification so that the admin can accept or rejec
 <img src="/readme-images/transportation-specification.png" alt="Register Donor"/>
 
 ### ETA
+#### The current estimated time of arrival of the driver is shown with the google maps of their last updated location
 <img src="/readme-images/eta.png" alt="ETA"/>
 
 ### Notifications
