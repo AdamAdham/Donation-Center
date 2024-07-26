@@ -22,8 +22,8 @@ Overall, the platform facilitates a structured and efficient way to manage donat
 
 ## Register
 ### The user has an option to register either as a donor or an organization
-This is done with clear and visible state
-<img src="/readme-images/register-regular-donor.png" alt="Register Donor" style="display:block"/>
+This is done with clear and visible state <br>
+<img src="/readme-images/register-regular-donor.png" alt="Register Donor"/>
 
 
 
