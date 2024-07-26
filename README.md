@@ -34,7 +34,7 @@ A google marker to actually pinpoint the location of the doctor's practice is av
 <img src="/readme-images/register-doctor.png" alt="Register Donor"/>
 
 ### Teacher Registration
-<img src="/readme-images/register-teache.png" alt="Register Donor"/>
+<img src="/readme-images/register-teacher.png" alt="Register Donor"/>
 
 ## Organization Registration
 Organizations need  to upload verification so that the admin can accept or reject their verification request
@@ -53,15 +53,26 @@ Organizations need  to upload verification so that the admin can accept or rejec
 
 ### Ongoing Donations
 #### The donor can view all his ongoing donations specifying some details or view their estimated time of arrival 
-<img src="/readme-images/ongoin-deivery.png" alt="Register Donor"/>
+<img src="/readme-images/ongoing-deivery.png" alt="Register Donor"/>
 
 ### Transportation Specification
 #### Donor can specify some details about the transportation of their donation according to their needs
 <img src="/readme-images/transportation-specification.png" alt="Register Donor"/>
 
+### Notifications
+Both organizations and donors receive notification to save time for all parties involved and let the donor and organizations feel involved and up to date to the current situation
+<img src="/readme-images/notifications.png" alt="Register Donor"/>
 
 
+## Organization Experience
 
+### Create Donation
+#### The organization can choose form the drop down which type of donation is needed so that the appropiate details to be filled
+<img src="/readme-images/create-donation-dropdown.png" alt="Register Donor"/>
+
+#### Once the organization has chosen they are prompted to enter the details of the requested item
+
+<img src="/readme-images/create-donation-example.png" alt="Register Donor"/>
 
 
 
