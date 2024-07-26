@@ -26,7 +26,38 @@ This is done with clear and visible state <br>
 <img src="/readme-images/register-regular-donor.png" alt="Register Donor"/>
 
 
+## Donor Registration
+#### The user has an option to register as a regular donor, teacher or doctor with each role having unique inputs
 
+### Doctor Registration
+A google marker to actually pinpoint the location of the doctor's practice is available to use to reduce time and improve user's experience <br>
+<img src="/readme-images/register-doctor.png" alt="Register Donor"/>
+
+### Teacher Registration
+<img src="/readme-images/register-teache.png" alt="Register Donor"/>
+
+## Organization Registration
+Organizations need  to upload verification so that the admin can accept or reject their verification request
+<img src="/readme-images/register-organization.png" alt="Register Donor"/>
+
+
+## Donor Experience
+### Donation Requests
+#### Donor can find donation requests with the filter and search fully functional
+<img src="/readme-images/donatio-requests.png" alt="Register Donor"/>
+
+### Donation Request
+#### As the donor chooses a donation request their request details according to their category is shown and they can enter the quantity to be donated and this will be deducted from the needed quantity
+
+<img src="/readme-images/donation-quantity.png" alt="Register Donor"/>
+
+### Ongoing Donations
+#### The donor can view all his ongoing donations specifying some details or view their estimated time of arrival 
+<img src="/readme-images/ongoin-deivery.png" alt="Register Donor"/>
+
+### Transportation Specification
+#### Donor can specify some details about the transportation of their donation according to their needs
+<img src="/readme-images/transportation-specification.png" alt="Register Donor"/>
 
 
 
