@@ -15,7 +15,9 @@ Donors use the platform to view and select donation requests from various organi
 <br>
 Overall, the platform facilitates a structured and efficient way to manage donations and volunteer efforts, ensuring that organizations receive the support they need and donors can effectively contribute to meaningful causes. It combines user-friendly interfaces with robust backend systems to maintain a seamless experience for all participants.
 
+# User Experience
 
+<img src="/readme-images/home.png" alt="MarineGEO circle logo"/>
 
 
 
